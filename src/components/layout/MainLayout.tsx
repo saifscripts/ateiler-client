@@ -3,7 +3,7 @@ import { Navbar } from './navbar';
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="bg-primary-25">
       <Navbar />
       <Outlet />
     </div>
