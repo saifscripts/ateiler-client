@@ -3,9 +3,9 @@ import Carousel from './Carousel';
 
 const Hero = () => {
   return (
-    <div className="container w-full grid grid-cols-[1fr_4fr] py-4 gap-2">
-      <Categories />
+    <div className="container w-full grid grid-cols-[4fr_1fr] py-6 gap-6">
       <Carousel />
+      <Categories />
     </div>
   );
 };

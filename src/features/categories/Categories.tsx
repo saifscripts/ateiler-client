@@ -3,7 +3,7 @@ import categoryItems from './categoryItems';
 
 const Categories = () => {
   return (
-    <div className="bg-white rounded-xl p-2 space-y-2 h-[440px] overflow-hidden">
+    <div className="bg-white rounded-xl p-2 space-y-2 h-96 overflow-hidden">
       <p className="text-body-2 font-semibold text-metal-600 px-2 pb-1">
         CATEGORIES
       </p>

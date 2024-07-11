@@ -18,6 +18,10 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: 'products',
+        element: <AllProducts />,
+      },
+      {
         path: 'products/:category',
         element: <AllProducts />,
       },

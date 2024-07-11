@@ -17,7 +17,7 @@ const NavbarComponent = () => {
     <Navbar className="py-4">
       <NavbarContainer>
         <NavbarBrand>
-          <h1 className="text-heading-6">ATEILER</h1>
+          <h1 className="text-heading-6 font-bold">ATEILER</h1>
         </NavbarBrand>
         <NavbarList>
           {navbarItems.map((item) => (
@@ -41,7 +41,11 @@ const NavbarComponent = () => {
         <NavbarCollapseBtn />
         <NavbarCollapse>
           {navbarItems.map((item) => (
-            <NavbarItem>{item.title}</NavbarItem>
+            <NavLink to={item.link}>
+              {({ isActive }) => (
+                <NavbarItem active={isActive}>{item.title}</NavbarItem>
+              )}
+            </NavLink>
           ))}
         </NavbarCollapse>
       </NavbarContainer>
