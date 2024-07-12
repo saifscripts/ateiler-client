@@ -1,12 +1,20 @@
 import { RouterProviderProps, createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../components/layout/MainLayout';
+import ManageProductsLayout from '../components/layout/manage-products/ManageProductsLayout';
 import AboutUs from '../pages/AboutUs';
 import AllProducts from '../pages/AllProducts';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import Home from '../pages/Home';
-import ManageProducts from '../pages/ManageProducts';
 import SingleProduct from '../pages/SingleProduct';
+import {
+  AddBrand,
+  AddCategory,
+  AddProduct,
+  BrandList,
+  CategoryList,
+  ProductList,
+} from '../pages/manage-products';
 
 const router: RouterProviderProps['router'] = createBrowserRouter([
   {
@@ -30,10 +38,6 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
         element: <SingleProduct />,
       },
       {
-        path: 'manage-products',
-        element: <ManageProducts />,
-      },
-      {
         path: 'cart',
         element: <Cart />,
       },
@@ -44,6 +48,36 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
       {
         path: 'about-us',
         element: <AboutUs />,
+      },
+    ],
+  },
+  {
+    path: '/manage-products',
+    element: <ManageProductsLayout />,
+    children: [
+      {
+        path: 'add-product',
+        element: <AddProduct />,
+      },
+      {
+        path: 'products',
+        element: <ProductList />,
+      },
+      {
+        path: 'add-category',
+        element: <AddCategory />,
+      },
+      {
+        path: 'categories',
+        element: <CategoryList />,
+      },
+      {
+        path: 'add-brand',
+        element: <AddBrand />,
+      },
+      {
+        path: 'brands',
+        element: <BrandList />,
       },
     ],
   },
