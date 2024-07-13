@@ -36,7 +36,7 @@ const isImageDataValid = (
   return true;
 };
 
-const AddProduct = () => {
+const Categories = () => {
   const [imageData, setImageData] = useState<string[]>([]);
 
   const methods = useForm<FieldValues>({
@@ -76,4 +76,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default Categories;

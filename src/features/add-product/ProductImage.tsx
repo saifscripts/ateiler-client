@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { useFormContext } from 'react-hook-form';
 import { MdDelete } from 'react-icons/md';
 import { TbPhotoUp } from 'react-icons/tb';
 import toBase64 from '../../utils/toBase64';
@@ -9,6 +10,10 @@ interface IProductImageProps {
 }
 
 const ProductImage = ({ imageData, setImageData }: IProductImageProps) => {
+  const {
+    formState: { errors },
+  } = useFormContext();
+
   const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e?.target?.files?.[0]) return;
 
@@ -43,9 +48,9 @@ const ProductImage = ({ imageData, setImageData }: IProductImageProps) => {
           </div>
         ))}
         {imageData.length < 4 && (
-          <div className="relative border border-dashed border-metal-500 aspect-square flex flex-col gap-1 justify-center items-center rounded-sm cursor-pointer">
+          <div className="relative border-2 border-dashed border-metal-500 aspect-square flex flex-col gap-1 justify-center items-center rounded-sm cursor-pointer bg-metal-100">
             <TbPhotoUp className="cursor-pointer" />
-            <p className="text-xs text-primary-400 cursor-pointer">
+            <p className="text-[10px] text-primary-400 cursor-pointer">
               Upload Image
             </p>
             <input
@@ -57,6 +62,11 @@ const ProductImage = ({ imageData, setImageData }: IProductImageProps) => {
           </div>
         )}
       </div>
+      {errors.imageUrls && (
+        <p className="text-error-400 text-sm" role="alert">
+          {errors.imageUrls?.message as string}
+        </p>
+      )}
     </div>
   );
 };

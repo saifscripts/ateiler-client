@@ -21,7 +21,7 @@ const NavbarComponent = () => {
         </NavbarBrand>
         <NavbarList>
           {navbarItems.map((item) => (
-            <NavLink to={item.link}>
+            <NavLink key={item.link} to={item.link}>
               {({ isActive }) => (
                 <NavbarItem active={isActive}>{item.title}</NavbarItem>
               )}
@@ -41,7 +41,7 @@ const NavbarComponent = () => {
         <NavbarCollapseBtn />
         <NavbarCollapse>
           {navbarItems.map((item) => (
-            <NavLink to={item.link}>
+            <NavLink key={item.link} to={item.link}>
               {({ isActive }) => (
                 <NavbarItem active={isActive}>{item.title}</NavbarItem>
               )}

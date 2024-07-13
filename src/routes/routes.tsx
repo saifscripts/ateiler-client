@@ -12,7 +12,7 @@ import {
   AddCategory,
   AddProduct,
   BrandList,
-  CategoryList,
+  Categories,
   ProductList,
 } from '../pages/manage-products';
 
@@ -69,7 +69,7 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
       },
       {
         path: 'categories',
-        element: <CategoryList />,
+        element: <Categories />,
       },
       {
         path: 'add-brand',
