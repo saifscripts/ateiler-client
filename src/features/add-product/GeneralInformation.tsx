@@ -1,10 +1,12 @@
 import { Input, InputIcon, Label, Textarea } from 'keep-react';
 import { useFormContext } from 'react-hook-form';
 import { BiStore } from 'react-icons/bi';
+import { IBrand } from '../../interfaces';
 import { cn } from '../../lib/cn';
-import categoryItems from '../categories/categoryItems';
+import { useGetBrandsQuery } from '../../redux/features/brands/brandApi';
 
 const GeneralInformation = () => {
+  const { data: brands } = useGetBrandsQuery('');
   const {
     register,
     formState: { errors },
@@ -48,8 +50,10 @@ const GeneralInformation = () => {
           {...register('brand')}
         >
           <option value="">Select A Brand</option>
-          {categoryItems.map((item) => (
-            <option key={item.title}>{item.title}</option>
+          {brands?.data?.map((item: IBrand) => (
+            <option key={item._id} value={item._id}>
+              {item.name}
+            </option>
           ))}
         </select>
         {errors.brand && (

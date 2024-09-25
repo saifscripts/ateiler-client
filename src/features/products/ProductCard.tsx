@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from 'keep-react';
 import { Link } from 'react-router-dom';
-import { IProduct } from './interface';
+import { IProduct } from '../../interfaces';
 import Rating from './Rating';
 
 interface IProductCardProps {
@@ -20,7 +20,11 @@ const ProductCard = ({ product }: IProductCardProps) => {
   return (
     <Card>
       <CardHeader>
-        <img src={product.imageUrl} alt="image" className="w-full rounded-xl" />
+        <img
+          src={product.imageUrls[0]}
+          alt="image"
+          className="w-full rounded-xl"
+        />
       </CardHeader>
       <CardContent className="space-y-3 p-4">
         <CardTitle>{product.name}</CardTitle>
@@ -32,9 +36,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
         <Rating value={product.rating} />
         <div className="flex gap-3 items-center">
           <Badge color="success">Category</Badge>
-          <Badge color="secondary">
-            Quantity: {product.inventory.quantity}
-          </Badge>
+          <Badge color="secondary">Quantity: {product.stockQuantity}</Badge>
         </div>
         <CardFooter className="flex gap-3">
           <Button size="xs" color="secondary">

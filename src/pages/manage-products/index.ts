@@ -1,6 +1,5 @@
-export { default as AddBrand } from './AddBrand';
-export { default as AddCategory } from './AddCategory';
 export { default as AddProduct } from './AddProduct';
-export { default as BrandList } from './BrandList';
+export { default as Brands } from './Brands';
 export { default as Categories } from './Categories';
-export { default as ProductList } from './ProductList';
+export { default as Products } from './Products';
+export { default as UpdateProduct } from './UpdateProduct';

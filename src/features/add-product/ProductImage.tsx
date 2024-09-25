@@ -33,7 +33,7 @@ const ProductImage = ({ imageData, setImageData }: IProductImageProps) => {
     <div className="bg-white p-3 rounded-md space-y-3">
       <h5 className="text-body-1 font-semibold">Product Image</h5>
       <div className="grid grid-cols-4 gap-2">
-        {imageData.map((url, i) => (
+        {imageData?.map((url, i) => (
           <div
             key={url}
             style={{ backgroundImage: `url("${url}")` }}
@@ -47,7 +47,7 @@ const ProductImage = ({ imageData, setImageData }: IProductImageProps) => {
             </div>
           </div>
         ))}
-        {imageData.length < 4 && (
+        {imageData?.length < 4 && (
           <div className="relative border-2 border-dashed border-metal-500 aspect-square flex flex-col gap-1 justify-center items-center rounded-sm cursor-pointer bg-metal-100">
             <TbPhotoUp className="cursor-pointer" />
             <p className="text-[10px] text-primary-400 cursor-pointer">

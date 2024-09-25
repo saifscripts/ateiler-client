@@ -14,7 +14,7 @@ import navbarItems from './navbarItems';
 
 const NavbarComponent = () => {
   return (
-    <Navbar className="py-4">
+    <Navbar className="py-4 sticky top-0 z-50">
       <NavbarContainer>
         <NavbarBrand>
           <h1 className="text-heading-6 font-bold">ATEILER</h1>

@@ -1,9 +1,11 @@
 import { Label } from 'keep-react';
 import { useFormContext } from 'react-hook-form';
+import { ICategory } from '../../interfaces';
 import { cn } from '../../lib/cn';
-import categoryItems from '../categories/categoryItems';
+import { useGetCategoriesQuery } from '../../redux/features/categories/categoryApi';
 
 const ProductCategory = () => {
+  const { data: categories } = useGetCategoriesQuery('');
   const {
     register,
     formState: { errors },
@@ -23,8 +25,10 @@ const ProductCategory = () => {
           {...register('category')}
         >
           <option value="">Select A Category</option>
-          {categoryItems.map((item) => (
-            <option key={item.title}>{item.title}</option>
+          {categories?.data?.map((item: ICategory) => (
+            <option value={item._id} key={item._id}>
+              {item.title}
+            </option>
           ))}
         </select>
         {errors.category && (

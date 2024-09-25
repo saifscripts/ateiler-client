@@ -6,13 +6,8 @@ import {
   TableHeader,
   TableRow,
 } from 'keep-react';
+import { ICategory } from '../../interfaces';
 import { useGetCategoriesQuery } from '../../redux/features/categories/categoryApi';
-
-interface ICategory {
-  _id: string;
-  title: string;
-  thumbnail: string;
-}
 
 const CategoryList = () => {
   const { data: categories } = useGetCategoriesQuery('');

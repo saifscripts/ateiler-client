@@ -24,8 +24,7 @@ export const ProductSchema = z.object({
     .min(1, 'Price is required!')
     .refine((val) => !Number.isNaN(Number(val)) && Number(val) >= 0, {
       message: 'Price must be a non negative number',
-    })
-    .transform((val) => Number(val)),
+    }),
   discount: z
     .string({
       required_error: 'Discount is required!',
@@ -37,8 +36,7 @@ export const ProductSchema = z.object({
     })
     .refine((val) => Number(val) <= 100, {
       message: 'Discount cannot be more than 100%',
-    })
-    .transform((val) => Number(val)),
+    }),
   stockQuantity: z
     .string({
       required_error: 'Discount is required!',
@@ -46,8 +44,7 @@ export const ProductSchema = z.object({
     .min(1, 'Quantity is required!')
     .refine((val) => Number.isInteger(Number(val)) && Number(val) >= 0, {
       message: 'Quantity must be a non negative integer',
-    })
-    .transform((val) => Number(val)),
+    }),
   brand: z
     .string({
       required_error: 'Brand is required!',

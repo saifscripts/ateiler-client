@@ -4,11 +4,11 @@ import Sidebar from './Sidebar';
 
 const ManageProductsLayout = () => {
   return (
-    <div className="bg-primary-25">
+    <div className="bg-primary-25 h-screen overflow-hidden">
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <div className="w-[calc(100vw-240px)] h-[calc(100vh-80px)] overflow-y-scroll">
+        <div className="w-[calc(100vw-240px)] overflow-auto">
           <Outlet />
         </div>
       </div>

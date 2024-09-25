@@ -1,6 +1,6 @@
 import { ContactUs } from '../features/contact-us';
-import { FeaturedProducts } from '../features/featured-products';
 import { Hero } from '../features/hero';
+import { FeaturedProducts } from '../features/products';
 
 const Home = () => {
   return (

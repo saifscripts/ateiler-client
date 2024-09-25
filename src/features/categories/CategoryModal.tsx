@@ -26,7 +26,7 @@ import { BiCheck } from 'react-icons/bi';
 import { MdTitle } from 'react-icons/md';
 import { cn } from '../../lib/cn';
 import { useCreateCategoryMutation } from '../../redux/features/categories/categoryApi';
-import base64ToFormData from '../../utils/base64ToFormData';
+import { useUploadImageMutation } from '../../redux/features/imageUpload/imageUploadApi';
 import { CategorySchema } from '../../validations/category.validation';
 import { ThumbnailUpload } from './ThumbnailUpload';
 
@@ -50,47 +50,34 @@ const isImageDataValid = (
 
 const CategoryModal = () => {
   const [file, setFile] = useState('');
-  const [isUploading, setIsUploading] = useState(false);
 
-  const [createCategory, { isLoading }] = useCreateCategoryMutation();
+  const [createCategory] = useCreateCategoryMutation();
+  const [uploadImage] = useUploadImageMutation();
 
   const {
     register,
     handleSubmit,
     setError,
     clearErrors,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm<FieldValues>({
     resolver: zodResolver(CategorySchema),
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
-    try {
-      if (!isImageDataValid(file, setError, clearErrors)) return;
+    if (!isImageDataValid(file, setError, clearErrors)) return;
 
-      setIsUploading(true);
-      const response = await fetch(
-        `https://api.imgbb.com/1/upload?key=${
-          import.meta.env.VITE_IMGBB_API_KEY
-        }`,
-        {
-          method: 'POST',
-          body: base64ToFormData(file),
-        }
-      );
+    const result = await uploadImage(file);
 
-      const result = await response.json();
-      setIsUploading(false);
-
-      if (result?.success) {
-        values.thumbnail = result?.data?.url;
-        const data = await createCategory(values);
-        if (data?.data?.success) {
-          document.getElementById('closeBtn')?.click();
-        }
+    if (result?.data?.success) {
+      values.thumbnail = result?.data?.data?.url;
+      const data = await createCategory(values);
+      if (data?.data?.success) {
+        reset();
+        setFile('');
+        document.getElementById('closeBtn')?.click();
       }
-    } catch (error) {
-      setIsUploading(false);
     }
   };
 
@@ -154,11 +141,7 @@ const CategoryModal = () => {
                 </Button>
               </ModalClose>
 
-              <Button
-                disabled={isUploading || isLoading}
-                size="sm"
-                color="primary"
-              >
+              <Button disabled={isSubmitting} size="sm" color="primary">
                 Confirm
               </Button>
             </ModalFooter>
