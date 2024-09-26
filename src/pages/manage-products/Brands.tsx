@@ -1,5 +1,12 @@
-const Brands = () => {
-  return <div>BrandList</div>;
-};
+import { BrandList, Header } from '../../features/brands';
 
-export default Brands;
+export default function Brands() {
+  return (
+    <div>
+      <Header />
+      <div className="p-6">
+        <BrandList />
+      </div>
+    </div>
+  );
+}

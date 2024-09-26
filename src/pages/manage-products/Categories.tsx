@@ -1,10 +1,9 @@
-import { CategoryList } from '../../features/categories';
-import CategoryHeader from '../../features/categories/CategoryHeader';
+import { CategoryList, Header } from '../../features/categories';
 
 const Categories = () => {
   return (
     <div>
-      <CategoryHeader />
+      <Header />
       <div className="p-6">
         <CategoryList />
       </div>

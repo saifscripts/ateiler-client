@@ -1,12 +1,10 @@
-import { ProductList, ProductListHeader } from '../../features/product-list';
-import { useGetProductsQuery } from '../../redux/features/products/productApi';
+import { Header, ProductList } from '../../features/product-list';
 
 const Products = () => {
-  const { data } = useGetProductsQuery('');
   return (
     <>
-      <ProductListHeader totalProduct={data?.data?.length} />
-      <ProductList products={data?.data} />
+      <Header />
+      <ProductList />
     </>
   );
 };

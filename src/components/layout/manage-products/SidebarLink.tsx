@@ -10,10 +10,10 @@ interface SidebarLinkProps {
 
 const SidebarLink = ({ to, children }: SidebarLinkProps) => {
   return (
-    <NavLink to={to}>
+    <NavLink to={to} onClick={(e) => e.stopPropagation()}>
       {({ isActive }) => (
         <SidebarItem
-          className={cn({
+          className={cn('mb-1', {
             'bg-metal-900 text-metal-100 hover:bg-metal-800 hover:text-metal-100':
               isActive,
           })}

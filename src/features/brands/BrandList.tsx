@@ -6,44 +6,42 @@ import {
   TableHeader,
   TableRow,
 } from 'keep-react';
-import { ICategory } from '../../interfaces';
-import { useGetCategoriesQuery } from '../../redux/features/categories/categoryApi';
+import { IBrand } from '../../interfaces';
+import { useGetBrandsQuery } from '../../redux/features/brands/brandApi';
 
-const CategoryList = () => {
-  const { data: categories } = useGetCategoriesQuery('');
+export default function BrandList() {
+  const { data: brands } = useGetBrandsQuery('');
 
   return (
     <Table className="max-w-sm">
       <TableHeader>
         <TableRow>
           <TableHead className="bg-metal-900 text-metal-50">
-            <div>Thumbnail</div>
+            <div>Logo</div>
           </TableHead>
           <TableHead className="bg-metal-900 text-metal-50">
-            <div>Title</div>
+            <div>Name</div>
           </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {categories?.data?.length ? (
-          categories?.data?.map((item: ICategory) => (
+        {brands?.data?.length ? (
+          brands?.data?.map((item: IBrand) => (
             <TableRow key={item._id}>
               <TableCell>
-                <img className="size-8" src={item.thumbnail} alt="" />
+                <img className="size-8" src={item.logo} alt="" />
               </TableCell>
-              <TableCell>{item.title}</TableCell>
+              <TableCell>{item.name}</TableCell>
             </TableRow>
           ))
         ) : (
           <TableRow>
             <TableCell className="text-center" colSpan={2}>
-              No Categories Found
+              No Brands Found
             </TableCell>
           </TableRow>
         )}
       </TableBody>
     </Table>
   );
-};
-
-export default CategoryList;
+}

@@ -15,43 +15,21 @@ import {
   ModalTitle,
 } from 'keep-react';
 import { useState } from 'react';
-import {
-  FieldValues,
-  SubmitHandler,
-  useForm,
-  UseFormClearErrors,
-  UseFormSetError,
-} from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { BiCheck } from 'react-icons/bi';
 import { MdTitle } from 'react-icons/md';
 import { cn } from '../../lib/cn';
-import { useCreateCategoryMutation } from '../../redux/features/categories/categoryApi';
+import { displayToast } from '../../lib/toast';
+import { isImageDataValid } from '../../lib/validations';
+import { useCreateBrandMutation } from '../../redux/features/brands/brandApi';
 import { useUploadImageMutation } from '../../redux/features/imageUpload/imageUploadApi';
-import { CategorySchema } from '../../validations/category.validation';
-import { ThumbnailUpload } from './ThumbnailUpload';
+import { BrandSchema } from '../../validations/brand.validation';
+import { LogoUpload } from './LogoUpload';
 
-const isImageDataValid = (
-  file: string,
-  setError: UseFormSetError<FieldValues>,
-  clearErrors: UseFormClearErrors<FieldValues>
-) => {
-  if (!file) {
-    setError('thumbnail' as 'keys', {
-      type: 'manual',
-      message: 'Thumbnail is required!',
-    });
-
-    return false;
-  }
-
-  clearErrors('thumbnail');
-  return true;
-};
-
-const CategoryModal = () => {
+export default function AddBrandModal() {
   const [file, setFile] = useState('');
 
-  const [createCategory] = useCreateCategoryMutation();
+  const [createBrand] = useCreateBrandMutation();
   const [uploadImage] = useUploadImageMutation();
 
   const {
@@ -62,18 +40,19 @@ const CategoryModal = () => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<FieldValues>({
-    resolver: zodResolver(CategorySchema),
+    resolver: zodResolver(BrandSchema),
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
     if (!isImageDataValid(file, setError, clearErrors)) return;
 
-    const result = await uploadImage(file);
+    const imageResponse = await uploadImage(file);
 
-    if (result?.data?.success) {
-      values.thumbnail = result?.data?.data?.url;
-      const data = await createCategory(values);
-      if (data?.data?.success) {
+    if (imageResponse?.data?.success) {
+      values.logo = imageResponse?.data?.data?.url;
+      const brandResponse = await createBrand(values);
+      displayToast(brandResponse, 'Brand added successfully!');
+      if (brandResponse?.data?.success) {
         reset();
         setFile('');
         document.getElementById('closeBtn')?.click();
@@ -86,50 +65,50 @@ const CategoryModal = () => {
       <ModalAction asChild>
         <Button size="xs">
           <BiCheck className="text-xl mr-2" />
-          New Category
+          New Brand
         </Button>
       </ModalAction>
       <ModalBody>
         <ModalContent className="space-y-3">
           <ModalClose className="absolute right-4 top-4" />
           <ModalHeader className="mb-6 space-y-3">
-            <ModalTitle>Add A New Category</ModalTitle>
+            <ModalTitle>Add A New Brand</ModalTitle>
           </ModalHeader>
           <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
             <fieldset className="space-y-1">
-              <Label htmlFor="title">Category Title</Label>
+              <Label htmlFor="title">Brand Name</Label>
               <div className="relative">
                 <Input
-                  id="title"
+                  id="name"
                   type="text"
-                  placeholder="Category Title"
+                  placeholder="Brand Name"
                   className={cn('ps-11', {
-                    'border border-error-200': Boolean(errors.title),
+                    'border border-error-200': Boolean(errors.name),
                   })}
-                  aria-invalid={Boolean(errors.title)}
-                  {...register('title')}
+                  aria-invalid={Boolean(errors.name)}
+                  {...register('name')}
                 />
 
                 <InputIcon>
                   <MdTitle className="text-[#AFBACA]" />
                 </InputIcon>
               </div>
-              {errors.title && (
+              {errors.name && (
                 <p className="text-error-400 text-sm" role="alert">
-                  {errors.title?.message as string}
+                  {errors.name?.message as string}
                 </p>
               )}
             </fieldset>
             <fieldset>
-              <Label htmlFor="thumbnail">Category Thumbnail</Label>
-              <ThumbnailUpload file={file} setFile={setFile} />
-              {errors.thumbnail && (
+              <Label htmlFor="thumbnail">Brand Logo</Label>
+              <LogoUpload file={file} setFile={setFile} />
+              {errors.logo && (
                 <p className="text-error-400 text-sm" role="alert">
-                  {errors.thumbnail?.message as string}
+                  {errors.logo?.message as string}
                 </p>
               )}
             </fieldset>
-            <ModalFooter>
+            <ModalFooter className="justify-end">
               <ModalClose asChild>
                 <Button
                   id="closeBtn"
@@ -142,7 +121,7 @@ const CategoryModal = () => {
               </ModalClose>
 
               <Button disabled={isSubmitting} size="sm" color="primary">
-                Confirm
+                Add Brand
               </Button>
             </ModalFooter>
           </form>
@@ -150,6 +129,4 @@ const CategoryModal = () => {
       </ModalBody>
     </Modal>
   );
-};
-
-export default CategoryModal;
+}

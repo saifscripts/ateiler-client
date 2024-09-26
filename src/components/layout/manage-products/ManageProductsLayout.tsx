@@ -8,7 +8,7 @@ const ManageProductsLayout = () => {
       <Navbar />
       <div className="flex">
         <Sidebar />
-        <div className="w-[calc(100vw-240px)] overflow-auto">
+        <div className="w-[calc(100vw-240px)] h-[calc(100vh-80px)] overflow-auto">
           <Outlet />
         </div>
       </div>

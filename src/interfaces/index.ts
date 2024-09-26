@@ -8,7 +8,7 @@ export interface ICategory {
 export interface IBrand {
   _id: string;
   name: string;
-  thumbnail: string;
+  logo: string;
 }
 
 export interface IProduct {

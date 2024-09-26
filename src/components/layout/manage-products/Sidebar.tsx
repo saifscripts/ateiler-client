@@ -10,17 +10,22 @@ import {
   SidebarItem,
   SidebarList,
 } from 'keep-react';
-import { BiCategory, BiStore } from 'react-icons/bi';
-import { IoAddSharp, IoListSharp, IoLogoBuffer } from 'react-icons/io5';
+import { BiBarcode, BiCategoryAlt, BiStore } from 'react-icons/bi';
+import { IoAddSharp, IoListSharp } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 import SidebarLink from './SidebarLink';
 
 const SidebarComponent = () => {
+  const navigate = useNavigate();
+
   return (
     <Sidebar className="h-[calc(100vh-80px)] rounded-none w-[240px] shadow-none">
       <SidebarBody>
         <SidebarList className="space-y-0.5">
           <SidebarItem dropdown>
-            <SidebarDropdown>
+            <SidebarDropdown
+              onClick={() => navigate('/manage-products/products')}
+            >
               <SidebarCollapse>
                 <div className="flex items-center gap-3">
                   <BiStore className="text-lg" />
@@ -32,45 +37,26 @@ const SidebarComponent = () => {
               </SidebarCollapse>
 
               <SidebarDropdownList>
-                <SidebarLink to="add-product">
-                  <IoAddSharp className="text-lg" />
-                  Add Product
-                </SidebarLink>
                 <SidebarLink to="products">
                   <IoListSharp className="text-lg" />
                   Product List
+                </SidebarLink>
+
+                <SidebarLink to="add-product">
+                  <IoAddSharp className="text-lg" />
+                  Add Product
                 </SidebarLink>
               </SidebarDropdownList>
             </SidebarDropdown>
           </SidebarItem>
           <SidebarLink to="categories">
-            <BiCategory className="text-lg" />
+            <BiCategoryAlt className="text-lg" />
             Categories
           </SidebarLink>
-          <SidebarItem dropdown>
-            <SidebarDropdown>
-              <SidebarCollapse>
-                <div className="flex items-center gap-3">
-                  <IoLogoBuffer className="text-xl" />
-                  Brands
-                </div>
-                <span className="group-open:-rotate-180">
-                  <CaretDown size={20} />
-                </span>
-              </SidebarCollapse>
-
-              <SidebarDropdownList>
-                <SidebarLink to="add-brand">
-                  <IoAddSharp className="text-lg" />
-                  Add Brand
-                </SidebarLink>
-                <SidebarLink to="brands">
-                  <IoListSharp className="text-lg" />
-                  Brand List
-                </SidebarLink>
-              </SidebarDropdownList>
-            </SidebarDropdown>
-          </SidebarItem>
+          <SidebarLink to="brands">
+            <BiBarcode className="text-lg" />
+            Brands
+          </SidebarLink>
         </SidebarList>
       </SidebarBody>
 
