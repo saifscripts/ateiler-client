@@ -27,22 +27,28 @@ const ProductList = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="bg-metal-900 text-metal-50">
-              <div className="w-20">Thumbnail</div>
+              <div>Thumbnail</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">
-              <div className="w-28">Product Name</div>
+              <div>Product Name</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">
-              <div className="w-16">Price</div>
+              <div>Price</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">
-              <div className="w-16">Category</div>
+              <div>Discount</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">
-              <div className="w-12">Rating</div>
+              <div>Discount Price</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">
-              <div className="w-[60px]">Stock</div>
+              <div>Category</div>
+            </TableHead>
+            <TableHead className="bg-metal-900 text-metal-50">
+              <div>Rating</div>
+            </TableHead>
+            <TableHead className="bg-metal-900 text-metal-50">
+              <div>Stock</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">Action</TableHead>
           </TableRow>
@@ -54,14 +60,21 @@ const ProductList = () => {
                 <TableCell>
                   <div
                     style={{ backgroundImage: `url("${item.imageUrls[0]}")` }}
-                    className="bg-cover bg-center bg-no-repeat rounded-sm w-16 aspect-video "
+                    className="bg-cover bg-center bg-no-repeat rounded-sm size-8"
                   ></div>
                 </TableCell>
                 <TableCell>{item.name}</TableCell>
-                <TableCell>{item.price}</TableCell>
+                <TableCell>{Number(item.price).toFixed(2)}</TableCell>
+                <TableCell>{item.discount}%</TableCell>
+                <TableCell>
+                  {(
+                    Number(item.price) *
+                    (1 - Number(item.discount) / 100)
+                  ).toFixed(2)}
+                </TableCell>
                 <TableCell>{item.category.title}</TableCell>
                 <TableCell>{item.rating}</TableCell>
-                <TableCell>{item.rating}</TableCell>
+                <TableCell>{item.stockQuantity}</TableCell>
                 <TableCell>
                   <div className="flex gap-2">
                     <Link

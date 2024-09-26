@@ -22,7 +22,7 @@ interface IDeleteModalProps {
 }
 
 const DeleteModal = ({ id, name }: IDeleteModalProps) => {
-  const [deleteProduct] = useDeleteProductMutation();
+  const [deleteProduct, { isLoading }] = useDeleteProductMutation();
   const [open, setOpen] = useState(false);
 
   const handleDelete = async () => {
@@ -66,8 +66,8 @@ const DeleteModal = ({ id, name }: IDeleteModalProps) => {
               </Button>
             </ModalClose>
             <ModalClose onClick={handleDelete} asChild>
-              <Button size="xs" color="error">
-                Confirm
+              <Button disabled={isLoading} size="xs" color="error">
+                Delete
               </Button>
             </ModalClose>
           </ModalFooter>

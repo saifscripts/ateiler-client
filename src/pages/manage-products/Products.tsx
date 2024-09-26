@@ -1,9 +1,9 @@
-import { Header, ProductList } from '../../features/product-list';
+import { ProductList, ProductListHeader } from '../../features/products';
 
 const Products = () => {
   return (
     <>
-      <Header />
+      <ProductListHeader />
       <ProductList />
     </>
   );

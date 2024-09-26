@@ -16,7 +16,11 @@ export const ProductSchema = z.object({
       required_error: 'Description is required!',
     })
     .min(1, 'Description is required!'),
-  imageUrls: z.array(z.string().url()).optional(),
+  imageUrls: z
+    .array(z.string(), {
+      required_error: 'At least one image is required!',
+    })
+    .min(1, 'At least one image is required!'),
   price: z
     .string({
       required_error: 'Price is required!',
@@ -29,14 +33,14 @@ export const ProductSchema = z.object({
     .string({
       required_error: 'Discount is required!',
     })
-    .min(1, 'Discount is required!')
     .default('0')
     .refine((val) => Number.isInteger(Number(val)) && Number(val) >= 0, {
       message: 'Discount must be a non negative integer',
     })
     .refine((val) => Number(val) <= 100, {
       message: 'Discount cannot be more than 100%',
-    }),
+    })
+    .optional(),
   stockQuantity: z
     .string({
       required_error: 'Discount is required!',

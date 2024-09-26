@@ -17,8 +17,9 @@ export interface IProduct {
   category: ICategory;
   description: string;
   imageUrls: string[];
-  price: number;
-  stockQuantity: number;
+  price: string;
+  discount: string;
+  stockQuantity: string;
   brand: IBrand;
   rating: number;
   isDeleted: boolean;

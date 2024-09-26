@@ -1,13 +1,7 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'keep-react';
-import { useState } from 'react';
-import {
-  FieldValues,
-  FormProvider,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import AppForm from '../../components/form/AppForm';
 import {
   AddProductHeader,
   GeneralInformation,
@@ -15,77 +9,69 @@ import {
   ProductCategory,
   ProductImage,
   StockInformation,
-} from '../../features/add-product';
+} from '../../features/products';
+import { displayToast } from '../../lib/toast';
 import { useUploadImageMutation } from '../../redux/features/imageUpload/imageUploadApi';
 import { useCreateProductMutation } from '../../redux/features/products/productApi';
 import { ProductSchema } from '../../validations/product.validation';
 
+const defaultValues = {
+  name: '',
+  category: '',
+  description: '',
+  price: '',
+  discount: '',
+  stockQuantity: '',
+  brand: '',
+  imageUrls: [],
+};
+
 const AddProduct = () => {
-  const [imageData, setImageData] = useState<string[]>([]);
   const [createProduct] = useCreateProductMutation();
   const [uploadImage] = useUploadImageMutation();
   const navigate = useNavigate();
 
-  const methods = useForm<FieldValues>({
-    resolver: zodResolver(ProductSchema),
-  });
-
   const onSubmit: SubmitHandler<FieldValues> = async (productData) => {
-    try {
-      methods.clearErrors('imageUrls');
+    const uploadPromises = productData.imageUrls.map((image: string) =>
+      uploadImage(image)
+    );
 
-      if (imageData.length < 1) {
-        methods.setError('imageUrls' as 'keys', {
-          type: 'manual',
-          message: 'Image is required!',
-        });
-      }
+    productData.imageUrls = (await Promise.all(uploadPromises)).map(
+      (item: any) => item?.data?.data?.url
+    );
 
-      const uploadPromises = imageData.map((file) => uploadImage(file));
+    const result = await createProduct(productData);
 
-      const imageUrls = (await Promise.all(uploadPromises)).map(
-        (item) => item?.data?.data?.url
-      );
+    displayToast(result, 'Product added successfully!', {
+      action: {
+        label: 'See all products',
+        onClick: () => navigate('/manage-products/products'),
+      },
+    });
 
-      productData.imageUrls = imageUrls;
-
-      const result = await createProduct(productData);
-
-      if (result?.data?.success) {
-        methods.reset();
-        setImageData([]);
-        toast.success('Product added successfully!', {
-          action: {
-            label: 'See all products',
-            onClick: () => navigate('/manage-products/products'),
-          },
-        });
-      }
-    } catch (err) {
-      toast.error((err as Error).message);
-    }
+    return result?.data?.success; // reset form
   };
 
   return (
-    <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(onSubmit)}
-        className="text-metal-700"
-      >
-        <AddProductHeader />
-        <div className="p-6 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 h-[calc(100vh-144px)] overflow-y-scroll">
-          <div className="grid grid-cols-1 gap-6">
-            <GeneralInformation />
-            <PriceInformation />
-          </div>
-          <div className="grid grid-cols-1 gap-6">
-            <ProductImage imageData={imageData} setImageData={setImageData} />
-            <ProductCategory />
-            <StockInformation />
-          </div>
+    <AppForm
+      schema={ProductSchema}
+      defaultValues={defaultValues}
+      onSubmit={onSubmit}
+      className="text-metal-700"
+    >
+      <AddProductHeader />
+      <div className="p-6 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 h-[calc(100vh-144px)] overflow-y-scroll">
+        <div className="grid grid-cols-1 gap-6">
+          <GeneralInformation />
+          <PriceInformation />
         </div>
-      </form>
-    </FormProvider>
+        <div className="grid grid-cols-1 gap-6">
+          <ProductImage />
+          <ProductCategory />
+          <StockInformation />
+        </div>
+      </div>
+    </AppForm>
   );
 };
 

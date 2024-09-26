@@ -3,7 +3,7 @@ import { Plus } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import { useGetProductsQuery } from '../../redux/features/products/productApi';
 
-const Header = () => {
+const ProductListHeader = () => {
   const { data } = useGetProductsQuery({});
   const totalProduct = data?.data?.length;
 
@@ -38,4 +38,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default ProductListHeader;

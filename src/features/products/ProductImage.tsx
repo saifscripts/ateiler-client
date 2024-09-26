@@ -1,17 +1,25 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { MdDelete } from 'react-icons/md';
+import { IoCloseSharp } from 'react-icons/io5';
 import { TbPhotoUp } from 'react-icons/tb';
+import { useParams } from 'react-router-dom';
+import { useGetSingleProductQuery } from '../../redux/features/products/productApi';
 import toBase64 from '../../utils/toBase64';
 
-interface IProductImageProps {
-  imageData: string[];
-  setImageData: React.Dispatch<React.SetStateAction<string[]>>;
-}
+const ProductImage = () => {
+  const [images, setImages] = useState<string[]>([]);
+  const { id } = useParams();
+  const { data: product } = useGetSingleProductQuery(id);
 
-const ProductImage = ({ imageData, setImageData }: IProductImageProps) => {
+  useEffect(() => {
+    setImages(product?.data?.imageUrls || []);
+  }, [product]);
+
   const {
     formState: { errors },
+    setValue,
+    setError,
+    clearErrors,
   } = useFormContext();
 
   const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,35 +27,49 @@ const ProductImage = ({ imageData, setImageData }: IProductImageProps) => {
 
     const file = e.target.files[0];
     const base64Data = await toBase64(file);
-    setImageData([...imageData, base64Data as string]);
+    setImages([...images, base64Data as string]);
     e.target.value = '';
   };
 
   const handleRemove = (index: number) => {
-    const updatedUrls = [...imageData];
+    const updatedUrls = [...images];
     updatedUrls.splice(index, 1);
-    setImageData(updatedUrls);
+    setImages((images) => {
+      const updatedUrls = [...images];
+      updatedUrls.splice(index, 1);
+
+      if (updatedUrls.length === 0) {
+        setError('imageUrls', { message: 'At least one image is required!' });
+      }
+      return updatedUrls;
+    });
   };
+
+  useEffect(() => {
+    if (images.length > 0) {
+      setValue('imageUrls', images);
+      clearErrors('imageUrls');
+    } else {
+      setValue('imageUrls', []);
+    }
+  }, [images, setValue, setError, clearErrors]);
 
   return (
     <div className="bg-white p-3 rounded-md space-y-3">
       <h5 className="text-body-1 font-semibold">Product Image</h5>
       <div className="grid grid-cols-4 gap-2">
-        {imageData?.map((url, i) => (
+        {images?.map((url, i) => (
           <div
             key={url}
             style={{ backgroundImage: `url("${url}")` }}
-            className="bg-cover bg-center bg-no-repeat rounded-sm relative aspect-square group"
+            className="bg-cover bg-center bg-no-repeat relative aspect-square rounded-lg"
           >
-            <div className="hidden group-hover:flex absolute cursor-pointer inset-0 justify-center items-center bg-metal-900 bg-opacity-30">
-              <MdDelete
-                onClick={() => handleRemove(i)}
-                className="text-2xl text-white hover:text-error-300"
-              />
+            <div className="flex justify-center items-center absolute top-0 right-0 z-10 translate-x-1/2 -translate-y-1/2 rounded-full bg-error-600 hover:bg-error-500 size-5 text-white font-bold cursor-pointer">
+              <IoCloseSharp onClick={() => handleRemove(i)} />
             </div>
           </div>
         ))}
-        {imageData?.length < 4 && (
+        {images?.length < 4 && (
           <div className="relative border-2 border-dashed border-metal-500 aspect-square flex flex-col gap-1 justify-center items-center rounded-sm cursor-pointer bg-metal-100">
             <TbPhotoUp className="cursor-pointer" />
             <p className="text-[10px] text-primary-400 cursor-pointer">
