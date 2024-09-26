@@ -18,24 +18,28 @@ const Footer = () => {
             <div className="flex gap-4 text-lg">
               <a
                 className="hover:bg-metal-400 hover:text-metal-900 border border-transparent hover:border-metal-400 rounded-sm p-1"
+                target="_blank"
                 href="https://facebook.com/saifelhamn"
               >
                 <FaFacebookF />
               </a>
               <a
                 className="hover:bg-metal-400 hover:text-metal-900 border border-transparent hover:border-metal-400 rounded-sm p-1"
+                target="_blank"
                 href="https://linkedin.com/in/saifscripts"
               >
                 <FaLinkedinIn />
               </a>
               <a
                 className="hover:bg-metal-400 hover:text-metal-900 border border-transparent hover:border-metal-400 rounded-sm p-1"
+                target="_blank"
                 href="tel:+8801766637772"
               >
                 <FaPhone />
               </a>
               <a
                 className="hover:bg-metal-400 hover:text-metal-900 border border-transparent hover:border-metal-400 rounded-sm p-1"
+                target="_blank"
                 href="mailto:mdsaifullah1302@gmail.com"
               >
                 <FaRegEnvelope />

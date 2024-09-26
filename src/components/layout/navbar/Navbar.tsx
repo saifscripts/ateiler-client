@@ -8,7 +8,7 @@ import {
   NavbarList,
 } from 'keep-react';
 import { ShoppingCart } from 'phosphor-react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import SearchInput from './SearchInput';
 import navbarItems from './navbarItems';
 
@@ -17,7 +17,9 @@ const NavbarComponent = () => {
     <Navbar className="py-4 sticky top-0 z-50">
       <NavbarContainer>
         <NavbarBrand>
-          <h1 className="text-heading-6 font-bold">ATEILER</h1>
+          <Link to="/">
+            <h1 className="text-heading-6 font-bold">ATEILER</h1>
+          </Link>
         </NavbarBrand>
         <NavbarList>
           {navbarItems.map((item) => (
