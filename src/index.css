@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Open Sans', system-ui;
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
