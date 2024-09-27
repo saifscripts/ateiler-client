@@ -3,7 +3,7 @@ import { Products } from '../features/products';
 
 const AllProducts = () => {
   return (
-    <div className="container w-full grid grid-cols-[1fr_4fr] py-6 gap-6">
+    <div className="container w-full grid grid-cols-[1fr_5fr] py-6 gap-6">
       <CategorySection />
       <Products />
     </div>

@@ -1,7 +1,7 @@
+import SectionTitle from '../../components/ui/SectionTitle';
 import { IProduct } from '../../interfaces';
 import { useGetProductsQuery } from '../../redux/features/products/productApi';
 import ProductCard from './ProductCard';
-import Title from './Title';
 
 const Products = () => {
   const { data: products } = useGetProductsQuery(
@@ -12,8 +12,8 @@ const Products = () => {
   return (
     <section id="products" className="">
       <div className="py-6 bg-white rounded-lg">
-        <Title title="All Products" />
-        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-6">
+        <SectionTitle>All Products</SectionTitle>
+        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products?.data?.map((item: IProduct) => (
             <ProductCard key={item._id} product={item} />
           ))}

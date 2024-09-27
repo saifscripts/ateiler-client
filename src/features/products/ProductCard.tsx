@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from 'keep-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
 import Rating from './Rating';
 
@@ -17,38 +17,54 @@ interface IProductCardProps {
 }
 
 const ProductCard = ({ product }: IProductCardProps) => {
+  const navigate = useNavigate();
+
   return (
-    <Card>
-      <CardHeader>
-        <img
-          src={product.imageUrls[0]}
-          alt="image"
-          className="w-full rounded-xl"
-        />
+    <Card
+      onClick={() => navigate(`/product/${product._id}`)}
+      className="max-w-xs mx-auto p-4 flex flex-col justify-between gap-4 cursor-pointer hover:scale-95 transition-all duration-150"
+    >
+      <CardHeader className="space-y-2">
+        <div
+          style={{ backgroundImage: `url("${product.imageUrls[0]}")` }}
+          className="bg-contain bg-center bg-no-repeat rounded-xl size-40 w-full"
+        ></div>
+        <CardTitle className="text-lg">{product.name}</CardTitle>
+        <div className="flex gap-2">
+          <Badge color="success" className="text-[10px] px-2">
+            {product?.category?.title}
+          </Badge>
+          <Badge color="primary" className="text-[10px] px-2">
+            {product.brand.name}
+          </Badge>
+          <Badge color="secondary" className="text-[10px] px-2">
+            Q: {product?.stockQuantity}
+          </Badge>
+        </div>
       </CardHeader>
-      <CardContent className="space-y-3 p-4">
-        <CardTitle>{product.name}</CardTitle>
-        <div className="flex justify-between items-center">
-          <p className="font-semibold">${product.price}</p>
-          <Badge color="primary">Brand</Badge>
-        </div>
-        <CardDescription>{product.description}</CardDescription>
+      <CardContent className="space-y-2 p-0">
+        <CardDescription className="text-sm">
+          {product.description.substring(0, 60)}...
+        </CardDescription>
         <Rating value={product.rating} />
-        <div className="flex gap-3 items-center">
-          <Badge color="success">Category</Badge>
-          <Badge color="secondary">Quantity: {product.stockQuantity}</Badge>
-        </div>
-        <CardFooter className="flex gap-3">
-          <Button size="xs" color="secondary">
-            Add to Cart
-          </Button>
-          <Link to={`/product/${product._id}`}>
-            <Button size="xs" color="secondary" variant="outline">
-              View Details
-            </Button>
-          </Link>
-        </CardFooter>
       </CardContent>
+
+      <CardFooter className="flex justify-between items-center">
+        <div className="flex gap-2 justify-between items-center text-sm">
+          <p className="font-bold text-metal-700">
+            $
+            {(
+              Number(product.price) *
+              (1 - Number(product.discount) / 100)
+            ).toFixed(2)}
+          </p>
+        </div>
+        <Link to={`/product/${product._id}`}>
+          <Button size="xs" color="secondary" className="px-3 py-1">
+            View Details
+          </Button>
+        </Link>
+      </CardFooter>
     </Card>
   );
 };

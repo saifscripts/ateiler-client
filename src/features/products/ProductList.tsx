@@ -33,6 +33,9 @@ const ProductList = () => {
               <div>Product Name</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">
+              <div>Brand</div>
+            </TableHead>
+            <TableHead className="bg-metal-900 text-metal-50">
               <div>Price</div>
             </TableHead>
             <TableHead className="bg-metal-900 text-metal-50">
@@ -56,34 +59,35 @@ const ProductList = () => {
         <TableBody>
           {products?.data?.length ? (
             products?.data?.map((item: IProduct) => (
-              <TableRow key={item._id}>
+              <TableRow key={item?._id}>
                 <TableCell>
                   <div
-                    style={{ backgroundImage: `url("${item.imageUrls[0]}")` }}
+                    style={{ backgroundImage: `url("${item?.imageUrls[0]}")` }}
                     className="bg-cover bg-center bg-no-repeat rounded-sm size-8"
                   ></div>
                 </TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{Number(item.price).toFixed(2)}</TableCell>
-                <TableCell>{item.discount}%</TableCell>
+                <TableCell>{item?.name}</TableCell>
+                <TableCell>{item?.brand?.name}</TableCell>
+                <TableCell>{Number(item?.price).toFixed(2)}</TableCell>
+                <TableCell>{item?.discount}%</TableCell>
                 <TableCell>
                   {(
-                    Number(item.price) *
-                    (1 - Number(item.discount) / 100)
+                    Number(item?.price) *
+                    (1 - Number(item?.discount) / 100)
                   ).toFixed(2)}
                 </TableCell>
-                <TableCell>{item.category.title}</TableCell>
-                <TableCell>{item.rating}</TableCell>
-                <TableCell>{item.stockQuantity}</TableCell>
+                <TableCell>{item?.category?.title}</TableCell>
+                <TableCell>{item?.rating}</TableCell>
+                <TableCell>{item?.stockQuantity}</TableCell>
                 <TableCell>
                   <div className="flex gap-2">
                     <Link
                       className="hover:bg-primary-50 p-1 rounded-md"
-                      to={`/manage-products/update-product/${item._id}`}
+                      to={`/manage-products/update-product/${item?._id}`}
                     >
                       <MdEdit className="text-primary-500 cursor-pointer text-2xl" />
                     </Link>
-                    <DeleteModal id={item._id} name={item.name} />
+                    <DeleteModal id={item?._id} name={item?.name} />
                   </div>
                 </TableCell>
               </TableRow>
