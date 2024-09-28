@@ -16,6 +16,7 @@ import {
   useGetSingleProductQuery,
   useUpdateProductMutation,
 } from '../../redux/features/products/productApi';
+import { pickValues } from '../../utils/pickValues';
 import { ProductSchema } from '../../validations/product.validation';
 
 const UpdateProduct = () => {
@@ -60,7 +61,16 @@ const UpdateProduct = () => {
   return (
     <AppForm
       schema={ProductSchema}
-      defaultValues={product?.data}
+      defaultValues={pickValues(product?.data, [
+        'name',
+        'description',
+        'price',
+        'discount',
+        'stockQuantity',
+        'brand',
+        'category',
+        'imageUrls',
+      ])}
       onSubmit={onSubmit}
       className="text-metal-700"
     >

@@ -8,6 +8,7 @@ import {
 } from 'react-hook-form';
 import { ZodSchema } from 'zod';
 import { cn } from '../../lib/cn';
+import { convertPropertiesToString } from '../../utils/convertPropertiesToString';
 
 interface AppFormProps {
   schema?: ZodSchema;
@@ -27,7 +28,7 @@ export default function AppForm({
 }: AppFormProps) {
   const methods = useForm({
     resolver: schema && zodResolver(schema),
-    defaultValues,
+    defaultValues: convertPropertiesToString(defaultValues),
   });
 
   // wrap submit handler to reset form if onSubmit returns true

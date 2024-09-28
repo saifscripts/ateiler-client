@@ -31,14 +31,11 @@ const ProductCard = ({ product }: IProductCardProps) => {
         ></div>
         <CardTitle className="text-lg">{product.name}</CardTitle>
         <div className="flex gap-2">
-          <Badge color="success" className="text-[10px] px-2">
+          <Badge color="success" className="text-[10px] px-3 py-1 h-auto">
             {product?.category?.title}
           </Badge>
-          <Badge color="primary" className="text-[10px] px-2">
+          <Badge color="primary" className="text-[10px] px-3 py-1 h-auto">
             {product.brand.name}
-          </Badge>
-          <Badge color="secondary" className="text-[10px] px-2">
-            Q: {product?.stockQuantity}
           </Badge>
         </div>
       </CardHeader>
@@ -46,18 +43,17 @@ const ProductCard = ({ product }: IProductCardProps) => {
         <CardDescription className="text-sm">
           {product.description.substring(0, 60)}...
         </CardDescription>
-        <Rating value={product.rating} />
+        <div className="flex justify-between items-center">
+          <Rating value={product.rating} />
+          <Badge color="secondary" className="text-[10px] px-3 py-1 h-auto">
+            Stock: {product?.stockQuantity}
+          </Badge>
+        </div>
       </CardContent>
 
       <CardFooter className="flex justify-between items-center">
         <div className="flex gap-2 justify-between items-center text-sm">
-          <p className="font-bold text-metal-700">
-            $
-            {(
-              Number(product.price) *
-              (1 - Number(product.discount) / 100)
-            ).toFixed(2)}
-          </p>
+          <p className="font-bold text-metal-700">${product.price}</p>
         </div>
         <Link to={`/product/${product._id}`}>
           <Button size="xs" color="secondary" className="px-3 py-1">

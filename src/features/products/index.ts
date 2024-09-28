@@ -1,5 +1,6 @@
 export { default as AddProductHeader } from './AddProductHeader';
 export { default as FeaturedProducts } from './FeaturedProducts';
+export { default as Filters } from './filters/Filters';
 export { default as GeneralInformation } from './GeneralInformation';
 export { default as PriceInformation } from './PriceInformation';
 export { default as ProductCategory } from './ProductCategory';
