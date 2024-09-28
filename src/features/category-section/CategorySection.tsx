@@ -13,7 +13,7 @@ const CategorySection = () => {
       <div className="h-full hide-scrollbar overflow-y-scroll space-y-2">
         {categories?.data?.map((item: ICategory) => (
           <Link
-            to={`/products/${item.slug}`}
+            to={`/products?category=${item._id}`}
             key={item.title}
             className="flex gap-2 hover:bg-primary-25 px-2 py-1 rounded-lg items-center text-metal-500"
           >
