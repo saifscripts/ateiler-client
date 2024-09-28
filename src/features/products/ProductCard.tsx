@@ -31,10 +31,16 @@ const ProductCard = ({ product }: IProductCardProps) => {
         ></div>
         <CardTitle className="text-lg">{product.name}</CardTitle>
         <div className="flex gap-2">
-          <Badge color="success" className="text-[10px] px-3 py-1 h-auto">
+          <Badge
+            color="success"
+            className="text-[10px] px-3 py-1 h-auto rounded-md"
+          >
             {product?.category?.title}
           </Badge>
-          <Badge color="primary" className="text-[10px] px-3 py-1 h-auto">
+          <Badge
+            color="primary"
+            className="text-[10px] px-3 py-1 h-auto rounded-md"
+          >
             {product.brand.name}
           </Badge>
         </div>
@@ -47,7 +53,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
           <Rating value={product.rating} />
           <Badge
             color={Number(product?.stockQuantity) > 0 ? 'secondary' : 'error'}
-            className="text-[10px] px-3 py-1 h-auto"
+            className="text-[10px] px-3 py-1 h-auto rounded-md"
           >
             {Number(product?.stockQuantity) > 0
               ? `Stock: ${product?.stockQuantity}`

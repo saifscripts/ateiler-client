@@ -17,14 +17,20 @@ const Products = () => {
     { pollingInterval: 30000 }
   );
 
-  return products?.data?.length > 0 ? (
-    <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 bg-white rounded-lg">
-      {products?.data?.map((item: IProduct) => (
-        <ProductCard key={item._id} product={item} />
-      ))}
+  return (
+    <div className="bg-white rounded-lg">
+      {products?.data?.length > 0 ? (
+        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6  max-w-max mx-auto">
+          {products?.data?.map((item: IProduct) => (
+            <ProductCard key={item._id} product={item} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-2xl text-gray-500">
+          No products found
+        </div>
+      )}
     </div>
-  ) : (
-    <div className="text-center text-2xl text-gray-500">No products found</div>
   );
 };
 
