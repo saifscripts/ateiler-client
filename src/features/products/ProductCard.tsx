@@ -45,8 +45,13 @@ const ProductCard = ({ product }: IProductCardProps) => {
         </CardDescription>
         <div className="flex justify-between items-center">
           <Rating value={product.rating} />
-          <Badge color="secondary" className="text-[10px] px-3 py-1 h-auto">
-            Stock: {product?.stockQuantity}
+          <Badge
+            color={Number(product?.stockQuantity) > 0 ? 'secondary' : 'error'}
+            className="text-[10px] px-3 py-1 h-auto"
+          >
+            {Number(product?.stockQuantity) > 0
+              ? `Stock: ${product?.stockQuantity}`
+              : 'Out of Stock'}
           </Badge>
         </div>
       </CardContent>

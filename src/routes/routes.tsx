@@ -29,11 +29,7 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
         element: <AllProducts />,
       },
       {
-        path: 'products/:category',
-        element: <AllProducts />,
-      },
-      {
-        path: 'product/:slug',
+        path: 'product/:id',
         element: <SingleProduct />,
       },
       {
