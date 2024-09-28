@@ -3,13 +3,21 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Rating from '../features/products/Rating';
 import { cn } from '../lib/cn';
+import { addToCart } from '../redux/features/cart/cartSlice';
 import { useGetSingleProductQuery } from '../redux/features/products/productApi';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 
 const SingleProduct = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetSingleProductQuery(id);
   const product = data?.data;
   const [selectedImage, setSelectedImage] = useState('');
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector((state) => state.cart.items);
+
+  const quantityAddedToCart = cartItems.find(
+    (item) => item?.product?._id === product?._id
+  )?.quantity;
 
   useEffect(() => {
     setSelectedImage(product?.imageUrls[0]);
@@ -22,7 +30,7 @@ const SingleProduct = () => {
       <div className=" bg-white rounded-lg p-6 my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="w-full flex flex-col gap-6 items-center justify-center p-6">
           <div
-            className="w-[80%] aspect-square"
+            className="w-[70%] aspect-square"
             style={{
               backgroundImage: `url(${selectedImage})`,
               backgroundSize: 'cover',
@@ -58,15 +66,21 @@ const SingleProduct = () => {
             {product.description}
           </p>
           <div className="flex gap-2">
-            <Badge color="success" className="text-[10px] px-3 py-1 h-auto">
+            <Badge
+              color="success"
+              className="text-[10px] px-3 py-1 h-auto rounded-md"
+            >
               {product?.category?.title}
             </Badge>
-            <Badge color="primary" className="text-[10px] px-3 py-1 h-auto">
+            <Badge
+              color="primary"
+              className="text-[10px] px-3 py-1 h-auto rounded-md"
+            >
               {product.brand.name}
             </Badge>
             <Badge
               color={Number(product?.stockQuantity) > 0 ? 'secondary' : 'error'}
-              className="text-[10px] px-3 py-1 h-auto"
+              className="text-[10px] px-3 py-1 h-auto rounded-md"
             >
               {Number(product?.stockQuantity) > 0
                 ? `Stock: ${product?.stockQuantity}`
@@ -74,8 +88,23 @@ const SingleProduct = () => {
             </Badge>
           </div>
 
-          <div className="flex gap-4 mt-4">
-            <Button color="secondary">Add to cart</Button>
+          <div className="flex flex-col-reverse md:flex-row gap-4 mt-4 items-center">
+            <Button
+              onClick={() => dispatch(addToCart(product))}
+              color="secondary"
+              disabled={
+                Number(quantityAddedToCart) >= Number(product.stockQuantity)
+              }
+            >
+              Add to cart
+            </Button>
+
+            {/* show added quantity at cart */}
+            {quantityAddedToCart && (
+              <Badge color="success" className="text-[10px] px-3 py-1 h-auto">
+                Added to cart: {quantityAddedToCart}
+              </Badge>
+            )}
           </div>
         </div>
       </div>

@@ -9,10 +9,13 @@ import {
 } from 'keep-react';
 import { ShoppingCart } from 'phosphor-react';
 import { Link, NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../../redux/hooks';
 import SearchInput from './SearchInput';
 import navbarItems from './navbarItems';
 
 const NavbarComponent = () => {
+  const cartItems = useAppSelector((state) => state.cart.items);
+
   return (
     <Navbar className="py-4 sticky top-0 z-50">
       <NavbarContainer>
@@ -37,9 +40,11 @@ const NavbarComponent = () => {
               <NavbarItem active={isActive}>
                 <div className="relative">
                   <ShoppingCart size={32} />
-                  <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-error-400 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    0
-                  </span>
+                  {cartItems.length > 0 && (
+                    <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-error-400 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                      {cartItems.length}
+                    </span>
+                  )}
                 </div>
               </NavbarItem>
             )}
