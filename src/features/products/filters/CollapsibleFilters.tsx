@@ -15,11 +15,11 @@ import CategoryFilter from './CategoryFilter';
 import PriceFilter from './PriceFilter';
 import RatingFilter from './RatingFilter';
 
-export default function Filters() {
+export default function CollapsibleFilters() {
   const [, setParams] = useSearchParams();
 
   return (
-    <Accordion>
+    <Accordion className="block 2xl:hidden">
       <AccordionPanel className="rounded-lg">
         <AccordionContainer className="px-2 py-4">
           <AccordionTitle className="flex items-center gap-2">
