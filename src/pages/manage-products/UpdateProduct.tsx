@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button, Skeleton, SkeletonLine } from 'keep-react';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
+import { BiCheck } from 'react-icons/bi';
+import { GrUpdate } from 'react-icons/gr';
 import { useNavigate, useParams } from 'react-router-dom';
 import AppForm from '../../components/form/AppForm';
 import {
@@ -18,21 +21,21 @@ import {
 } from '../../redux/features/products/productApi';
 import { ProductSchema } from '../../validations/product.validation';
 
-const UpdateProduct = () => {
+export default function UpdateProduct() {
   const [updateProduct] = useUpdateProductMutation();
   const [uploadImage] = useUploadImageMutation();
   const navigate = useNavigate();
   const { id } = useParams();
-  const { data: product } = useGetSingleProductQuery(id);
+  const { data: product, isLoading } = useGetSingleProductQuery(id);
+
+  if (isLoading) return <UpdateProductSkeleton />;
 
   const onSubmit: SubmitHandler<FieldValues> = async (productData) => {
     // if the image is image file, upload it, otherwise return the image url as it is
     const uploadPromises = productData.imageUrls.map((item: string) => {
       if (item.startsWith('data:image')) {
-        // It's a base64 encoded image
         return uploadImage(item);
       } else {
-        // It's already a URL
         return Promise.resolve(item);
       }
     });
@@ -55,8 +58,6 @@ const UpdateProduct = () => {
     return result?.data?.success;
   };
 
-  if (!product) return <div>Loading...</div>;
-
   const defaultValues = {
     name: product?.data?.name,
     description: product?.data?.description,
@@ -67,8 +68,6 @@ const UpdateProduct = () => {
     category: product?.data?.category?._id,
     imageUrls: product?.data?.imageUrls,
   };
-
-  console.log(defaultValues);
 
   return (
     <AppForm
@@ -91,6 +90,58 @@ const UpdateProduct = () => {
       </div>
     </AppForm>
   );
-};
+}
 
-export default UpdateProduct;
+function UpdateProductSkeleton() {
+  return (
+    <Skeleton>
+      <div className="flex justify-between items-center bg-white h-16 px-3 sticky top-0 z-10 border-b border-metal-100">
+        <div className="flex gap-4 items-center">
+          <GrUpdate className="text-lg" />
+          <h2 className="text-body-1 font-semibold">Update Your Product</h2>
+        </div>
+        <Button type="submit" size="xs" color="success">
+          <BiCheck className="text-xl mr-2" />
+          Update Product
+        </Button>
+      </div>
+      <div className="p-6 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 h-[calc(100vh-144px)] overflow-y-scroll">
+        <div className="grid grid-cols-1 gap-6">
+          <div className="bg-white p-6 rounded-lg space-y-6">
+            <SkeletonLine className="h-8 w-1/2 mb-4" />
+            <SkeletonLine className="h-12 w-full" />
+            <SkeletonLine className="h-12 w-full" />
+            <SkeletonLine className="h-16 w-full" />
+          </div>
+          <div className="bg-white p-6 rounded-lg space-y-6">
+            <SkeletonLine className="h-8 w-1/2 mb-4" />
+
+            <div className="flex items-center gap-4">
+              <SkeletonLine className="h-10 w-full" />
+              <SkeletonLine className="h-10 w-full" />
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-6">
+          <div className="bg-white p-6 rounded-lg space-y-6">
+            <SkeletonLine className="h-8 w-1/2 mb-4" />
+            <div className="grid grid-cols-4 gap-2">
+              <SkeletonLine className="w-full aspect-square" />
+              <SkeletonLine className="w-full aspect-square" />
+              <SkeletonLine className="w-full aspect-square" />
+              <SkeletonLine className="w-full aspect-square" />
+            </div>
+          </div>
+          <div className="bg-white p-6 rounded-lg space-y-6">
+            <SkeletonLine className="h-8 w-1/2 mb-4" />
+            <SkeletonLine className="h-12 w-full" />
+          </div>
+          <div className="bg-white p-6 rounded-lg space-y-6">
+            <SkeletonLine className="h-8 w-1/2 mb-4" />
+            <SkeletonLine className="h-12 w-full" />
+          </div>
+        </div>
+      </div>
+    </Skeleton>
+  );
+}

@@ -1,4 +1,6 @@
 import {
+  Skeleton,
+  SkeletonLine,
   Table,
   TableBody,
   TableCell,
@@ -9,8 +11,8 @@ import {
 import { ICategory } from '../../interfaces';
 import { useGetCategoriesQuery } from '../../redux/features/categories/categoryApi';
 
-const CategoryList = () => {
-  const { data: categories } = useGetCategoriesQuery('');
+export default function CategoryList() {
+  const { data: categories, isLoading } = useGetCategoriesQuery('');
 
   return (
     <Table className="max-w-sm">
@@ -24,26 +26,59 @@ const CategoryList = () => {
           </TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {categories?.data?.length ? (
-          categories?.data?.map((item: ICategory) => (
-            <TableRow key={item._id}>
-              <TableCell>
-                <img className="size-8" src={item.thumbnail} alt="" />
+
+      {isLoading ? (
+        <SkeletonBody />
+      ) : (
+        <TableBody>
+          {categories?.data?.length ? (
+            categories?.data?.map((item: ICategory) => (
+              <TableRow key={item._id}>
+                <TableCell>
+                  <img className="size-8" src={item.thumbnail} alt="" />
+                </TableCell>
+                <TableCell>{item.title}</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell className="text-center" colSpan={2}>
+                No Categories Found
               </TableCell>
-              <TableCell>{item.title}</TableCell>
             </TableRow>
-          ))
-        ) : (
-          <TableRow>
-            <TableCell className="text-center" colSpan={2}>
-              No Categories Found
-            </TableCell>
-          </TableRow>
-        )}
-      </TableBody>
+          )}
+        </TableBody>
+      )}
     </Table>
   );
-};
+}
 
-export default CategoryList;
+function SkeletonRow() {
+  return (
+    <TableRow>
+      <TableCell>
+        <Skeleton>
+          <SkeletonLine className="h-4 w-8" />
+        </Skeleton>
+      </TableCell>
+      <TableCell>
+        <Skeleton>
+          <SkeletonLine className="h-4 w-24" />
+        </Skeleton>
+      </TableCell>
+    </TableRow>
+  );
+}
+
+function SkeletonBody() {
+  return (
+    <TableBody>
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+    </TableBody>
+  );
+}

@@ -3,8 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
 import { useGetProductsQuery } from '../../redux/features/products/productApi';
 import ProductCard from './ProductCard';
+import ProductSkeleton from './ProductSkeleton';
 
-const Products = () => {
+export default function Products() {
   const [searchParams] = useSearchParams();
 
   const params = useMemo(
@@ -12,10 +13,14 @@ const Products = () => {
     [searchParams]
   );
 
-  const { data: products } = useGetProductsQuery(
+  const { data: products, isLoading } = useGetProductsQuery(
     { ...params, limit: 12 },
     { pollingInterval: 30000 }
   );
+
+  if (isLoading) {
+    return <ProductSkeleton />;
+  }
 
   return (
     <div className="bg-white rounded-lg">
@@ -32,6 +37,4 @@ const Products = () => {
       )}
     </div>
   );
-};
-
-export default Products;
+}

@@ -3,9 +3,10 @@ import SectionTitle from '../../components/ui/SectionTitle';
 import { IProduct } from '../../interfaces';
 import { useGetProductsQuery } from '../../redux/features/products/productApi';
 import ProductCard from './ProductCard';
+import ProductSkeleton from './ProductSkeleton';
 
 const FeaturedProducts = () => {
-  const { data: products } = useGetProductsQuery(
+  const { data: products, isLoading } = useGetProductsQuery(
     { limit: 12 },
     { pollingInterval: 30000 }
   );
@@ -18,7 +19,9 @@ const FeaturedProducts = () => {
           Discover the season's top picks from premium gear to must-have sports
           equipment!
         </SectionDescription>
-        {products?.data?.length > 0 ? (
+        {isLoading ? (
+          <ProductSkeleton />
+        ) : products?.data?.length > 0 ? (
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-max mx-auto">
             {products?.data?.map((item: IProduct) => (
               <ProductCard key={item._id} product={item} />

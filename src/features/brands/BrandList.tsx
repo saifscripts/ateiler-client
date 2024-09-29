@@ -1,4 +1,6 @@
 import {
+  Skeleton,
+  SkeletonLine,
   Table,
   TableBody,
   TableCell,
@@ -10,7 +12,7 @@ import { IBrand } from '../../interfaces';
 import { useGetBrandsQuery } from '../../redux/features/brands/brandApi';
 
 export default function BrandList() {
-  const { data: brands } = useGetBrandsQuery('');
+  const { data: brands, isLoading } = useGetBrandsQuery('');
 
   return (
     <Table className="max-w-sm">
@@ -24,24 +26,58 @@ export default function BrandList() {
           </TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {brands?.data?.length ? (
-          brands?.data?.map((item: IBrand) => (
-            <TableRow key={item._id}>
-              <TableCell>
-                <img className="size-8" src={item.logo} alt="" />
+      {isLoading ? (
+        <SkeletonBody />
+      ) : (
+        <TableBody>
+          {brands?.data?.length ? (
+            brands?.data?.map((item: IBrand) => (
+              <TableRow key={item._id}>
+                <TableCell>
+                  <img className="size-8" src={item.logo} alt="" />
+                </TableCell>
+                <TableCell>{item.name}</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell className="text-center" colSpan={2}>
+                No Brands Found
               </TableCell>
-              <TableCell>{item.name}</TableCell>
             </TableRow>
-          ))
-        ) : (
-          <TableRow>
-            <TableCell className="text-center" colSpan={2}>
-              No Brands Found
-            </TableCell>
-          </TableRow>
-        )}
-      </TableBody>
+          )}
+        </TableBody>
+      )}
     </Table>
+  );
+}
+
+function SkeletonRow() {
+  return (
+    <TableRow>
+      <TableCell>
+        <Skeleton>
+          <SkeletonLine className="h-4 w-8" />
+        </Skeleton>
+      </TableCell>
+      <TableCell>
+        <Skeleton>
+          <SkeletonLine className="h-4 w-24" />
+        </Skeleton>
+      </TableCell>
+    </TableRow>
+  );
+}
+
+function SkeletonBody() {
+  return (
+    <TableBody>
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+      <SkeletonRow />
+    </TableBody>
   );
 }

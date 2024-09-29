@@ -29,7 +29,7 @@ export default function AppSelect({
             {...field}
             id={name}
             className={cn(
-              'w-full border border-metal-200 p-3 rounded-md',
+              'w-full border border-metal-200 p-3 rounded-md bg-transparent',
               className,
               {
                 'border border-error-200': Boolean(error),

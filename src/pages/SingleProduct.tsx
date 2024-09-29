@@ -1,4 +1,4 @@
-import { Badge, Button } from 'keep-react';
+import { Badge, Button, Skeleton, SkeletonLine } from 'keep-react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Rating from '../features/products/Rating';
@@ -7,7 +7,7 @@ import { addToCart } from '../redux/features/cart/cartSlice';
 import { useGetSingleProductQuery } from '../redux/features/products/productApi';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 
-const SingleProduct = () => {
+export default function SingleProduct() {
   const { id } = useParams();
   const { data, isLoading } = useGetSingleProductQuery(id);
   const product = data?.data;
@@ -23,7 +23,7 @@ const SingleProduct = () => {
     setSelectedImage(product?.imageUrls[0]);
   }, [product]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <SingleProductSkeleton />;
 
   return (
     <div className="container">
@@ -111,6 +111,42 @@ const SingleProduct = () => {
       </div>
     </div>
   );
-};
+}
 
-export default SingleProduct;
+function SingleProductSkeleton() {
+  return (
+    <div className="container">
+      <Skeleton className=" bg-white rounded-lg p-6 my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="w-full flex flex-col gap-6 items-center justify-center p-6">
+          <SkeletonLine className="w-[70%] aspect-square" />
+          <div className="max-w-full flex gap-2 sm:gap-4 flex-nowrap overflow-x-auto hide-scrollbar">
+            <SkeletonLine className="size-12 sm:size-16 md:size-20 lg:size-24 aspect-square rounded-lg" />
+            <SkeletonLine className="size-12 sm:size-16 md:size-20 lg:size-24 aspect-square rounded-lg" />
+            <SkeletonLine className="size-12 sm:size-16 md:size-20 lg:size-24 aspect-square rounded-lg" />
+            <SkeletonLine className="size-12 sm:size-16 md:size-20 lg:size-24 aspect-square rounded-lg" />
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 justify-center items-center md:items-start">
+          <SkeletonLine className="h-8 w-[70%] mb-4" />
+          <div className="flex gap-4 items-center mb-8">
+            <SkeletonLine className="h-5 w-16" />
+            <SkeletonLine className="h-5 w-32" />
+          </div>
+          <SkeletonLine className="h-4 w-full" />
+          <SkeletonLine className="h-4 w-full" />
+          <SkeletonLine className="h-4 w-1/2 mb-8" />
+
+          <div className="flex gap-2">
+            <SkeletonLine className="h-5 w-16" />
+            <SkeletonLine className="h-5 w-16" />
+            <SkeletonLine className="h-5 w-16" />
+          </div>
+
+          <div className="flex flex-col-reverse md:flex-row gap-4 mt-4 items-center">
+            <SkeletonLine className="h-12 w-32" />
+          </div>
+        </div>
+      </Skeleton>
+    </div>
+  );
+}
