@@ -26,7 +26,7 @@ const Products = () => {
           ))}
         </div>
       ) : (
-        <div className="text-center text-2xl text-gray-500">
+        <div className="text-center text-2xl text-gray-500 p-6 bg-primary-25">
           No products found
         </div>
       )}

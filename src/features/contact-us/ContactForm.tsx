@@ -44,7 +44,7 @@ const ContactForm = () => {
   };
 
   return (
-    <Card className="max-w-md">
+    <Card className="max-w-md mx-auto">
       <CardContent className="space-y-3">
         <AppForm
           schema={ContactSchema}
