@@ -2,23 +2,25 @@
 
 ### [Live URL (Client)](https://ateiler-alpha.vercel.app)
 
-### [Live URL (Server)](ateiler-server.vercel.app)
+### [Live URL (Server)](https://ateiler-server.vercel.app)
 
 ## Introduction
 
-Welcome to Ateiler, your one-stop shop for a wide range of sporting equipment and accessories. This platform offers an intuitive interface for both customers and administrators, streamlining the shopping and product management experience.
+Atelier provides a wide range of sports equipment and accessories. This platform's user-friendly design makes shopping and product management easier for customers and administrators.
 
 ## Project Description
 
-This project is a comprehensive e-commerce website designed for a sporting goods business. It features a robust set of functionalities including product browsing, detailed product views, cart management, checkout processes, and an admin interface for managing products.
+This project is designed for an e-commerce website that sells sporting goods. Several functionalities are available, including product browsing, detailed product views, cart management, checkout processes, and an admin interface.
 
 ## Features
 
-- Comprehensive product browsing and filtering.
-- Detailed product views with add to cart functionality.
-- Efficient cart management with quantity adjustments and total price calculation.
-- Seamless checkout process with Cash on Delivery.
+- Effective product browsing and filtering.
+- Detailed product views with the ability to add items to the cart.
+- Cart management with price calculations and quantity adjustments.
+- Smooth checkout process with Cash on Delivery.
 - Admin interface for adding, updating, and deleting products.
+- Admin interface for managing categories and brands.
+- High user experience with animations and smooth transitions.
 
 ## Technology Stack
 
