@@ -1,8 +1,8 @@
 # Ateiler || Sporting Goods E-commerce Platform
 
-### [Live URL (Client)](https://ateiler-alpha.vercel.app) | [Live URL (Server)](https://ateiler-server.vercel.app)
+### [Live URL](https://ateiler-alpha.vercel.app) | [Base URL (Server)](https://ateiler-server.vercel.app)
 
-### [Server Side Repository](https://github.com/saifscripts/ateiler-server)
+### [Backend Repo](https://github.com/saifscripts/ateiler-server)
 
 ## Introduction
 
