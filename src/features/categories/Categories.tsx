@@ -12,7 +12,7 @@ export default function Categories() {
           <Link
             to={`/products?category=${item._id}`}
             key={item.title}
-            className="aspect-square flex flex-col justify-center items-center gap-2 sm:gap-3 md:gap-4 rounded-lg bg-white p-4 hover:scale-95 transition-all duration-150"
+            className="aspect-square flex flex-col justify-center items-center gap-2 sm:gap-3 md:gap-4 rounded-lg bg-white p-4 hover:shadow-md transition-all duration-150"
             data-aos="zoom-in"
             data-aos-duration="300"
           >
