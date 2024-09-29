@@ -9,8 +9,8 @@ import {
 } from 'keep-react';
 import { ShoppingBag } from 'phosphor-react';
 import { Link, NavLink } from 'react-router-dom';
+import { cn } from '../../../lib/cn';
 import { useAppSelector } from '../../../redux/hooks';
-import SearchInput from './SearchInput';
 import navbarItems from './navbarItems';
 
 const NavbarComponent = () => {
@@ -24,6 +24,7 @@ const NavbarComponent = () => {
             <h1 className="text-heading-6 font-bold">ATEILER</h1>
           </Link>
         </NavbarBrand>
+
         <NavbarList>
           {navbarItems.map((item) => (
             <NavLink key={item.link} to={item.link}>
@@ -33,24 +34,7 @@ const NavbarComponent = () => {
             </NavLink>
           ))}
         </NavbarList>
-        <NavbarList>
-          <SearchInput />
-          <NavLink to="/cart">
-            {({ isActive }) => (
-              <NavbarItem active={isActive}>
-                <div className="relative">
-                  <ShoppingBag size={32} />
-                  {cartItems.length > 0 && (
-                    <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-error-400 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      {cartItems.length}
-                    </span>
-                  )}
-                </div>
-              </NavbarItem>
-            )}
-          </NavLink>
-        </NavbarList>
-        <NavbarCollapseBtn />
+
         <NavbarCollapse>
           {navbarItems.map((item) => (
             <NavLink key={item.link} to={item.link}>
@@ -60,6 +44,26 @@ const NavbarComponent = () => {
             </NavLink>
           ))}
         </NavbarCollapse>
+
+        <div className="flex items-center gap-4">
+          <NavLink to="/cart">
+            {({ isActive }) => (
+              <div
+                className={cn('relative', {
+                  'text-primary-500': isActive,
+                })}
+              >
+                <ShoppingBag size={32} />
+                {cartItems.length > 0 && (
+                  <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-error-400 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {cartItems.length}
+                  </span>
+                )}
+              </div>
+            )}
+          </NavLink>
+          <NavbarCollapseBtn />
+        </div>
       </NavbarContainer>
     </Navbar>
   );

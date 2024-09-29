@@ -2,7 +2,7 @@
 
 ### [Live URL](https://ateiler-alpha.vercel.app) | [Base URL (Server)](https://ateiler-server.vercel.app)
 
-### [Backend Repo](https://github.com/saifscripts/ateiler-server)
+### [Backend Repository](https://github.com/saifscripts/ateiler-server)
 
 ## Introduction
 
@@ -20,11 +20,12 @@ This project is designed for an e-commerce website that sells sporting goods. Se
 - Smooth checkout process with Cash on Delivery.
 - Admin interface for adding, updating, and deleting products.
 - Admin interface for managing categories and brands.
-- High user experience with animations and smooth transitions.
+- Improved user experience with animations and smooth transitions.
+- Responsive design for a seamless experience on all devices.
 
 ## Technology Stack
 
-- React, Redux, RTK Query, React Router, TypeScript
+- React, TypeScript, Redux Toolkit, RTK Query, Tailwind CSS, Keep React
 
 ## Installation Guideline
 
