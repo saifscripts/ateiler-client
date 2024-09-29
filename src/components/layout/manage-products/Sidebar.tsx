@@ -19,7 +19,7 @@ const SidebarComponent = () => {
   const navigate = useNavigate();
 
   return (
-    <Sidebar className="h-[calc(100svh-100px)] rounded-none w-[240px] shadow-none">
+    <Sidebar className="h-[calc(100svh-68px)] lg:h-[calc(100svh-72px)] rounded-none w-[240px] shadow-none">
       <SidebarBody>
         <SidebarList className="space-y-0.5">
           <SidebarItem dropdown>
