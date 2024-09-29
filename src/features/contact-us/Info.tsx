@@ -3,7 +3,11 @@ import { Envelope, House, Phone } from 'phosphor-react';
 
 const Info = () => {
   return (
-    <div className="flex flex-col justify-between max-w-md mx-auto gap-8">
+    <div
+      className="flex flex-col justify-between max-w-md mx-auto gap-8"
+      data-aos="fade-right"
+      data-aos-duration="300"
+    >
       <div className="space-y-4">
         <h2 className="text-heading-6 text-metal-700">Contact Info</h2>
         <p className="text-body-3 text-metal-600">

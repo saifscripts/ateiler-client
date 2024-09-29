@@ -20,5 +20,9 @@ export default function App() {
     };
   }, [cartItems]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <div className="overflow-x-hidden">
+      <RouterProvider router={router} />
+    </div>
+  );
 }

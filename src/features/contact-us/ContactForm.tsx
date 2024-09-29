@@ -44,7 +44,11 @@ const ContactForm = () => {
   };
 
   return (
-    <Card className="max-w-md mx-auto">
+    <Card
+      className="max-w-md mx-auto"
+      data-aos="fade-left"
+      data-aos-duration="300"
+    >
       <CardContent className="space-y-3">
         <AppForm
           schema={ContactSchema}
