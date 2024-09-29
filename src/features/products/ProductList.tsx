@@ -18,7 +18,7 @@ export default function ProductList() {
   const { data: products, isLoading } = useGetProductsQuery({});
 
   return (
-    <div className="h-[calc(100vh-144px)] overflow-y-scroll p-6">
+    <div className="h-[calc(100vh-144px)] overflow-y-scroll p-4">
       <Table>
         <TableHeader>
           <TableRow>

@@ -55,9 +55,9 @@ const ProductImage = () => {
   }, [images, setValue, setError, clearErrors]);
 
   return (
-    <div className="bg-white p-3 rounded-md space-y-3">
+    <div className="bg-white p-4 rounded-md space-y-4 h-max">
       <h5 className="text-body-1 font-semibold">Product Image</h5>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4 gap-3">
         {images?.map((url, i) => (
           <div
             key={url}

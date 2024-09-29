@@ -4,7 +4,7 @@ export default function Brands() {
   return (
     <div>
       <Header />
-      <div className="p-6">
+      <div className="p-4">
         <BrandList />
       </div>
     </div>

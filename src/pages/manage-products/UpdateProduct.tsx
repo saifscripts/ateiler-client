@@ -74,15 +74,15 @@ export default function UpdateProduct() {
       schema={ProductSchema}
       defaultValues={defaultValues}
       onSubmit={onSubmit}
-      className="text-metal-700"
+      className="text-metal-700 space-y-0"
     >
       <UpdateProductHeader />
-      <div className="p-6 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 h-[calc(100vh-144px)] overflow-y-scroll">
-        <div className="grid grid-cols-1 gap-6">
+      <div className="p-4 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-4 h-[calc(100vh-144px)] overflow-y-scroll">
+        <div className="grid grid-cols-1 gap-4 h-max">
           <GeneralInformation />
           <PriceInformation />
         </div>
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-4 h-max">
           <ProductImage />
           <ProductCategory />
           <StockInformation />

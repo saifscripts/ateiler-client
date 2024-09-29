@@ -4,7 +4,7 @@ const Categories = () => {
   return (
     <div>
       <Header />
-      <div className="p-6">
+      <div className="p-4">
         <CategoryList />
       </div>
     </div>

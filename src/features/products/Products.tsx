@@ -13,10 +13,9 @@ export default function Products() {
     [searchParams]
   );
 
-  const { data: products, isLoading } = useGetProductsQuery(
-    { ...params, limit: 12 },
-    { pollingInterval: 30000 }
-  );
+  const { data: products, isLoading } = useGetProductsQuery(params, {
+    pollingInterval: 30000,
+  });
 
   if (isLoading) {
     return <ProductSkeleton />;
@@ -25,7 +24,7 @@ export default function Products() {
   return (
     <div className="bg-white rounded-lg">
       {products?.data?.length > 0 ? (
-        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6  max-w-max mx-auto">
+        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-max mx-auto">
           {products?.data?.map((item: IProduct) => (
             <ProductCard key={item._id} product={item} />
           ))}
