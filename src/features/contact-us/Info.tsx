@@ -2,8 +2,8 @@ import { Envelope, House, Phone } from 'phosphor-react';
 
 const Info = () => {
   return (
-    <div className="space-y-6 max-w-md">
-      <h2 className="text-heading-5 text-metal-700">Get In Touch With Us</h2>
+    <div className="space-y-4 max-w-md">
+      <h2 className="text-heading-6 text-metal-700">Contact Info</h2>
       <p className="text-body-3 text-metal-600">
         Need help or have questions? We're here for you! Reach out via phone,
         email, or fill out the form. We'll get back to you as soon as possible.
