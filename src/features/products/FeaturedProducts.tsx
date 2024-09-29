@@ -12,12 +12,11 @@ const FeaturedProducts = () => {
 
   return (
     <section id="products" className="container">
-      <div className="py-6 bg-white rounded-lg">
+      <div className="py-4 bg-white rounded-xl">
         <SectionTitle>Featured Products</SectionTitle>
         <SectionDescription>
-          Discover the season's top picks! From premium gear to must-have sports
-          equipment, explore the best from leading brands like Nike and Adidas.
-          Shop now and elevate your game!
+          Discover the season's top picks from premium gear to must-have sports
+          equipment!
         </SectionDescription>
         {products?.data?.length > 0 ? (
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-max mx-auto">

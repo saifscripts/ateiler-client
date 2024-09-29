@@ -5,9 +5,9 @@ import Info from './Info';
 const ContactUs = () => {
   return (
     <section id="contact-us" className="container">
-      <div className="py-6 bg-white rounded-lg mb-8">
+      <div className="py-4 bg-white rounded-xl mb-4">
         <SectionTitle>Contact Us</SectionTitle>
-        <div className="p-6 flex flex-col lg:flex-row justify-center items-center gap-12">
+        <div className="p-6 flex flex-col lg:flex-row justify-center items-center lg:items-start gap-12">
           <Info />
           <ContactForm />
         </div>
