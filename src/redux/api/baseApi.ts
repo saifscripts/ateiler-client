@@ -6,5 +6,5 @@ export const baseApi = createApi({
     baseUrl: `${import.meta.env.VITE_BASE_URL}/api/v1`,
   }),
   endpoints: () => ({}),
-  tagTypes: ['Product', 'Category', 'Brand'],
+  tagTypes: ['Product', 'Category', 'Brand', 'Order'],
 });

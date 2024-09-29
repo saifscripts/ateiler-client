@@ -93,7 +93,8 @@ const SingleProduct = () => {
               onClick={() => dispatch(addToCart(product))}
               color="secondary"
               disabled={
-                Number(quantityAddedToCart) >= Number(product.stockQuantity)
+                !product.stockQuantity ||
+                Number(quantityAddedToCart) >= product.stockQuantity
               }
             >
               Add to cart

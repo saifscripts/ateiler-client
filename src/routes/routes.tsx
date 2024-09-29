@@ -6,7 +6,6 @@ import AllProducts from '../pages/AllProducts';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import Home from '../pages/Home';
-import SingleProduct from '../pages/SingleProduct';
 import {
   AddProduct,
   Brands,
@@ -14,6 +13,8 @@ import {
   Products,
   UpdateProduct,
 } from '../pages/manage-products';
+import OrderSuccess from '../pages/OrderSuccess';
+import SingleProduct from '../pages/SingleProduct';
 
 const router: RouterProviderProps['router'] = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
       {
         path: 'about-us',
         element: <AboutUs />,
+      },
+      {
+        path: 'order-success',
+        element: <OrderSuccess />,
       },
     ],
   },

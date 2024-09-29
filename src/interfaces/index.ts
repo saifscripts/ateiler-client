@@ -19,7 +19,7 @@ export interface IProduct {
   imageUrls: string[];
   price: number;
   discount: string;
-  stockQuantity: string;
+  stockQuantity: number;
   brand: IBrand;
   rating: number;
   isDeleted: boolean;

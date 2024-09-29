@@ -11,10 +11,14 @@ import {
 import { At, Hash, MapPin, Phone, User } from 'phosphor-react';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
 import { PiMapPinArea } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import AppForm from '../components/form/AppForm';
 import AppInput from '../components/form/AppInput';
-import { useAppSelector } from '../redux/hooks';
+import { displayToast } from '../lib/toast';
+import { clearCart } from '../redux/features/cart/cartSlice';
+import { useCreateOrderMutation } from '../redux/features/orders/orderApi';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 
 const FormSchema = z.object({
   name: z.string({ required_error: 'Name is required' }).min(1, {
@@ -29,18 +33,34 @@ const FormSchema = z.object({
   address: z.string({ required_error: 'Address is required' }).min(1),
   city: z.string().min(1).optional(),
   zip: z.string().min(1).optional(),
-  paymentMethod: z.string().min(1).optional(),
 });
 
 const Checkout = () => {
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     items: cartItems,
     totalPrice,
     vat,
   } = useAppSelector((state) => state.cart);
 
-  const handleSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+  const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
+    try {
+      data.products = cartItems.map((item) => ({
+        product: item.product._id,
+        quantity: item.quantity,
+      }));
+      const result = await createOrder(data);
+      displayToast(result, 'Order created successfully');
+      if (result?.data?.success) {
+        dispatch(clearCart());
+        navigate('/order-success');
+        return true;
+      }
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
   };
 
   return (
@@ -142,7 +162,7 @@ const Checkout = () => {
           type="submit"
           color="primary"
           className="w-full"
-          disabled={cartItems.length === 0}
+          disabled={cartItems.length === 0 || isLoading}
         >
           Place Order
         </Button>

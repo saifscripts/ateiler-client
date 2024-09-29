@@ -48,7 +48,9 @@ const cartSlice = createSlice({
             : item
         );
       } else {
-        state.items.push({ product, quantity: 1 });
+        if (product.stockQuantity && product.stockQuantity > 0) {
+          state.items.push({ product, quantity: 1 });
+        }
       }
     },
     removeFromCart: (state, action: PayloadAction<IProduct>) => {
@@ -74,9 +76,17 @@ const cartSlice = createSlice({
           : item
       );
     },
+    clearCart: (state) => {
+      state.items = [];
+    },
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;
