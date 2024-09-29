@@ -1,13 +1,9 @@
-import keepPreset from 'keep-react/preset';
+import { keepTheme } from 'keep-react/keepTheme';
 
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   darkMode: 'class',
-  content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}',
-    'node_modules/keep-react/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,
@@ -22,5 +18,6 @@ export default {
     },
   },
   plugins: [],
-  presets: [keepPreset],
 };
+
+export default keepTheme(config);

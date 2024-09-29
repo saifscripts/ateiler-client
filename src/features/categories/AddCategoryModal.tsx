@@ -7,7 +7,6 @@ import {
   Label,
   Modal,
   ModalAction,
-  ModalBody,
   ModalClose,
   ModalContent,
   ModalFooter,
@@ -68,7 +67,7 @@ export default function AddCategoryModal() {
           New Category
         </Button>
       </ModalAction>
-      <ModalBody>
+      <ModalContent>
         <ModalContent className="space-y-3">
           <ModalClose className="absolute right-4 top-4" />
           <ModalHeader className="mb-6 space-y-3">
@@ -126,7 +125,7 @@ export default function AddCategoryModal() {
             </ModalFooter>
           </form>
         </ModalContent>
-      </ModalBody>
+      </ModalContent>
     </Modal>
   );
 }

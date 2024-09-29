@@ -2,7 +2,6 @@ import {
   Button,
   Modal,
   ModalAction,
-  ModalBody,
   ModalClose,
   ModalContent,
   ModalDescription,
@@ -46,7 +45,7 @@ const DeleteModal = ({ id, name }: IDeleteModalProps) => {
           <MdDelete className="text-error-500 text-2xl" />
         </button>
       </ModalAction>
-      <ModalBody>
+      <ModalContent>
         <ModalContent>
           <ModalHeader className="mb-6 space-y-3">
             <div className="space-y-1">
@@ -72,7 +71,7 @@ const DeleteModal = ({ id, name }: IDeleteModalProps) => {
             </ModalClose>
           </ModalFooter>
         </ModalContent>
-      </ModalBody>
+      </ModalContent>
     </Modal>
   );
 };
