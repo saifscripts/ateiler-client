@@ -19,74 +19,78 @@ export default function ProductList() {
 
   return (
     <div className="h-[calc(100svh-128px)] overflow-y-scroll p-4">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="bg-metal-500 text-metal-50">
-              <div>Thumbnail</div>
-            </TableHead>
-            <TableHead className="bg-metal-500 text-metal-50">
-              <div>Product Name</div>
-            </TableHead>
-            <TableHead className="bg-metal-500 text-metal-50">
-              <div>Brand</div>
-            </TableHead>
-            <TableHead className="bg-metal-500 text-metal-50">
-              <div>Price</div>
-            </TableHead>
-            <TableHead className="bg-metal-500 text-metal-50">
-              <div>Category</div>
-            </TableHead>
-            <TableHead className="bg-metal-500 text-metal-50">
-              <div>Stock</div>
-            </TableHead>
-            <TableHead className="bg-metal-500 text-metal-50">Action</TableHead>
-          </TableRow>
-        </TableHeader>
+      <div className="overflow-hidden rounded-xl">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="bg-metal-500 text-metal-50">
+                <div>Thumbnail</div>
+              </TableHead>
+              <TableHead className="bg-metal-500 text-metal-50">
+                <div>Product Name</div>
+              </TableHead>
+              <TableHead className="bg-metal-500 text-metal-50">
+                <div>Brand</div>
+              </TableHead>
+              <TableHead className="bg-metal-500 text-metal-50">
+                <div>Price</div>
+              </TableHead>
+              <TableHead className="bg-metal-500 text-metal-50">
+                <div>Category</div>
+              </TableHead>
+              <TableHead className="bg-metal-500 text-metal-50">
+                <div>Stock</div>
+              </TableHead>
+              <TableHead className="bg-metal-500 text-metal-50">
+                Action
+              </TableHead>
+            </TableRow>
+          </TableHeader>
 
-        {isLoading ? (
-          <SkeletonBody />
-        ) : (
-          <TableBody>
-            {products?.data?.length ? (
-              products?.data?.map((item: IProduct) => (
-                <TableRow key={item?._id} className="hover:bg-gray-50">
-                  <TableCell>
-                    <div
-                      style={{
-                        backgroundImage: `url("${item?.imageUrls[0]}")`,
-                      }}
-                      className="bg-cover bg-center bg-no-repeat rounded-sm size-8"
-                    ></div>
-                  </TableCell>
-                  <TableCell>{item?.name}</TableCell>
-                  <TableCell>{item?.brand?.name}</TableCell>
-                  <TableCell>{Number(item?.price).toFixed(2)}</TableCell>
-                  <TableCell>{item?.category?.title}</TableCell>
-                  <TableCell>{item?.stockQuantity}</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2">
-                      <Link
-                        className="hover:bg-primary-50 p-1 rounded-md"
-                        to={`/manage-products/update-product/${item?._id}`}
-                      >
-                        <MdEdit className="text-primary-500 cursor-pointer text-2xl" />
-                      </Link>
-                      <DeleteModal id={item?._id} name={item?.name} />
-                    </div>
+          {isLoading ? (
+            <SkeletonBody />
+          ) : (
+            <TableBody>
+              {products?.data?.length ? (
+                products?.data?.map((item: IProduct) => (
+                  <TableRow key={item?._id} className="hover:bg-gray-50">
+                    <TableCell>
+                      <div
+                        style={{
+                          backgroundImage: `url("${item?.imageUrls[0]}")`,
+                        }}
+                        className="bg-cover bg-center bg-no-repeat rounded-sm size-8"
+                      ></div>
+                    </TableCell>
+                    <TableCell>{item?.name}</TableCell>
+                    <TableCell>{item?.brand?.name}</TableCell>
+                    <TableCell>{Number(item?.price).toFixed(2)}</TableCell>
+                    <TableCell>{item?.category?.title}</TableCell>
+                    <TableCell>{item?.stockQuantity}</TableCell>
+                    <TableCell>
+                      <div className="flex gap-2">
+                        <Link
+                          className="hover:bg-primary-50 p-1 rounded-md"
+                          to={`/manage-products/update-product/${item?._id}`}
+                        >
+                          <MdEdit className="text-primary-500 cursor-pointer text-2xl" />
+                        </Link>
+                        <DeleteModal id={item?._id} name={item?.name} />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={7} className="text-center">
+                    No products found
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={7} className="text-center">
-                  No products found
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        )}
-      </Table>
+              )}
+            </TableBody>
+          )}
+        </Table>
+      </div>
     </div>
   );
 }
