@@ -174,7 +174,6 @@ const AboutUs = () => {
 
       {/* Store Location */}
       <section className="container py-12">
-        {/* <SectionTitle className="mb-8">Our Stores</SectionTitle> */}
         <div className="grid grid-cols-1 md:grid-cols-3 mx-auto gap-6">
           {stores.map((store) => (
             <div

@@ -34,6 +34,7 @@ export default function Hero() {
 
   return (
     <Carousel options={{ loop: true }} plugins={[autoPlay()]}>
+      {/* Carousel Slides */}
       <CarouselSlides>
         {slides.map((slide) => (
           <CarouselItem key={slide.id} className="p-0">
@@ -49,6 +50,8 @@ export default function Hero() {
           </CarouselItem>
         ))}
       </CarouselSlides>
+
+      {/* Carousel Controls */}
       <div className="container">
         <CarouselControl className="bg-white p-4 rounded-xl mt-4">
           <CarouselButtons>

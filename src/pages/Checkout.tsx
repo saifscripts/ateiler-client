@@ -69,10 +69,14 @@ const Checkout = () => {
       schema={FormSchema}
       className="container py-4 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6 space-y-0"
     >
+      {/* Delivery Information */}
       <div className="flex flex-col gap-4 bg-white px-6 py-4 rounded-lg">
+        {/* Title */}
         <h1 className="text-4xl font-semibold text-gray-700 mb-4">
           Delivery Information
         </h1>
+
+        {/* Inputs */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full justify-center">
           <AppInput
             label="Name"
@@ -114,10 +118,15 @@ const Checkout = () => {
           />
         </div>
       </div>
+
+      {/* Payment Summary */}
       <div className="flex flex-col gap-4 bg-white p-4 rounded-lg h-max">
+        {/* Title */}
         <h2 className="text-2xl font-semibold text-gray-700 mb-3 text-center">
           Payment Summary
         </h2>
+
+        {/* Payment Summary Table */}
         <Table className="rounded-none">
           <TableBody>
             <TableRow>
@@ -139,6 +148,7 @@ const Checkout = () => {
           </TableBody>
         </Table>
 
+        {/* Payment Methods */}
         <div className="flex justify-center items-center gap-6 px-6 py-4 border rounded-lg">
           <fieldset className="flex items-center gap-2">
             <Radio
@@ -158,6 +168,7 @@ const Checkout = () => {
           </fieldset>
         </div>
 
+        {/* Place Order Button */}
         <Button
           type="submit"
           color="primary"

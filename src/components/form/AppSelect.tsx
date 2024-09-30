@@ -28,6 +28,7 @@ export default function AppSelect({
       render={({ field, fieldState: { error } }) => (
         <fieldset className="space-y-1">
           <Label htmlFor={name}>{label}</Label>
+
           <div className="relative">
             <select
               {...field}
@@ -56,6 +57,7 @@ export default function AppSelect({
               className="absolute top-1/2 right-3 -translate-y-1/2"
             />
           </div>
+
           {error && (
             <p className="text-error-400 text-sm" role="alert">
               {error?.message as string}

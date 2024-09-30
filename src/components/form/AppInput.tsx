@@ -26,6 +26,7 @@ export default function AppInput({
       render={({ field, fieldState: { error } }) => (
         <fieldset className="space-y-1">
           <Label htmlFor={name}>{label}</Label>
+
           <div className="relative">
             <Input
               {...field}
@@ -37,9 +38,9 @@ export default function AppInput({
               })}
               aria-invalid={Boolean(error)}
             />
-
             <InputIcon>{icon}</InputIcon>
           </div>
+
           {error && (
             <p className="text-error-400 text-sm" role="alert">
               {error?.message as string}

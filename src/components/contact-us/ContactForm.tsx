@@ -35,7 +35,7 @@ const defaultValues = {
 
 const ContactForm = () => {
   const handleSubmit: SubmitHandler<FieldValues> = (data) => {
-    // send data to backend
+    // TODO:send data to backend
     toast.success(
       `Hey ${data.firstName}, We got your message! We will get back to you soon.`
     );

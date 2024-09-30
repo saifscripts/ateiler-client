@@ -29,20 +29,29 @@ const ProductCard = ({ product }: IProductCardProps) => {
       data-aos-duration="300"
     >
       <CardHeader className="space-y-2">
+        {/* Image */}
         <div
           style={{ backgroundImage: `url("${product.imageUrls[0]}")` }}
           className="bg-contain bg-center bg-no-repeat rounded-xl size-40 w-full"
         ></div>
+
+        {/* Title */}
         <CardTitle className="text-lg">{product.name}</CardTitle>
+
+        {/* Badges */}
         <div className="flex gap-2">
           <CategoryBadge>{product?.category?.title}</CategoryBadge>
           <BrandBadge>{product.brand.name}</BrandBadge>
         </div>
       </CardHeader>
+
       <CardContent className="space-y-2 p-0">
+        {/* Description */}
         <CardDescription className="text-sm">
           {product.description.substring(0, 60)}...
         </CardDescription>
+
+        {/* Rating and Stock */}
         <div className="flex justify-between items-center">
           <Rating value={product.rating} />
           <StockBadge>{product.stockQuantity}</StockBadge>
@@ -50,9 +59,12 @@ const ProductCard = ({ product }: IProductCardProps) => {
       </CardContent>
 
       <CardFooter className="flex justify-between items-center">
+        {/* Price */}
         <div className="flex gap-2 justify-between items-center text-sm">
           <p className="font-bold text-metal-700">${product.price}</p>
         </div>
+
+        {/* View Details Button */}
         <Link to={`/product/${product._id}`}>
           <Button size="sm" color="primary" className="px-3 py-1">
             View Details

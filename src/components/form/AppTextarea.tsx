@@ -21,6 +21,7 @@ export default function AppTextarea({
       render={({ field, fieldState: { error } }) => (
         <fieldset className="space-y-1">
           <Label htmlFor={name}>{label}</Label>
+
           <Textarea
             id={name}
             placeholder={placeholder}
@@ -34,6 +35,7 @@ export default function AppTextarea({
             aria-invalid={Boolean(error)}
             {...field}
           />
+
           {error && (
             <p className="text-error-400 text-sm" role="alert">
               {error?.message as string}

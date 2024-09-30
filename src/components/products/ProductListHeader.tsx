@@ -10,6 +10,7 @@ const ProductListHeader = () => {
 
   return (
     <div className="flex justify-between items-center bg-white h-[64px] px-3 z-10 border-b border-gray-100 gap-4">
+      {/* Title and Badge */}
       <div className="flex items-center gap-5">
         <div className="hidden min-[400px]:flex items-center gap-2">
           <BiStore className="text-base sm:text-lg text-metal-500" />
@@ -25,6 +26,8 @@ const ProductListHeader = () => {
           {totalProduct || 0} product{totalProduct > 1 ? 's' : ''}
         </Badge>
       </div>
+
+      {/* Add Product Button */}
       <div className="flex items-center gap-5">
         <Link to="/manage-products/add-product">
           <Button size="sm">

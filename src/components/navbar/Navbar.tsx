@@ -18,6 +18,7 @@ const NavbarComponent = () => {
   return (
     <Navbar className="h-[64px] flex items-center border border-gray-100 fixed top-0 left-0 right-0 z-50">
       <NavbarContainer>
+        {/* Logo */}
         <NavbarBrand>
           <Link to="/">
             <h1 className="text-heading-6 text-primary-500 font-bold">
@@ -26,6 +27,7 @@ const NavbarComponent = () => {
           </Link>
         </NavbarBrand>
 
+        {/* Navbar Items (Large Screen) */}
         <NavbarList>
           {navbarItems.map((item) => (
             <NavLink key={item.path} to={item.path}>
@@ -36,6 +38,7 @@ const NavbarComponent = () => {
           ))}
         </NavbarList>
 
+        {/* Cart Icon */}
         <div className="flex items-center gap-4">
           <NavLink to="/cart">
             {({ isActive }) => (
@@ -54,6 +57,7 @@ const NavbarComponent = () => {
             )}
           </NavLink>
 
+          {/* Sidebar (Small Screen) */}
           <Sidebar />
         </div>
       </NavbarContainer>

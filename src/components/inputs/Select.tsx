@@ -49,7 +49,9 @@ export default function Select({
           </option>
         ))}
       </select>
+
       <InputIcon>{icon}</InputIcon>
+
       <PiCaretUpDown
         size={19}
         color="#AFBACA"

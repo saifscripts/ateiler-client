@@ -13,6 +13,36 @@ export default function RatingFilter() {
     setMaxRating(params.get('rating[lte]') || '');
   }, [params]);
 
+  const handleMinRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setParams(
+      (params) => {
+        const currentParams = Object.fromEntries(params);
+        if (!e.target.value) {
+          delete currentParams['rating[gte]'];
+        } else {
+          currentParams['rating[gte]'] = e.target.value;
+        }
+        return currentParams;
+      },
+      { replace: true }
+    );
+  };
+
+  const handleMaxRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setParams(
+      (params) => {
+        const currentParams = Object.fromEntries(params);
+        if (!e.target.value) {
+          delete currentParams['rating[lte]'];
+        } else {
+          currentParams['rating[lte]'] = e.target.value;
+        }
+        return currentParams;
+      },
+      { replace: true }
+    );
+  };
+
   return (
     <div className="flex flex-col gap-2 px-3 py-2 border rounded-md">
       <label htmlFor="">Rating</label>
@@ -23,20 +53,7 @@ export default function RatingFilter() {
             placeholder="Min Rating"
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={minRating}
-            onChange={(e) => {
-              setParams(
-                (params) => {
-                  const currentParams = Object.fromEntries(params);
-                  if (!e.target.value) {
-                    delete currentParams['rating[gte]'];
-                  } else {
-                    currentParams['rating[gte]'] = e.target.value;
-                  }
-                  return currentParams;
-                },
-                { replace: true }
-              );
-            }}
+            onChange={handleMinRatingChange}
           />
           <InputIcon>
             <FaStar size={16} color="#AFBACA" />
@@ -48,20 +65,7 @@ export default function RatingFilter() {
             placeholder="Max Rating"
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={maxRating}
-            onChange={(e) => {
-              setParams(
-                (params) => {
-                  const currentParams = Object.fromEntries(params);
-                  if (!e.target.value) {
-                    delete currentParams['rating[lte]'];
-                  } else {
-                    currentParams['rating[lte]'] = e.target.value;
-                  }
-                  return currentParams;
-                },
-                { replace: true }
-              );
-            }}
+            onChange={handleMaxRatingChange}
           />
           <InputIcon>
             <FaStar size={16} color="#AFBACA" />

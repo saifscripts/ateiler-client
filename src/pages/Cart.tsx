@@ -22,12 +22,16 @@ const Cart = () => {
 
   return (
     <div className="container py-4 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6">
+      {/* Cart Items */}
       <div className="flex flex-col gap-4 bg-white px-6 py-4 rounded-lg">
         {cartItems.length > 0 && (
           <>
+            {/* Title */}
             <h1 className="text-4xl font-semibold text-gray-700 mb-4">
               Cart Items
             </h1>
+
+            {/* Items */}
             <div className="flex flex-col gap-4 h-full justify-center">
               {cartItems?.map(({ product, quantity }, index) => (
                 <div
@@ -113,10 +117,15 @@ const Cart = () => {
           </div>
         )}
       </div>
+
+      {/* Payment Summary */}
       <div className="flex flex-col gap-4 bg-white p-4 rounded-lg h-max">
+        {/* Title */}
         <h2 className="text-2xl font-semibold text-gray-700 mb-3 text-center">
           Payment Summary
         </h2>
+
+        {/* Payment Summary Table */}
         <Table className="rounded-none">
           <TableBody>
             <TableRow>
@@ -138,6 +147,7 @@ const Cart = () => {
           </TableBody>
         </Table>
 
+        {/* Proceed to Checkout Button */}
         <Link to="/checkout">
           <Button
             color="primary"

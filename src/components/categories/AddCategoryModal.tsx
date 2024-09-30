@@ -26,7 +26,6 @@ import { ThumbnailUpload } from './ThumbnailUpload';
 
 export default function AddCategoryModal() {
   const [file, setFile] = useState('');
-
   const [createCategory] = useCreateCategoryMutation();
   const [uploadImage] = useUploadImageMutation();
 
@@ -66,7 +65,6 @@ export default function AddCategoryModal() {
           New Category
         </Button>
       </ModalAction>
-
       <ModalContent className="space-y-3">
         <ModalClose className="absolute right-4 top-4" />
         <ModalHeader className="mb-6 space-y-3">
@@ -117,7 +115,6 @@ export default function AddCategoryModal() {
                 Cancel
               </Button>
             </ModalClose>
-
             <Button disabled={isSubmitting} size="sm" color="primary">
               Add Category
             </Button>

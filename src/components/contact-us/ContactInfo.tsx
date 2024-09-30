@@ -1,7 +1,7 @@
 import { Button, Input } from 'keep-react';
 import { Envelope, House, Phone } from 'phosphor-react';
 
-const Info = () => {
+const ContactInfo = () => {
   return (
     <div
       className="flex flex-col justify-between max-w-md mx-auto gap-8 w-full overflow-hidden"
@@ -63,4 +63,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default ContactInfo;

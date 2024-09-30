@@ -24,6 +24,7 @@ export default function MobileSidebar() {
   const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
+  // Determine the sidebar items based on the current path
   const sidebarItems = pathname.startsWith('/manage-products')
     ? dashboardItems
     : navbarItems;

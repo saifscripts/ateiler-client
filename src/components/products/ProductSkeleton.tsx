@@ -22,6 +22,7 @@ export default function ProductSkeleton() {
                 <SkeletonLine className="h-4 w-16" />
               </div>
             </CardHeader>
+
             <CardContent className="space-y-2 p-0">
               <SkeletonLine className="h-2 w-full" />
               <SkeletonLine className="h-2 w-1/2 mb-4" />

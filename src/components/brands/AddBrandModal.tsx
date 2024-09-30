@@ -26,7 +26,6 @@ import { LogoUpload } from './LogoUpload';
 
 export default function AddBrandModal() {
   const [file, setFile] = useState('');
-
   const [createBrand] = useCreateBrandMutation();
   const [uploadImage] = useUploadImageMutation();
 
@@ -116,7 +115,6 @@ export default function AddBrandModal() {
                 Cancel
               </Button>
             </ModalClose>
-
             <Button disabled={isSubmitting} size="sm" color="primary">
               Add Brand
             </Button>

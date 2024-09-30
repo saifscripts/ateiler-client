@@ -13,25 +13,26 @@ export default function CategoryFilter() {
     value: category._id,
   }));
 
+  const handleChange = (value: string) =>
+    setParams(
+      (params) => {
+        const currentParams = Object.fromEntries(params);
+        if (!value) {
+          delete currentParams.category;
+        } else {
+          currentParams.category = value;
+        }
+        return currentParams;
+      },
+      { replace: true }
+    );
+
   return (
     <Select
       options={options}
       disabled={isLoading}
       value={params.get('category') || ''}
-      onChange={(value) =>
-        setParams(
-          (params) => {
-            const currentParams = Object.fromEntries(params);
-            if (!value) {
-              delete currentParams.category;
-            } else {
-              currentParams.category = value;
-            }
-            return currentParams;
-          },
-          { replace: true }
-        )
-      }
+      onChange={handleChange}
       placeholder="All Products"
       icon={<BiCategoryAlt size={20} color="#AFBACA" />}
     />

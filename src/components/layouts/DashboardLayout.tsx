@@ -8,7 +8,7 @@ export default function DashboardLayout() {
   const childRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  // scroll to top on path change
+  // scroll to top on path changes in child routes
   useEffect(() => {
     childRef.current?.scrollTo(0, 0);
   }, [location.pathname]);

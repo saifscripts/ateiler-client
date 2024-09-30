@@ -57,6 +57,8 @@ const ProductImage = () => {
   return (
     <div className="bg-white p-4 rounded-md space-y-4 h-max">
       <h5 className="text-body-1 font-semibold">Product Image</h5>
+
+      {/* Product Images */}
       <div className="grid grid-cols-4 gap-3">
         {images?.map((url, i) => (
           <div
@@ -69,6 +71,8 @@ const ProductImage = () => {
             </div>
           </div>
         ))}
+
+        {/* Add Image */}
         {images?.length < 4 && (
           <div className="relative border-2 border-dashed border-gray-500 aspect-square flex flex-col gap-1 justify-center items-center rounded-sm cursor-pointer bg-gray-100">
             <TbPhotoUp className="cursor-pointer" />
@@ -84,6 +88,8 @@ const ProductImage = () => {
           </div>
         )}
       </div>
+
+      {/* Error */}
       {errors.imageUrls && (
         <p className="text-error-400 text-sm" role="alert">
           {errors.imageUrls?.message as string}

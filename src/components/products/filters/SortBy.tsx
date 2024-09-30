@@ -12,19 +12,20 @@ export default function SortBy() {
     { label: 'Oldest', value: 'createdAt' },
   ];
 
+  const handleChange = (value: string) =>
+    setParams(
+      (params) => {
+        const currentParams = Object.fromEntries(params);
+        return { ...currentParams, sort: value };
+      },
+      { replace: true }
+    );
+
   return (
     <Select
       options={options}
       value={params.get('sort') || ''}
-      onChange={(value) =>
-        setParams(
-          (params) => {
-            const currentParams = Object.fromEntries(params);
-            return { ...currentParams, sort: value };
-          },
-          { replace: true }
-        )
-      }
+      onChange={handleChange}
       parentClassName="max-w-xs"
       placeholder="Sort By"
       icon={<BiSort size={20} color="#AFBACA" />}

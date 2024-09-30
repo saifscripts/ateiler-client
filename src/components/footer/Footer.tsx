@@ -11,6 +11,7 @@ const Footer = () => {
     <div className="bg-primary-900 text-primary-100 py-4">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-8 py-6">
+          {/* Get In Touch */}
           <div className="flex flex-col justify-center items-center gap-3">
             <h3 className="text-heading-6 font-semibold text-primary-50">
               Get In Touch
@@ -47,6 +48,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Site Links */}
           <div className="space-y-3">
             <h4 className="text-body-1 font-semibold text-primary-50">
               Site Links
@@ -69,6 +71,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Resources */}
           <div className="space-y-3">
             <h4 className="text-body-1 font-semibold text-primary-50">
               Resources
@@ -90,6 +93,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Company */}
           <div className="space-y-3">
             <h4 className="text-body-1 font-semibold text-primary-50">
               Company
@@ -111,6 +115,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        {/* Copyright */}
         <div className="text-metal-400 flex justify-center items-center border border-metal-500 rounded-sm p-3">
           <p>&copy; {new Date().getFullYear()} ATEILER. All Rights Reserved.</p>
         </div>

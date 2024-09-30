@@ -32,6 +32,7 @@ export default function SingleProduct() {
     <div className="container">
       <div className=" bg-white rounded-lg p-6 my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="w-full flex flex-col gap-6 items-center justify-center p-6">
+          {/* Product Image */}
           <div
             className="w-[70%] aspect-square"
             style={{
@@ -40,6 +41,8 @@ export default function SingleProduct() {
               backgroundPosition: 'center',
             }}
           />
+
+          {/* Product Image Thumbnails */}
           <div className="max-w-full flex gap-2 sm:gap-4 flex-nowrap overflow-x-auto hide-scrollbar">
             {product.imageUrls.map((image: string) => (
               <div
@@ -57,6 +60,8 @@ export default function SingleProduct() {
             ))}
           </div>
         </div>
+
+        {/* Product Details */}
         <div className="flex flex-col gap-4 justify-center items-center md:items-start">
           <h1 className="text-3xl font-bold text-gray-800 text-center md:text-left">
             {product.name}
@@ -75,6 +80,7 @@ export default function SingleProduct() {
           </div>
 
           <div className="flex flex-col-reverse md:flex-row gap-4 mt-4 items-center">
+            {/* Add to Cart Button */}
             <Button
               onClick={() => dispatch(addToCart(product))}
               color="primary"
@@ -86,7 +92,7 @@ export default function SingleProduct() {
               Add to cart
             </Button>
 
-            {/* show added quantity at cart */}
+            {/* Show added quantity at cart */}
             {quantityAddedToCart && (
               <Link to="/cart">
                 <Badge color="success" className="text-[10px] px-3 py-1 h-auto">

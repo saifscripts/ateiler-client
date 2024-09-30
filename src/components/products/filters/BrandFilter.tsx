@@ -13,25 +13,27 @@ export default function BrandFilter() {
     value: brand._id,
   }));
 
+  // handle change in brand filter
+  const handleChange = (value: string) =>
+    setParams(
+      (params) => {
+        const currentParams = Object.fromEntries(params);
+        if (!value) {
+          delete currentParams.brand;
+        } else {
+          currentParams.brand = value;
+        }
+        return currentParams;
+      },
+      { replace: true }
+    );
+
   return (
     <Select
       options={options}
       disabled={isLoading}
       value={params.get('brand') || ''}
-      onChange={(value) =>
-        setParams(
-          (params) => {
-            const currentParams = Object.fromEntries(params);
-            if (!value) {
-              delete currentParams.brand;
-            } else {
-              currentParams.brand = value;
-            }
-            return currentParams;
-          },
-          { replace: true }
-        )
-      }
+      onChange={handleChange}
       placeholder="All Brands"
       icon={<BiBarcode size={20} color="#AFBACA" />}
     />

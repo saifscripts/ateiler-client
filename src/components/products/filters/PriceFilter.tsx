@@ -13,6 +13,36 @@ export default function PriceFilter() {
     setMaxPrice(params.get('price[lte]') || '');
   }, [params]);
 
+  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setParams(
+      (params) => {
+        const currentParams = Object.fromEntries(params);
+        if (!e.target.value) {
+          delete currentParams['price[gte]'];
+        } else {
+          currentParams['price[gte]'] = e.target.value;
+        }
+        return currentParams;
+      },
+      { replace: true }
+    );
+  };
+
+  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setParams(
+      (params) => {
+        const currentParams = Object.fromEntries(params);
+        if (!e.target.value) {
+          delete currentParams['price[lte]'];
+        } else {
+          currentParams['price[lte]'] = e.target.value;
+        }
+        return currentParams;
+      },
+      { replace: true }
+    );
+  };
+
   return (
     <div className="flex flex-col gap-2 px-3 py-2 border rounded-md">
       <label htmlFor="">Price Range</label>
@@ -23,20 +53,7 @@ export default function PriceFilter() {
             placeholder="Min Price"
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={minPrice}
-            onChange={(e) => {
-              setParams(
-                (params) => {
-                  const currentParams = Object.fromEntries(params);
-                  if (!e.target.value) {
-                    delete currentParams['price[gte]'];
-                  } else {
-                    currentParams['price[gte]'] = e.target.value;
-                  }
-                  return currentParams;
-                },
-                { replace: true }
-              );
-            }}
+            onChange={handleMinPriceChange}
           />
           <InputIcon>
             <FaDollarSign size={16} color="#AFBACA" />
@@ -48,20 +65,7 @@ export default function PriceFilter() {
             placeholder="Max Price"
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={maxPrice}
-            onChange={(e) => {
-              setParams(
-                (params) => {
-                  const currentParams = Object.fromEntries(params);
-                  if (!e.target.value) {
-                    delete currentParams['price[lte]'];
-                  } else {
-                    currentParams['price[lte]'] = e.target.value;
-                  }
-                  return currentParams;
-                },
-                { replace: true }
-              );
-            }}
+            onChange={handleMaxPriceChange}
           />
           <InputIcon>
             <FaDollarSign size={16} color="#AFBACA" />

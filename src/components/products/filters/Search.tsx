@@ -31,18 +31,19 @@ export default function Search() {
     [setParams, debounce]
   );
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchValue = e.target.value;
+    debouncedSetParams(searchValue);
+    setSearchTerm(searchValue);
+  };
+
   return (
     <fieldset className="relative w-full max-w-sm">
       <Input
         placeholder="Search Products"
         className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
         value={searchTerm}
-        onChange={(e) => {
-          const searchValue = e.target.value;
-
-          debouncedSetParams(searchValue);
-          setSearchTerm(searchValue);
-        }}
+        onChange={handleChange}
       />
       <InputIcon>
         <MagnifyingGlass size={20} color="#AFBACA" />

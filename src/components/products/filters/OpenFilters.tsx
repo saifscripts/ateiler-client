@@ -22,15 +22,14 @@ export default function OpenFilters() {
         <PriceFilter />
         <RatingFilter />
       </div>
+
       <div className="flex justify-end">
         <Button
           className="gap-2"
           color="secondary"
           size="sm"
           variant="link"
-          onClick={() => {
-            setParams({}, { replace: true });
-          }}
+          onClick={() => setParams({}, { replace: true })}
         >
           <PiFunnelX size={19} />
           Clear Filter

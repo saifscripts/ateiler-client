@@ -21,19 +21,27 @@ const FeaturedProducts = () => {
           Discover the season's top picks from premium gear to must-have sports
           equipment!
         </SectionDescription>
-        {isLoading ? (
-          <ProductSkeleton />
-        ) : products?.data?.length > 0 ? (
+
+        {/* Skeleton */}
+        {isLoading && <ProductSkeleton />}
+
+        {/* Products */}
+        {products?.data && products?.data?.length > 0 && (
           <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-max mx-auto">
             {products?.data?.map((item: IProduct) => (
               <ProductCard key={item._id} product={item} />
             ))}
           </div>
-        ) : (
+        )}
+
+        {/* No products found */}
+        {products?.data && products?.data?.length === 0 && (
           <div className="text-center text-2xl text-error-900 p-6">
             No products found
           </div>
         )}
+
+        {/* View More Button */}
         {products?.data?.length > 0 && (
           <div className="flex justify-center">
             <Link to="/products">
