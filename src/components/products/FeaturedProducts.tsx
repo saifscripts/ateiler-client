@@ -1,3 +1,5 @@
+import { Button } from 'keep-react';
+import { Link } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
 import { useGetProductsQuery } from '../../redux/features/products/productApi';
 import SectionDescription from '../ui/SectionDescription';
@@ -30,6 +32,19 @@ const FeaturedProducts = () => {
         ) : (
           <div className="text-center text-2xl text-error-900 p-6">
             No products found
+          </div>
+        )}
+        {products?.data?.length > 0 && (
+          <div className="flex justify-center">
+            <Link to="/products">
+              <Button
+                color="primary"
+                variant="link"
+                className="mt-4 hover:bg-primary-50"
+              >
+                View More
+              </Button>
+            </Link>
           </div>
         )}
       </div>
