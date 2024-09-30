@@ -12,6 +12,7 @@ export default function Search() {
     setSearchTerm(params.get('searchTerm') || '');
   }, [params]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetParams = useCallback(
     debounce((value: string) => {
       setParams((params) => {
@@ -24,7 +25,7 @@ export default function Search() {
         return currentParams;
       });
     }, 500),
-    []
+    [setParams, debounce]
   );
 
   return (
