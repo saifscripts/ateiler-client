@@ -6,11 +6,18 @@ import { cn } from '../../lib/cn';
 interface SidebarLinkProps {
   to: string;
   children: ReactNode;
+  onClick?: () => void;
 }
 
-const SidebarLink = ({ to, children }: SidebarLinkProps) => {
+const SidebarLink = ({ to, children, onClick }: SidebarLinkProps) => {
   return (
-    <NavLink to={to} onClick={(e) => e.stopPropagation()}>
+    <NavLink
+      to={to}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick?.();
+      }}
+    >
       {({ isActive }) => (
         <SidebarItem
           className={cn('mb-1', {

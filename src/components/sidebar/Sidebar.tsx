@@ -13,6 +13,7 @@ import {
   SidebarList,
 } from 'keep-react';
 import { CaretDown, List } from 'phosphor-react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import navbarItems from '../navbar/navbarItems';
 import SidebarLink from './SidebarLink';
@@ -21,13 +22,14 @@ import dashboardItems from './dashboardItems';
 export default function MobileSidebar() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   const sidebarItems = pathname.startsWith('/manage-products')
     ? dashboardItems
     : navbarItems;
 
   return (
-    <Drawer position="left">
+    <Drawer position="left" isOpen={isOpen} onOpenChange={setIsOpen}>
       <DrawerAction asChild>
         <div className="bg-white cursor-pointer lg:hidden">
           <List size={24} className="text-metal-300" />
@@ -64,6 +66,7 @@ export default function MobileSidebar() {
                           {item.dropdown &&
                             item.dropdown.map((dropdown) => (
                               <SidebarLink
+                                onClick={() => setIsOpen(false)}
                                 to={dropdown.path}
                                 key={dropdown.name}
                               >
@@ -78,7 +81,11 @@ export default function MobileSidebar() {
                 }
 
                 return (
-                  <SidebarLink to={item.path} key={item.name}>
+                  <SidebarLink
+                    to={item.path}
+                    key={item.name}
+                    onClick={() => setIsOpen(false)}
+                  >
                     <item.icon className="text-lg" />
                     {item.name}
                   </SidebarLink>
