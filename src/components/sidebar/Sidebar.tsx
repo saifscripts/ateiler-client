@@ -35,7 +35,7 @@ export default function MobileSidebar() {
       </DrawerAction>
       <DrawerContent className="max-w-none min-w-none w-auto">
         <DrawerClose className="absolute right-5 top-[28px]" />
-        <Sidebar className="h-screen rounded-none w-[240px] shadow-none lg:hidden">
+        <Sidebar className="h-[100svh] rounded-none w-[240px] shadow-none lg:hidden">
           <SidebarBody>
             <Link to="/">
               <h1 className="text-heading-6 text-primary-500 font-bold pb-4 border-b">
