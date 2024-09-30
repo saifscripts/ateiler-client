@@ -24,7 +24,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
   return (
     <Card
       onClick={() => navigate(`/product/${product._id}`)}
-      className="max-w-xs mx-auto p-4 flex flex-col justify-between gap-4 cursor-pointer hover:scale-95 transition-all duration-150 border-gray-200"
+      className="w-full max-w-xs mx-auto p-4 flex flex-col justify-between gap-4 cursor-pointer hover:scale-95 transition-all duration-150 border-gray-200"
       data-aos="zoom-in"
       data-aos-duration="300"
     >
