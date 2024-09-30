@@ -1,6 +1,6 @@
 import { RouterProviderProps, createBrowserRouter } from 'react-router-dom';
-import MainLayout from '../components/layout/MainLayout';
-import ManageProductsLayout from '../components/layout/manage-products/ManageProductsLayout';
+import DashboardLayout from '../components/layouts/DashboardLayout';
+import MainLayout from '../components/layouts/MainLayout';
 import AboutUs from '../pages/AboutUs';
 import AllProducts from '../pages/AllProducts';
 import Cart from '../pages/Cart';
@@ -53,7 +53,7 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
   },
   {
     path: '/manage-products',
-    element: <ManageProductsLayout />,
+    element: <DashboardLayout />,
     children: [
       {
         index: true,

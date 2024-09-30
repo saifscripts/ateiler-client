@@ -1,4 +1,4 @@
-import { CategoryList, Header } from '../../features/categories';
+import { CategoryList, Header } from '../../components/categories';
 
 const Categories = () => {
   return (

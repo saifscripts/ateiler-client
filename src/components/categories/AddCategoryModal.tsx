@@ -1,4 +1,3 @@
-'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Button,
@@ -20,15 +19,15 @@ import { MdTitle } from 'react-icons/md';
 import { cn } from '../../lib/cn';
 import { displayToast } from '../../lib/toast';
 import { isImageDataValid } from '../../lib/validations';
-import { useCreateBrandMutation } from '../../redux/features/brands/brandApi';
+import { useCreateCategoryMutation } from '../../redux/features/categories/categoryApi';
 import { useUploadImageMutation } from '../../redux/features/imageUpload/imageUploadApi';
-import { BrandSchema } from '../../validations/brand.validation';
-import { LogoUpload } from './LogoUpload';
+import { CategorySchema } from '../../validations/category.validation';
+import { ThumbnailUpload } from './ThumbnailUpload';
 
-export default function AddBrandModal() {
+export default function AddCategoryModal() {
   const [file, setFile] = useState('');
 
-  const [createBrand] = useCreateBrandMutation();
+  const [createCategory] = useCreateCategoryMutation();
   const [uploadImage] = useUploadImageMutation();
 
   const {
@@ -39,7 +38,7 @@ export default function AddBrandModal() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<FieldValues>({
-    resolver: zodResolver(BrandSchema),
+    resolver: zodResolver(CategorySchema),
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
@@ -48,10 +47,10 @@ export default function AddBrandModal() {
     const imageResponse = await uploadImage(file);
 
     if (imageResponse?.data?.success) {
-      values.logo = imageResponse?.data?.data?.url;
-      const brandResponse = await createBrand(values);
-      displayToast(brandResponse, 'Brand added successfully!');
-      if (brandResponse?.data?.success) {
+      values.thumbnail = imageResponse?.data?.data?.url;
+      const categoryResponse = await createCategory(values);
+      displayToast(categoryResponse, 'Category added successfully!');
+      if (categoryResponse?.data?.success) {
         reset();
         setFile('');
         document.getElementById('closeBtn')?.click();
@@ -64,45 +63,46 @@ export default function AddBrandModal() {
       <ModalAction asChild>
         <Button size="sm">
           <Plus size={16} className="mr-2" />
-          New Brand
+          New Category
         </Button>
       </ModalAction>
+
       <ModalContent className="space-y-3">
         <ModalClose className="absolute right-4 top-4" />
         <ModalHeader className="mb-6 space-y-3">
-          <ModalTitle>Add A New Brand</ModalTitle>
+          <ModalTitle>Add A New Category</ModalTitle>
         </ModalHeader>
         <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
           <fieldset className="space-y-1">
-            <Label htmlFor="title">Brand Name</Label>
+            <Label htmlFor="title">Category Title</Label>
             <div className="relative">
               <Input
-                id="name"
+                id="title"
                 type="text"
-                placeholder="Brand Name"
+                placeholder="Category Title"
                 className={cn('ps-11', {
-                  'border border-error-200': Boolean(errors.name),
+                  'border border-error-200': Boolean(errors.title),
                 })}
-                aria-invalid={Boolean(errors.name)}
-                {...register('name')}
+                aria-invalid={Boolean(errors.title)}
+                {...register('title')}
               />
 
               <InputIcon>
                 <MdTitle className="text-[#AFBACA]" />
               </InputIcon>
             </div>
-            {errors.name && (
+            {errors.title && (
               <p className="text-error-400 text-sm" role="alert">
-                {errors.name?.message as string}
+                {errors.title?.message as string}
               </p>
             )}
           </fieldset>
           <fieldset className="space-y-1">
-            <Label htmlFor="thumbnail">Brand Logo</Label>
-            <LogoUpload file={file} setFile={setFile} />
-            {errors.logo && (
+            <Label htmlFor="thumbnail">Category Thumbnail</Label>
+            <ThumbnailUpload file={file} setFile={setFile} />
+            {errors.thumbnail && (
               <p className="text-error-400 text-sm" role="alert">
-                {errors.logo?.message as string}
+                {errors.thumbnail?.message as string}
               </p>
             )}
           </fieldset>
@@ -119,7 +119,7 @@ export default function AddBrandModal() {
             </ModalClose>
 
             <Button disabled={isSubmitting} size="sm" color="primary">
-              Add Brand
+              Add Category
             </Button>
           </ModalFooter>
         </form>

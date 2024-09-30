@@ -1,6 +1,6 @@
 import { BiSort } from 'react-icons/bi';
 import { useSearchParams } from 'react-router-dom';
-import Select from '../../../components/inputs/Select';
+import Select from '../../inputs/Select';
 
 export default function SortBy() {
   const [params, setParams] = useSearchParams();

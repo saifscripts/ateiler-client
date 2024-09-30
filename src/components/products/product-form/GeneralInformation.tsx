@@ -1,9 +1,9 @@
 import { BiBarcode, BiStore } from 'react-icons/bi';
-import AppInput from '../../../components/form/AppInput';
-import AppSelect from '../../../components/form/AppSelect';
-import AppTextarea from '../../../components/form/AppTextarea';
 import { IBrand } from '../../../interfaces';
 import { useGetBrandsQuery } from '../../../redux/features/brands/brandApi';
+import AppInput from '../../form/AppInput';
+import AppSelect from '../../form/AppSelect';
+import AppTextarea from '../../form/AppTextarea';
 
 const GeneralInformation = () => {
   const { data: brands, isLoading } = useGetBrandsQuery('');

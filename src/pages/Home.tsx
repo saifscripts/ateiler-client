@@ -1,7 +1,7 @@
-import { Categories } from '../features/categories';
-import { ContactUs } from '../features/contact-us';
-import { Hero } from '../features/hero';
-import { FeaturedProducts } from '../features/products';
+import { Categories } from '../components/categories';
+import { ContactUs } from '../components/contact-us';
+import { Hero } from '../components/hero';
+import { FeaturedProducts } from '../components/products';
 
 const Home = () => {
   return (

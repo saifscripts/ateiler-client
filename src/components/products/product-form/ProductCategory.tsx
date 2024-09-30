@@ -1,7 +1,7 @@
 import { BiCategory } from 'react-icons/bi';
-import AppSelect from '../../../components/form/AppSelect';
 import { ICategory } from '../../../interfaces';
 import { useGetCategoriesQuery } from '../../../redux/features/categories/categoryApi';
+import AppSelect from '../../form/AppSelect';
 
 const ProductCategory = () => {
   const { data: categories, isLoading } = useGetCategoriesQuery('');

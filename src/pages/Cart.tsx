@@ -1,9 +1,9 @@
 import { Button, Table, TableBody, TableCell, TableRow } from 'keep-react';
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { Link } from 'react-router-dom';
-import BrandBadge from '../features/products/badges/BrandBadge';
-import CategoryBadge from '../features/products/badges/CategoryBadge';
-import StockBadge from '../features/products/badges/StockBadge';
+import BrandBadge from '../components/products/badges/BrandBadge';
+import CategoryBadge from '../components/products/badges/CategoryBadge';
+import StockBadge from '../components/products/badges/StockBadge';
 import { cn } from '../lib/cn';
 import {
   decreaseQuantity,

@@ -1,5 +1,5 @@
 import { MdProductionQuantityLimits } from 'react-icons/md';
-import AppInput from '../../../components/form/AppInput';
+import AppInput from '../../form/AppInput';
 
 const StockInformation = () => {
   return (

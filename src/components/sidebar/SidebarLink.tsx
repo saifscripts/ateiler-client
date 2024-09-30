@@ -1,7 +1,7 @@
 import { SidebarItem } from 'keep-react';
 import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
-import { cn } from '../../../lib/cn';
+import { cn } from '../../lib/cn';
 
 interface SidebarLinkProps {
   to: string;
@@ -14,7 +14,7 @@ const SidebarLink = ({ to, children }: SidebarLinkProps) => {
       {({ isActive }) => (
         <SidebarItem
           className={cn('mb-1', {
-            'bg-primary-500 text-gray-100 hover:bg-primary-600 hover:text-gray-100':
+            'bg-transparent text-metal-900 font-bold hover:bg-metal-50 hover:text-metal-900':
               isActive,
           })}
         >

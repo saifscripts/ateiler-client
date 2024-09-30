@@ -3,9 +3,9 @@ import { Button, Card, CardContent, toast } from 'keep-react';
 import { DeviceMobile, Envelope, User } from 'phosphor-react';
 import { FieldValues, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
-import AppForm from '../../components/form/AppForm';
-import AppInput from '../../components/form/AppInput';
-import AppTextarea from '../../components/form/AppTextarea';
+import AppForm from '../form/AppForm';
+import AppInput from '../form/AppInput';
+import AppTextarea from '../form/AppTextarea';
 
 const ContactSchema = z.object({
   firstName: z

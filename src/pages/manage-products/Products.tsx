@@ -1,4 +1,4 @@
-import { ProductList, ProductListHeader } from '../../features/products';
+import { ProductList, ProductListHeader } from '../../components/products';
 
 const Products = () => {
   return (

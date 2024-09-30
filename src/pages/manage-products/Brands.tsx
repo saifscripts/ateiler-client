@@ -1,4 +1,4 @@
-import { BrandList, Header } from '../../features/brands';
+import { BrandList, Header } from '../../components/brands';
 
 export default function Brands() {
   return (

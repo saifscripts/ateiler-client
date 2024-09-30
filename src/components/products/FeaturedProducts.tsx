@@ -1,7 +1,7 @@
-import SectionDescription from '../../components/ui/SectionDescription';
-import SectionTitle from '../../components/ui/SectionTitle';
 import { IProduct } from '../../interfaces';
 import { useGetProductsQuery } from '../../redux/features/products/productApi';
+import SectionDescription from '../ui/SectionDescription';
+import SectionTitle from '../ui/SectionTitle';
 import ProductCard from './ProductCard';
 import ProductSkeleton from './ProductSkeleton';
 

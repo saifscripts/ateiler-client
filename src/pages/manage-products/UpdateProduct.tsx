@@ -12,7 +12,7 @@ import {
   ProductImage,
   StockInformation,
   UpdateProductHeader,
-} from '../../features/products';
+} from '../../components/products';
 import { displayToast } from '../../lib/toast';
 import { useUploadImageMutation } from '../../redux/features/imageUpload/imageUploadApi';
 import {

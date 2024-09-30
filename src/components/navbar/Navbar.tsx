@@ -1,22 +1,19 @@
 import {
   Navbar,
   NavbarBrand,
-  NavbarCollapse,
-  NavbarCollapseBtn,
   NavbarContainer,
   NavbarItem,
   NavbarList,
 } from 'keep-react';
 import { ShoppingBag } from 'phosphor-react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { cn } from '../../../lib/cn';
-import { useAppSelector } from '../../../redux/hooks';
-import MobileSidebar from '../manage-products/MobileSidebar';
+import { Link, NavLink } from 'react-router-dom';
+import { cn } from '../../lib/cn';
+import { useAppSelector } from '../../redux/hooks';
+import Sidebar from '../sidebar/Sidebar';
 import navbarItems from './navbarItems';
 
 const NavbarComponent = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
-  const { pathname } = useLocation();
 
   return (
     <Navbar className="h-[64px] flex items-center border border-gray-100 fixed top-0 left-0 right-0 z-50">
@@ -31,23 +28,13 @@ const NavbarComponent = () => {
 
         <NavbarList>
           {navbarItems.map((item) => (
-            <NavLink key={item.link} to={item.link}>
+            <NavLink key={item.path} to={item.path}>
               {({ isActive }) => (
-                <NavbarItem active={isActive}>{item.title}</NavbarItem>
+                <NavbarItem active={isActive}>{item.name}</NavbarItem>
               )}
             </NavLink>
           ))}
         </NavbarList>
-
-        <NavbarCollapse>
-          {navbarItems.map((item) => (
-            <NavLink key={item.link} to={item.link}>
-              {({ isActive }) => (
-                <NavbarItem active={isActive}>{item.title}</NavbarItem>
-              )}
-            </NavLink>
-          ))}
-        </NavbarCollapse>
 
         <div className="flex items-center gap-4">
           <NavLink to="/cart">
@@ -66,11 +53,8 @@ const NavbarComponent = () => {
               </div>
             )}
           </NavLink>
-          {pathname.startsWith('/manage-products') ? (
-            <MobileSidebar />
-          ) : (
-            <NavbarCollapseBtn />
-          )}
+
+          <Sidebar />
         </div>
       </NavbarContainer>
     </Navbar>

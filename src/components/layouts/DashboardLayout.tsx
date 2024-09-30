@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-import Sidebar from './Sidebar';
+import DashboardSidebar from '../sidebar/DashboardSidebar';
+``;
 
-const ManageProductsLayout = () => {
+export default function DashboardLayout() {
   const childRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
@@ -16,7 +17,7 @@ const ManageProductsLayout = () => {
     <div className="bg-primary-25 h-screen overflow-hidden">
       <Navbar />
       <div className="flex">
-        <Sidebar />
+        <DashboardSidebar />
         <div
           ref={childRef}
           className="w-full lg:w-[calc(100vw-240px)] h-[calc(100svh-64px)] mt-[64px] overflow-auto"
@@ -26,6 +27,4 @@ const ManageProductsLayout = () => {
       </div>
     </div>
   );
-};
-
-export default ManageProductsLayout;
+}

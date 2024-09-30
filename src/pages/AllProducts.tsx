@@ -2,9 +2,9 @@ import {
   CollapsibleFilters,
   OpenFilters,
   Products,
-} from '../features/products';
-import Search from '../features/products/filters/Search';
-import SortBy from '../features/products/filters/SortBy';
+} from '../components/products';
+import Search from '../components/products/filters/Search';
+import SortBy from '../components/products/filters/SortBy';
 
 const AllProducts = () => {
   return (

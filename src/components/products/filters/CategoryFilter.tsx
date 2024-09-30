@@ -1,8 +1,8 @@
 import { BiCategoryAlt } from 'react-icons/bi';
 import { useSearchParams } from 'react-router-dom';
-import Select from '../../../components/inputs/Select';
 import { ICategory } from '../../../interfaces';
 import { useGetCategoriesQuery } from '../../../redux/features/categories/categoryApi';
+import Select from '../../inputs/Select';
 
 export default function CategoryFilter() {
   const [params, setParams] = useSearchParams();

@@ -1,7 +1,7 @@
 import { ArrowRight, Lightning, LightningSlash, MapPin } from 'phosphor-react';
+import { ContactUs } from '../components/contact-us';
 import SectionDescription from '../components/ui/SectionDescription';
 import SectionTitle from '../components/ui/SectionTitle';
-import { ContactUs } from '../features/contact-us';
 
 const stores = [
   {

@@ -1,4 +1,4 @@
-import SectionTitle from '../../components/ui/SectionTitle';
+import SectionTitle from '../ui/SectionTitle';
 import ContactForm from './ContactForm';
 import Info from './Info';
 

@@ -24,3 +24,10 @@ export interface IProduct {
   rating: number;
   isDeleted: boolean;
 }
+
+export interface IRoute {
+  icon: React.ElementType;
+  name: string;
+  path: string;
+  dropdown?: IRoute[];
+}
