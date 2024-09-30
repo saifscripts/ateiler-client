@@ -20,7 +20,7 @@ export default function DashboardLayout() {
         <DashboardSidebar />
         <div
           ref={childRef}
-          className="w-full lg:w-[calc(100vw-240px)] h-[calc(100svh-64px)] mt-[64px] overflow-auto"
+          className="w-full lg:w-[calc(100vw-240px)] h-[100svh] pt-[64px] overflow-auto"
         >
           <Outlet />
         </div>
