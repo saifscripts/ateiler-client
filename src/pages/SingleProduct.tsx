@@ -33,30 +33,22 @@ export default function SingleProduct() {
       <div className=" bg-white rounded-lg p-6 my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="w-full flex flex-col gap-6 items-center justify-center p-6">
           {/* Product Image */}
-          <div
-            className="w-[70%] aspect-square"
-            style={{
-              backgroundImage: `url(${selectedImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
+          <div className="w-[70%] aspect-square flex items-center justify-center rounded-lg overflow-hidden">
+            <img src={selectedImage} alt={product.name} className="w-full" />
+          </div>
 
           {/* Product Image Thumbnails */}
           <div className="max-w-full flex gap-2 sm:gap-4 flex-nowrap overflow-x-auto hide-scrollbar">
             {product.imageUrls.map((image: string) => (
               <div
                 className={cn(
-                  'size-12 sm:size-16 md:size-20 lg:size-24 aspect-square rounded-lg cursor-pointer',
+                  'size-12 sm:size-16 md:size-20 lg:size-24 aspect-square rounded-lg cursor-pointer overflow-hidden flex items-center justify-center',
                   selectedImage === image ? 'border-2 border-primary-500' : ''
                 )}
-                style={{
-                  backgroundImage: `url(${image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
                 onClick={() => setSelectedImage(image)}
-              />
+              >
+                <img src={image} alt={product.name} className="w-full" />
+              </div>
             ))}
           </div>
         </div>
