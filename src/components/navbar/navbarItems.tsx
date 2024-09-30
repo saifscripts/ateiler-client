@@ -1,4 +1,5 @@
 import {
+  IoGridOutline,
   IoHomeOutline,
   IoInformationCircleOutline,
   IoListOutline,
@@ -13,11 +14,11 @@ const navbarItems: IRoute[] = [
   },
   {
     icon: IoListOutline,
-    name: 'Products',
+    name: 'All Products',
     path: '/products',
   },
   {
-    icon: IoListOutline,
+    icon: IoGridOutline,
     name: 'Manage Products',
     path: '/manage-products',
   },

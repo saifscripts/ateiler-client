@@ -19,15 +19,18 @@ export default function BrandFilter() {
       disabled={isLoading}
       value={params.get('brand') || ''}
       onChange={(value) =>
-        setParams((params) => {
-          const currentParams = Object.fromEntries(params);
-          if (!value) {
-            delete currentParams.brand;
-          } else {
-            currentParams.brand = value;
-          }
-          return currentParams;
-        })
+        setParams(
+          (params) => {
+            const currentParams = Object.fromEntries(params);
+            if (!value) {
+              delete currentParams.brand;
+            } else {
+              currentParams.brand = value;
+            }
+            return currentParams;
+          },
+          { replace: true }
+        )
       }
       placeholder="All Brands"
       icon={<BiBarcode size={20} color="#AFBACA" />}

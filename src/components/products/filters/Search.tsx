@@ -15,15 +15,18 @@ export default function Search() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetParams = useCallback(
     debounce((value: string) => {
-      setParams((params) => {
-        const currentParams = Object.fromEntries(params);
-        if (!value) {
-          delete currentParams.searchTerm;
-        } else {
-          currentParams.searchTerm = value;
-        }
-        return currentParams;
-      });
+      setParams(
+        (params) => {
+          const currentParams = Object.fromEntries(params);
+          if (!value) {
+            delete currentParams.searchTerm;
+          } else {
+            currentParams.searchTerm = value;
+          }
+          return currentParams;
+        },
+        { replace: true }
+      );
     }, 500),
     [setParams, debounce]
   );

@@ -17,10 +17,13 @@ export default function SortBy() {
       options={options}
       value={params.get('sort') || ''}
       onChange={(value) =>
-        setParams((params) => {
-          const currentParams = Object.fromEntries(params);
-          return { ...currentParams, sort: value };
-        })
+        setParams(
+          (params) => {
+            const currentParams = Object.fromEntries(params);
+            return { ...currentParams, sort: value };
+          },
+          { replace: true }
+        )
       }
       parentClassName="max-w-xs"
       placeholder="Sort By"

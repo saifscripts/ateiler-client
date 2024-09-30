@@ -24,15 +24,18 @@ export default function PriceFilter() {
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={minPrice}
             onChange={(e) => {
-              setParams((params) => {
-                const currentParams = Object.fromEntries(params);
-                if (!e.target.value) {
-                  delete currentParams['price[gte]'];
-                } else {
-                  currentParams['price[gte]'] = e.target.value;
-                }
-                return currentParams;
-              });
+              setParams(
+                (params) => {
+                  const currentParams = Object.fromEntries(params);
+                  if (!e.target.value) {
+                    delete currentParams['price[gte]'];
+                  } else {
+                    currentParams['price[gte]'] = e.target.value;
+                  }
+                  return currentParams;
+                },
+                { replace: true }
+              );
             }}
           />
           <InputIcon>
@@ -46,15 +49,18 @@ export default function PriceFilter() {
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={maxPrice}
             onChange={(e) => {
-              setParams((params) => {
-                const currentParams = Object.fromEntries(params);
-                if (!e.target.value) {
-                  delete currentParams['price[lte]'];
-                } else {
-                  currentParams['price[lte]'] = e.target.value;
-                }
-                return currentParams;
-              });
+              setParams(
+                (params) => {
+                  const currentParams = Object.fromEntries(params);
+                  if (!e.target.value) {
+                    delete currentParams['price[lte]'];
+                  } else {
+                    currentParams['price[lte]'] = e.target.value;
+                  }
+                  return currentParams;
+                },
+                { replace: true }
+              );
             }}
           />
           <InputIcon>

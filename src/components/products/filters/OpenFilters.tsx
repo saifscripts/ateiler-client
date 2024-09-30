@@ -29,7 +29,7 @@ export default function OpenFilters() {
           size="sm"
           variant="link"
           onClick={() => {
-            setParams({});
+            setParams({}, { replace: true });
           }}
         >
           <PiFunnelX size={19} />

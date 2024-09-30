@@ -19,15 +19,18 @@ export default function CategoryFilter() {
       disabled={isLoading}
       value={params.get('category') || ''}
       onChange={(value) =>
-        setParams((params) => {
-          const currentParams = Object.fromEntries(params);
-          if (!value) {
-            delete currentParams.category;
-          } else {
-            currentParams.category = value;
-          }
-          return currentParams;
-        })
+        setParams(
+          (params) => {
+            const currentParams = Object.fromEntries(params);
+            if (!value) {
+              delete currentParams.category;
+            } else {
+              currentParams.category = value;
+            }
+            return currentParams;
+          },
+          { replace: true }
+        )
       }
       placeholder="All Products"
       icon={<BiCategoryAlt size={20} color="#AFBACA" />}

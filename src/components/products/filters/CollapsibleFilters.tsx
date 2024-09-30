@@ -48,7 +48,7 @@ export default function CollapsibleFilters() {
                 size="sm"
                 variant="link"
                 onClick={() => {
-                  setParams({});
+                  setParams({}, { replace: true });
                 }}
               >
                 <PiFunnelX size={19} />

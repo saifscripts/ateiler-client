@@ -24,15 +24,18 @@ export default function RatingFilter() {
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={minRating}
             onChange={(e) => {
-              setParams((params) => {
-                const currentParams = Object.fromEntries(params);
-                if (!e.target.value) {
-                  delete currentParams['rating[gte]'];
-                } else {
-                  currentParams['rating[gte]'] = e.target.value;
-                }
-                return currentParams;
-              });
+              setParams(
+                (params) => {
+                  const currentParams = Object.fromEntries(params);
+                  if (!e.target.value) {
+                    delete currentParams['rating[gte]'];
+                  } else {
+                    currentParams['rating[gte]'] = e.target.value;
+                  }
+                  return currentParams;
+                },
+                { replace: true }
+              );
             }}
           />
           <InputIcon>
@@ -46,15 +49,18 @@ export default function RatingFilter() {
             className="ps-11 placeholder:text-gray-400 focus-visible:ring-0"
             value={maxRating}
             onChange={(e) => {
-              setParams((params) => {
-                const currentParams = Object.fromEntries(params);
-                if (!e.target.value) {
-                  delete currentParams['rating[lte]'];
-                } else {
-                  currentParams['rating[lte]'] = e.target.value;
-                }
-                return currentParams;
-              });
+              setParams(
+                (params) => {
+                  const currentParams = Object.fromEntries(params);
+                  if (!e.target.value) {
+                    delete currentParams['rating[lte]'];
+                  } else {
+                    currentParams['rating[lte]'] = e.target.value;
+                  }
+                  return currentParams;
+                },
+                { replace: true }
+              );
             }}
           />
           <InputIcon>
