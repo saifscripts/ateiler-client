@@ -32,7 +32,7 @@ This project is designed for an e-commerce website that sells sporting goods. Se
 - Node.js and npm/yarn installed.
 - Any Web browser to view the application
 
-## Installation Steps
+## Installation Guideline
 
 Follow this step-by-step guide to run the server on your local machine.
 
