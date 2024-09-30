@@ -27,9 +27,19 @@ This project is designed for an e-commerce website that sells sporting goods. Se
 
 - React, TypeScript, Redux Toolkit, RTK Query, Tailwind CSS, Keep React
 
-## Installation Guideline
+## Prerequisites
+
+- Node.js and npm/yarn installed.
+- Any Web browser to view the application
+
+## Installation Steps
 
 Follow this step-by-step guide to run the server on your local machine.
+
+### 0. Prerequisites
+
+- Node.js and npm/yarn installed.
+- Any Web browser to view the application.
 
 ### 1. Clone the Repository
 
@@ -67,7 +77,7 @@ npm install
 
 ```
 
-### 4. Add a .env File
+### 4. Add a Configuration File
 
 To run the app, create a `.env` file in the root folder with the following properties (I have included a few demo values here for testing):
 
