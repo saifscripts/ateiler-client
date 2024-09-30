@@ -15,6 +15,7 @@ export default function Categories() {
             className="aspect-square flex flex-col justify-center items-center gap-1 sm:gap-3 md:gap-4 rounded-lg bg-white p-4 hover:shadow-md transition-all duration-150"
             data-aos="zoom-in"
             data-aos-duration="300"
+            data-aos-offset="0"
           >
             <img src={item.thumbnail} className="rounded-md size-8" />
             <p className="text-body-4 md:text-body-2 font-medium text-metal-600 text-center xl:text-left leading-tight">
