@@ -1,6 +1,9 @@
 import { Badge, Button, Skeleton, SkeletonLine } from 'keep-react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import BrandBadge from '../features/products/badges/BrandBadge';
+import CategoryBadge from '../features/products/badges/CategoryBadge';
+import StockBadge from '../features/products/badges/StockBadge';
 import Rating from '../features/products/Rating';
 import { cn } from '../lib/cn';
 import { addToCart } from '../redux/features/cart/cartSlice';
@@ -66,32 +69,15 @@ export default function SingleProduct() {
             {product.description}
           </p>
           <div className="flex gap-2">
-            <Badge
-              color="success"
-              className="text-[10px] px-3 py-1 h-auto rounded-md"
-            >
-              {product?.category?.title}
-            </Badge>
-            <Badge
-              color="primary"
-              className="text-[10px] px-3 py-1 h-auto rounded-md"
-            >
-              {product.brand.name}
-            </Badge>
-            <Badge
-              color={Number(product?.stockQuantity) > 0 ? 'secondary' : 'error'}
-              className="text-[10px] px-3 py-1 h-auto rounded-md"
-            >
-              {Number(product?.stockQuantity) > 0
-                ? `Stock: ${product?.stockQuantity}`
-                : 'Out of Stock'}
-            </Badge>
+            <CategoryBadge>{product?.category?.title}</CategoryBadge>
+            <BrandBadge>{product.brand.name}</BrandBadge>
+            <StockBadge>{product.stockQuantity}</StockBadge>
           </div>
 
           <div className="flex flex-col-reverse md:flex-row gap-4 mt-4 items-center">
             <Button
               onClick={() => dispatch(addToCart(product))}
-              color="secondary"
+              color="primary"
               disabled={
                 !product.stockQuantity ||
                 Number(quantityAddedToCart) >= product.stockQuantity
@@ -102,9 +88,11 @@ export default function SingleProduct() {
 
             {/* show added quantity at cart */}
             {quantityAddedToCart && (
-              <Badge color="success" className="text-[10px] px-3 py-1 h-auto">
-                Added to cart: {quantityAddedToCart}
-              </Badge>
+              <Link to="/cart">
+                <Badge color="success" className="text-[10px] px-3 py-1 h-auto">
+                  Added to cart: {quantityAddedToCart}
+                </Badge>
+              </Link>
             )}
           </div>
         </div>

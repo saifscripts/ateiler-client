@@ -14,7 +14,7 @@ const SidebarLink = ({ to, children }: SidebarLinkProps) => {
       {({ isActive }) => (
         <SidebarItem
           className={cn('mb-1', {
-            'bg-metal-900 text-metal-100 hover:bg-metal-800 hover:text-metal-100':
+            'bg-primary-500 text-gray-100 hover:bg-primary-600 hover:text-gray-100':
               isActive,
           })}
         >

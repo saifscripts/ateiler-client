@@ -18,38 +18,29 @@ export default function ProductList() {
   const { data: products, isLoading } = useGetProductsQuery({});
 
   return (
-    <div className="h-[calc(100vh-144px)] overflow-y-scroll p-4">
+    <div className="h-[calc(100svh-128px)] overflow-y-scroll p-4">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="bg-metal-900 text-metal-50">
+            <TableHead className="bg-metal-500 text-metal-50">
               <div>Thumbnail</div>
             </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
+            <TableHead className="bg-metal-500 text-metal-50">
               <div>Product Name</div>
             </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
+            <TableHead className="bg-metal-500 text-metal-50">
               <div>Brand</div>
             </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
+            <TableHead className="bg-metal-500 text-metal-50">
               <div>Price</div>
             </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
-              <div>Discount</div>
-            </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
-              <div>Discount Price</div>
-            </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
+            <TableHead className="bg-metal-500 text-metal-50">
               <div>Category</div>
             </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
-              <div>Rating</div>
-            </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">
+            <TableHead className="bg-metal-500 text-metal-50">
               <div>Stock</div>
             </TableHead>
-            <TableHead className="bg-metal-900 text-metal-50">Action</TableHead>
+            <TableHead className="bg-metal-500 text-metal-50">Action</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -59,7 +50,7 @@ export default function ProductList() {
           <TableBody>
             {products?.data?.length ? (
               products?.data?.map((item: IProduct) => (
-                <TableRow key={item?._id}>
+                <TableRow key={item?._id} className="hover:bg-gray-50">
                   <TableCell>
                     <div
                       style={{
@@ -71,15 +62,7 @@ export default function ProductList() {
                   <TableCell>{item?.name}</TableCell>
                   <TableCell>{item?.brand?.name}</TableCell>
                   <TableCell>{Number(item?.price).toFixed(2)}</TableCell>
-                  <TableCell>{item?.discount}%</TableCell>
-                  <TableCell>
-                    {(
-                      Number(item?.price) *
-                      (1 - Number(item?.discount) / 100)
-                    ).toFixed(2)}
-                  </TableCell>
                   <TableCell>{item?.category?.title}</TableCell>
-                  <TableCell>{item?.rating}</TableCell>
                   <TableCell>{item?.stockQuantity}</TableCell>
                   <TableCell>
                     <div className="flex gap-2">

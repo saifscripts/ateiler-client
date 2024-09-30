@@ -1,6 +1,7 @@
-import AppSelect from '../../components/form/AppSelect';
-import { ICategory } from '../../interfaces';
-import { useGetCategoriesQuery } from '../../redux/features/categories/categoryApi';
+import { BiCategory } from 'react-icons/bi';
+import AppSelect from '../../../components/form/AppSelect';
+import { ICategory } from '../../../interfaces';
+import { useGetCategoriesQuery } from '../../../redux/features/categories/categoryApi';
 
 const ProductCategory = () => {
   const { data: categories, isLoading } = useGetCategoriesQuery('');
@@ -14,6 +15,7 @@ const ProductCategory = () => {
         label="Select Category"
         placeholder="Select A Category"
         disabled={isLoading}
+        icon={<BiCategory size={20} color="#AFBACA" />}
         options={categories?.data?.map((item: ICategory) => ({
           value: item._id,
           label: item.title,

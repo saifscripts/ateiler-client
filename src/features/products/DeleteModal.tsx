@@ -46,31 +46,24 @@ const DeleteModal = ({ id, name }: IDeleteModalProps) => {
         </button>
       </ModalAction>
       <ModalContent>
-        <ModalContent>
-          <ModalHeader className="mb-6 space-y-3">
-            <div className="space-y-1">
-              <ModalTitle>Delete {name} ?</ModalTitle>
-              <ModalDescription>This action cannot be undone.</ModalDescription>
-            </div>
-          </ModalHeader>
-          <ModalFooter className="justify-end">
-            <ModalClose asChild>
-              <Button
-                id="closeBtn"
-                size="xs"
-                variant="outline"
-                color="secondary"
-              >
-                Cancel
-              </Button>
-            </ModalClose>
-            <ModalClose onClick={handleDelete} asChild>
-              <Button disabled={isLoading} size="xs" color="error">
-                Delete
-              </Button>
-            </ModalClose>
-          </ModalFooter>
-        </ModalContent>
+        <ModalHeader className="mb-6 space-y-3">
+          <div className="space-y-1">
+            <ModalTitle>Delete {name} ?</ModalTitle>
+            <ModalDescription>This action cannot be undone.</ModalDescription>
+          </div>
+        </ModalHeader>
+        <ModalFooter className="justify-end">
+          <ModalClose asChild>
+            <Button id="closeBtn" variant="outline" color="secondary">
+              Cancel
+            </Button>
+          </ModalClose>
+          <ModalClose onClick={handleDelete} asChild>
+            <Button disabled={isLoading} color="error">
+              Delete
+            </Button>
+          </ModalClose>
+        </ModalFooter>
       </ModalContent>
     </Modal>
   );

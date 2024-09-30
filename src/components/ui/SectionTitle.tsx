@@ -10,7 +10,7 @@ const SectionTitle = ({
   return (
     <h1
       className={cn(
-        'text-3xl lg:text-4xl text-metal-800 text-center mb-4 font-semibold px-4',
+        'text-3xl lg:text-4xl text-metal-700 text-center mb-4 font-semibold px-4',
         className
       )}
     >

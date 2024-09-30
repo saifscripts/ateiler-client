@@ -18,10 +18,10 @@ export default function CategoryList() {
     <Table className="max-w-sm">
       <TableHeader>
         <TableRow>
-          <TableHead className="bg-metal-900 text-metal-50">
+          <TableHead className="bg-metal-500 text-metal-50">
             <div>Thumbnail</div>
           </TableHead>
-          <TableHead className="bg-metal-900 text-metal-50">
+          <TableHead className="bg-metal-500 text-metal-50">
             <div>Title</div>
           </TableHead>
         </TableRow>
@@ -33,7 +33,7 @@ export default function CategoryList() {
         <TableBody>
           {categories?.data?.length ? (
             categories?.data?.map((item: ICategory) => (
-              <TableRow key={item._id}>
+              <TableRow key={item._id} className="hover:bg-gray-50">
                 <TableCell>
                   <img className="size-8" src={item.thumbnail} alt="" />
                 </TableCell>

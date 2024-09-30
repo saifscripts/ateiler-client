@@ -18,10 +18,10 @@ export default function BrandList() {
     <Table className="max-w-sm">
       <TableHeader>
         <TableRow>
-          <TableHead className="bg-metal-900 text-metal-50">
+          <TableHead className="bg-metal-500 text-metal-50">
             <div>Logo</div>
           </TableHead>
-          <TableHead className="bg-metal-900 text-metal-50">
+          <TableHead className="bg-metal-500 text-metal-50">
             <div>Name</div>
           </TableHead>
         </TableRow>
@@ -32,7 +32,7 @@ export default function BrandList() {
         <TableBody>
           {brands?.data?.length ? (
             brands?.data?.map((item: IBrand) => (
-              <TableRow key={item._id}>
+              <TableRow key={item._id} className="hover:bg-gray-50">
                 <TableCell>
                   <img className="size-8" src={item.logo} alt="" />
                 </TableCell>

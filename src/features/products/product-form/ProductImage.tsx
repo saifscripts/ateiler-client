@@ -3,8 +3,8 @@ import { useFormContext } from 'react-hook-form';
 import { IoCloseSharp } from 'react-icons/io5';
 import { TbPhotoUp } from 'react-icons/tb';
 import { useParams } from 'react-router-dom';
-import { useGetSingleProductQuery } from '../../redux/features/products/productApi';
-import toBase64 from '../../utils/toBase64';
+import { useGetSingleProductQuery } from '../../../redux/features/products/productApi';
+import toBase64 from '../../../utils/toBase64';
 
 const ProductImage = () => {
   const [images, setImages] = useState<string[]>([]);
@@ -70,9 +70,9 @@ const ProductImage = () => {
           </div>
         ))}
         {images?.length < 4 && (
-          <div className="relative border-2 border-dashed border-metal-500 aspect-square flex flex-col gap-1 justify-center items-center rounded-sm cursor-pointer bg-metal-100">
+          <div className="relative border-2 border-dashed border-gray-500 aspect-square flex flex-col gap-1 justify-center items-center rounded-sm cursor-pointer bg-gray-100">
             <TbPhotoUp className="cursor-pointer" />
-            <p className="text-[10px] text-primary-400 cursor-pointer">
+            <p className="text-[10px] text-gray-600 cursor-pointer">
               Upload Image
             </p>
             <input

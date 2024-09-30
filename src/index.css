@@ -5,6 +5,7 @@
 
 body {
   font-family: 'Open Sans', system-ui;
+  @apply text-metal-700;
 }
 
 .hide-scrollbar::-webkit-scrollbar {

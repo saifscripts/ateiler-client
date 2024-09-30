@@ -19,8 +19,8 @@ export default function CollapsibleFilters() {
   const [, setParams] = useSearchParams();
 
   return (
-    <Accordion className="block 2xl:hidden">
-      <AccordionPanel className="rounded-lg">
+    <Accordion className="block 2xl:hidden bg-white rounded-lg border-none">
+      <AccordionPanel className="bg-white rounded-lg border-none">
         <AccordionContainer className="px-2 py-4">
           <AccordionTitle className="flex items-center gap-2">
             <SlidersHorizontal size={19} color="#AFBACA" />

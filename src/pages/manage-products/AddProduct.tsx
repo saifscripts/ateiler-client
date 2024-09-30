@@ -57,10 +57,10 @@ const AddProduct = () => {
       schema={ProductSchema}
       defaultValues={defaultValues}
       onSubmit={onSubmit}
-      className="text-metal-700 space-y-0"
+      className="space-y-0"
     >
       <AddProductHeader />
-      <div className="p-4 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-4 h-[calc(100vh-144px)] overflow-y-scroll">
+      <div className="p-4 grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-4 h-[calc(100svh-128px)] overflow-y-scroll">
         <div className="grid grid-cols-1 gap-4 h-max">
           <GeneralInformation />
           <PriceInformation />

@@ -4,7 +4,7 @@ import { Envelope, House, Phone } from 'phosphor-react';
 const Info = () => {
   return (
     <div
-      className="flex flex-col justify-between max-w-md mx-auto gap-8"
+      className="flex flex-col justify-between max-w-md mx-auto gap-8 w-full overflow-hidden"
       data-aos="fade-right"
       data-aos-duration="300"
     >
@@ -17,7 +17,7 @@ const Info = () => {
         </p>
         <div className="space-y-4">
           <div className="flex gap-4 items-start">
-            <div className="bg-primary-400 size-12 flex justify-center items-center rounded-[4px]">
+            <div className="bg-primary-500 size-12 flex justify-center items-center rounded-[4px]">
               <House size={24} className="text-white" />
             </div>
             <div>
@@ -30,7 +30,7 @@ const Info = () => {
             </div>
           </div>
           <div className="flex gap-4 items-start">
-            <div className="bg-primary-400 size-12 flex justify-center items-center rounded-[4px]">
+            <div className="bg-primary-500 size-12 flex justify-center items-center rounded-[4px]">
               <Phone size={24} className="text-white" />
             </div>
             <div>
@@ -41,7 +41,7 @@ const Info = () => {
             </div>
           </div>
           <div className="flex gap-4 items-start">
-            <div className="bg-primary-400 size-12 flex justify-center items-center rounded-[4px]">
+            <div className="bg-primary-500 size-12 flex justify-center items-center rounded-[4px]">
               <Envelope size={24} className="text-white" />
             </div>
             <div>
@@ -55,11 +55,9 @@ const Info = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-[1fr_160px] gap-4 lg:pb-6">
-        <Input name="email" placeholder="Email" className="w-full" />
-        <Button size="sm" className="w-full">
-          Get Updates
-        </Button>
+      <div className="grid grid-cols-1 sm:grid-cols-[1fr_120px] gap-4 lg:pb-6">
+        <Input name="email" placeholder="Your Email" className="w-full h-10" />
+        <Button className="w-full py-3">Get Updates</Button>
       </div>
     </div>
   );

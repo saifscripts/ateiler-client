@@ -1,5 +1,4 @@
 import {
-  Badge,
   Button,
   Card,
   CardContent,
@@ -10,6 +9,9 @@ import {
 } from 'keep-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
+import BrandBadge from './badges/BrandBadge';
+import CategoryBadge from './badges/CategoryBadge';
+import StockBadge from './badges/StockBadge';
 import Rating from './Rating';
 
 interface IProductCardProps {
@@ -22,7 +24,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
   return (
     <Card
       onClick={() => navigate(`/product/${product._id}`)}
-      className="max-w-xs mx-auto p-4 flex flex-col justify-between gap-4 cursor-pointer hover:scale-95 transition-all duration-150"
+      className="max-w-xs mx-auto p-4 flex flex-col justify-between gap-4 cursor-pointer hover:scale-95 transition-all duration-150 border-gray-200"
       data-aos="zoom-in"
       data-aos-duration="300"
     >
@@ -33,18 +35,8 @@ const ProductCard = ({ product }: IProductCardProps) => {
         ></div>
         <CardTitle className="text-lg">{product.name}</CardTitle>
         <div className="flex gap-2">
-          <Badge
-            color="success"
-            className="text-[10px] px-3 py-1 h-auto rounded-md"
-          >
-            {product?.category?.title}
-          </Badge>
-          <Badge
-            color="primary"
-            className="text-[10px] px-3 py-1 h-auto rounded-md"
-          >
-            {product.brand.name}
-          </Badge>
+          <CategoryBadge>{product?.category?.title}</CategoryBadge>
+          <BrandBadge>{product.brand.name}</BrandBadge>
         </div>
       </CardHeader>
       <CardContent className="space-y-2 p-0">
@@ -53,14 +45,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
         </CardDescription>
         <div className="flex justify-between items-center">
           <Rating value={product.rating} />
-          <Badge
-            color={Number(product?.stockQuantity) > 0 ? 'secondary' : 'error'}
-            className="text-[10px] px-3 py-1 h-auto rounded-md"
-          >
-            {Number(product?.stockQuantity) > 0
-              ? `Stock: ${product?.stockQuantity}`
-              : 'Out of Stock'}
-          </Badge>
+          <StockBadge>{product.stockQuantity}</StockBadge>
         </div>
       </CardContent>
 
@@ -69,7 +54,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
           <p className="font-bold text-metal-700">${product.price}</p>
         </div>
         <Link to={`/product/${product._id}`}>
-          <Button size="xs" color="secondary" className="px-3 py-1">
+          <Button size="sm" color="primary" className="px-3 py-1">
             View Details
           </Button>
         </Link>

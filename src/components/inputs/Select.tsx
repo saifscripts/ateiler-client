@@ -34,7 +34,7 @@ export default function Select({
         name=""
         id=""
         className={cn(
-          'bg-transparent w-full border ps-11 pe-8 py-[10px] placeholder:text-gray-400 focus-visible:ring-0 rounded-md',
+          'bg-transparent w-full border ps-11 pe-8 py-[10px] placeholder:text-gray-400 focus-visible:ring-0 border-gray-200 rounded-lg outline-gray-400',
           className
         )}
         defaultValue={defaultValue}

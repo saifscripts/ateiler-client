@@ -13,9 +13,9 @@ import {
   ModalHeader,
   ModalTitle,
 } from 'keep-react';
+import { Plus } from 'phosphor-react';
 import { useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { BiCheck } from 'react-icons/bi';
 import { MdTitle } from 'react-icons/md';
 import { cn } from '../../lib/cn';
 import { displayToast } from '../../lib/toast';
@@ -62,69 +62,68 @@ export default function AddCategoryModal() {
   return (
     <Modal>
       <ModalAction asChild>
-        <Button size="xs">
-          <BiCheck className="text-xl mr-2" />
+        <Button size="sm">
+          <Plus size={16} className="mr-2" />
           New Category
         </Button>
       </ModalAction>
-      <ModalContent>
-        <ModalContent className="space-y-3">
-          <ModalClose className="absolute right-4 top-4" />
-          <ModalHeader className="mb-6 space-y-3">
-            <ModalTitle>Add A New Category</ModalTitle>
-          </ModalHeader>
-          <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
-            <fieldset className="space-y-1">
-              <Label htmlFor="title">Category Title</Label>
-              <div className="relative">
-                <Input
-                  id="title"
-                  type="text"
-                  placeholder="Category Title"
-                  className={cn('ps-11', {
-                    'border border-error-200': Boolean(errors.title),
-                  })}
-                  aria-invalid={Boolean(errors.title)}
-                  {...register('title')}
-                />
 
-                <InputIcon>
-                  <MdTitle className="text-[#AFBACA]" />
-                </InputIcon>
-              </div>
-              {errors.title && (
-                <p className="text-error-400 text-sm" role="alert">
-                  {errors.title?.message as string}
-                </p>
-              )}
-            </fieldset>
-            <fieldset>
-              <Label htmlFor="thumbnail">Category Thumbnail</Label>
-              <ThumbnailUpload file={file} setFile={setFile} />
-              {errors.thumbnail && (
-                <p className="text-error-400 text-sm" role="alert">
-                  {errors.thumbnail?.message as string}
-                </p>
-              )}
-            </fieldset>
-            <ModalFooter className="justify-end">
-              <ModalClose asChild>
-                <Button
-                  id="closeBtn"
-                  size="sm"
-                  variant="outline"
-                  color="secondary"
-                >
-                  Cancel
-                </Button>
-              </ModalClose>
+      <ModalContent className="space-y-3">
+        <ModalClose className="absolute right-4 top-4" />
+        <ModalHeader className="mb-6 space-y-3">
+          <ModalTitle>Add A New Category</ModalTitle>
+        </ModalHeader>
+        <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+          <fieldset className="space-y-1">
+            <Label htmlFor="title">Category Title</Label>
+            <div className="relative">
+              <Input
+                id="title"
+                type="text"
+                placeholder="Category Title"
+                className={cn('ps-11', {
+                  'border border-error-200': Boolean(errors.title),
+                })}
+                aria-invalid={Boolean(errors.title)}
+                {...register('title')}
+              />
 
-              <Button disabled={isSubmitting} size="sm" color="primary">
-                Add Category
+              <InputIcon>
+                <MdTitle className="text-[#AFBACA]" />
+              </InputIcon>
+            </div>
+            {errors.title && (
+              <p className="text-error-400 text-sm" role="alert">
+                {errors.title?.message as string}
+              </p>
+            )}
+          </fieldset>
+          <fieldset className="space-y-1">
+            <Label htmlFor="thumbnail">Category Thumbnail</Label>
+            <ThumbnailUpload file={file} setFile={setFile} />
+            {errors.thumbnail && (
+              <p className="text-error-400 text-sm" role="alert">
+                {errors.thumbnail?.message as string}
+              </p>
+            )}
+          </fieldset>
+          <ModalFooter className="justify-end">
+            <ModalClose asChild>
+              <Button
+                id="closeBtn"
+                size="sm"
+                variant="outline"
+                color="secondary"
+              >
+                Cancel
               </Button>
-            </ModalFooter>
-          </form>
-        </ModalContent>
+            </ModalClose>
+
+            <Button disabled={isSubmitting} size="sm" color="primary">
+              Add Category
+            </Button>
+          </ModalFooter>
+        </form>
       </ModalContent>
     </Modal>
   );

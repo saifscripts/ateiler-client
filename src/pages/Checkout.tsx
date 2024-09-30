@@ -67,7 +67,7 @@ const Checkout = () => {
     <AppForm
       onSubmit={handleSubmit}
       schema={FormSchema}
-      className="container my-6 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6 space-y-0"
+      className="container py-4 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6 space-y-0"
     >
       <div className="flex flex-col gap-4 bg-white px-6 py-4 rounded-lg">
         <h1 className="text-4xl font-semibold text-gray-700 mb-4">

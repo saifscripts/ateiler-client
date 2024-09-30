@@ -19,7 +19,7 @@ const ManageProductsLayout = () => {
         <Sidebar />
         <div
           ref={childRef}
-          className="w-[calc(100vw-240px)] h-[calc(100svh-68px)] lg:h-[calc(100svh-72px)] overflow-auto"
+          className="w-full lg:w-[calc(100vw-240px)] h-[calc(100svh-64px)] mt-[64px] overflow-auto"
         >
           <Outlet />
         </div>

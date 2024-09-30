@@ -12,7 +12,7 @@ export default function NavItem({ item }: { item: INavItem }) {
       key={item.link}
       to={item.link}
       className={({ isActive }) =>
-        cn('text-gray-700', {
+        cn('text-metal-700', {
           'text-primary': isActive,
         })
       }

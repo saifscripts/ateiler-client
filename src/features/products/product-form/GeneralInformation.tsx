@@ -1,9 +1,9 @@
-import { BiStore } from 'react-icons/bi';
-import AppInput from '../../components/form/AppInput';
-import AppSelect from '../../components/form/AppSelect';
-import AppTextarea from '../../components/form/AppTextarea';
-import { IBrand } from '../../interfaces';
-import { useGetBrandsQuery } from '../../redux/features/brands/brandApi';
+import { BiBarcode, BiStore } from 'react-icons/bi';
+import AppInput from '../../../components/form/AppInput';
+import AppSelect from '../../../components/form/AppSelect';
+import AppTextarea from '../../../components/form/AppTextarea';
+import { IBrand } from '../../../interfaces';
+import { useGetBrandsQuery } from '../../../redux/features/brands/brandApi';
 
 const GeneralInformation = () => {
   const { data: brands, isLoading } = useGetBrandsQuery('');
@@ -23,6 +23,7 @@ const GeneralInformation = () => {
         label="Select Brand"
         placeholder="Select A Brand"
         disabled={isLoading}
+        icon={<BiBarcode size={20} color="#AFBACA" />}
         options={brands?.data?.map((item: IBrand) => ({
           value: item._id,
           label: item.name,

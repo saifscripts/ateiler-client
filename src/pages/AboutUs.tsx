@@ -89,7 +89,7 @@ const AboutUs = () => {
                 At Ateiler, our mission is to empower athletes of all levels by
                 providing:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-metal-300">
+              <ul className="list-disc list-inside space-y-2 text-metal-200">
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
                   Top-quality sporting products
@@ -109,7 +109,7 @@ const AboutUs = () => {
               </ul>
             </div>
 
-            <div className="bg-metal-100 p-6 rounded-lg">
+            <div className="bg-metal-50 p-6 rounded-lg">
               <h3 className="text-2xl font-bold mb-4 flex items-center text-metal-900">
                 <LightningSlash size={32} className="mr-2" />
                 Our Vision

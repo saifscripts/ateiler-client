@@ -45,7 +45,7 @@ const ContactForm = () => {
 
   return (
     <Card
-      className="max-w-md mx-auto"
+      className="max-w-md mx-auto border-gray-200"
       data-aos="fade-left"
       data-aos-duration="300"
     >
@@ -56,7 +56,7 @@ const ContactForm = () => {
           onSubmit={handleSubmit}
           className="space-y-2"
         >
-          <div className="flex gap-2">
+          <div className="flex flex-col min-[400px]:flex-row gap-2">
             <AppInput
               name="firstName"
               label="First Name"
@@ -88,7 +88,7 @@ const ContactForm = () => {
             label="Message"
             placeholder="Describe your issue here!"
           />
-          <Button className="!mt-3 block w-full" size="sm" color="primary">
+          <Button className="!mt-3 block w-full" color="primary">
             Send Message
           </Button>
         </AppForm>

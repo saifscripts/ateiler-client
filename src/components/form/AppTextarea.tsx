@@ -24,9 +24,13 @@ export default function AppTextarea({
           <Textarea
             id={name}
             placeholder={placeholder}
-            className={cn(className, {
-              'border border-error-200': Boolean(error),
-            })}
+            className={cn(
+              'border-gray-200 placeholder:text-gray-400',
+              className,
+              {
+                'border border-error-200': Boolean(error),
+              }
+            )}
             aria-invalid={Boolean(error)}
             {...field}
           />

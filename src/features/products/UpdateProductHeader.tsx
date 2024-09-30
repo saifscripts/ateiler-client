@@ -1,6 +1,6 @@
 import { Button } from 'keep-react';
+import { FloppyDisk } from 'phosphor-react';
 import { useFormContext } from 'react-hook-form';
-import { BiCheck } from 'react-icons/bi';
 import { GrUpdate } from 'react-icons/gr';
 
 const UpdateProductHeader = () => {
@@ -9,14 +9,14 @@ const UpdateProductHeader = () => {
   } = useFormContext();
 
   return (
-    <div className="flex justify-between items-center bg-white h-16 px-3 sticky top-0 z-10 border-b border-metal-100">
+    <div className="flex justify-between items-center bg-white h-[64px] px-3 sticky top-0 z-10 border-b border-gray-100">
       <div className="flex gap-4 items-center">
-        <GrUpdate className="text-lg" />
-        <h2 className="text-body-1 font-semibold">Update Your Product</h2>
+        <GrUpdate className="text-base sm:text-lg" />
+        <h2 className="text-lg sm:text-xl font-semibold">Update Product</h2>
       </div>
-      <Button disabled={isSubmitting} type="submit" size="xs" color="success">
-        <BiCheck className="text-xl mr-2" />
-        Update Product
+      <Button disabled={isSubmitting} size="sm">
+        <FloppyDisk size={20} className="mr-2" />
+        Save
       </Button>
     </div>
   );

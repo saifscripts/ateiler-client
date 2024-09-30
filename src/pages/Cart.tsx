@@ -1,13 +1,10 @@
-import {
-  Badge,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from 'keep-react';
+import { Button, Table, TableBody, TableCell, TableRow } from 'keep-react';
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { Link } from 'react-router-dom';
+import BrandBadge from '../features/products/badges/BrandBadge';
+import CategoryBadge from '../features/products/badges/CategoryBadge';
+import StockBadge from '../features/products/badges/StockBadge';
+import { cn } from '../lib/cn';
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -24,7 +21,7 @@ const Cart = () => {
   } = useAppSelector((state) => state.cart);
 
   return (
-    <div className="container my-6 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6">
+    <div className="container py-4 grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-6">
       <div className="flex flex-col gap-4 bg-white px-6 py-4 rounded-lg">
         {cartItems.length > 0 && (
           <>
@@ -32,10 +29,15 @@ const Cart = () => {
               Cart Items
             </h1>
             <div className="flex flex-col gap-4 h-full justify-center">
-              {cartItems?.map(({ product, quantity }) => (
-                <div key={product._id} className="flex gap-4 border-b pb-4">
+              {cartItems?.map(({ product, quantity }, index) => (
+                <div
+                  key={product._id}
+                  className={cn('flex gap-4 border-b pb-4', {
+                    'border-none': index === cartItems.length - 1,
+                  })}
+                >
                   <div
-                    className="size-20 bg-gray-200 rounded-lg flex-shrink-0"
+                    className="size-16 sm:size-20 bg-gray-200 rounded-lg flex-shrink-0"
                     style={{
                       backgroundImage: `url(${product.imageUrls[0]})`,
                       backgroundSize: 'cover',
@@ -43,43 +45,22 @@ const Cart = () => {
                     }}
                   />
 
-                  <div className="flex-1">
-                    <h1 className="text-xl text-gray-800 font-bold">
+                  <div className="flex-1 w-full overflow-hidden">
+                    <h1 className="text-lg sm:text-xl text-gray-800 text-wrap font-bold inline-block">
                       {product.name}
                     </h1>
-                    <p className="text-lg text-gray-700 font-semibold">
+                    <p className="text-base sm:text-lg text-gray-700 font-semibold">
                       ${product?.price}
                     </p>
-                    <div className="flex gap-2 mt-2">
-                      <Badge
-                        color="success"
-                        className="text-[10px] px-3 py-1 h-auto rounded-md"
-                      >
-                        {product?.category?.title}
-                      </Badge>
-                      <Badge
-                        color="primary"
-                        className="text-[10px] px-3 py-1 h-auto rounded-md"
-                      >
-                        {product.brand.name}
-                      </Badge>
-                      <Badge
-                        color={
-                          Number(product?.stockQuantity) > 0
-                            ? 'secondary'
-                            : 'error'
-                        }
-                        className="text-[10px] px-3 py-1 h-auto rounded-md"
-                      >
-                        {Number(product?.stockQuantity) > 0
-                          ? `Stock: ${product?.stockQuantity}`
-                          : 'Out of Stock'}
-                      </Badge>
+                    <div className="flex gap-2 mt-2 flex-wrap">
+                      <CategoryBadge>{product?.category?.title}</CategoryBadge>
+                      <BrandBadge>{product.brand.name}</BrandBadge>
+                      <StockBadge>{product.stockQuantity}</StockBadge>
                     </div>
-                    <div className="flex justify-between items-center w-full mt-4">
-                      <div className="flex items-center bg-metal-100 w-max rounded-lg">
+                    <div className="flex gap-4 flex-col sm:flex-row justify-between items-center w-full mt-4">
+                      <div className="flex items-center bg-metal-50 w-max rounded-lg self-start">
                         <Button
-                          color="secondary"
+                          color="primary"
                           size="sm"
                           className="rounded-lg p-2 h-auto"
                           onClick={() => {
@@ -91,7 +72,7 @@ const Cart = () => {
                         </Button>
                         <span className="px-4 py-1">{quantity}</span>
                         <Button
-                          color="secondary"
+                          color="primary"
                           size="sm"
                           className="rounded-lg p-2 h-auto"
                           onClick={() => {
@@ -104,7 +85,7 @@ const Cart = () => {
                           <Plus size={16} />
                         </Button>
                       </div>
-                      <div className="flex gap-2 items-center">
+                      <div className="flex gap-2 items-center self-end">
                         <p className="text-xl font-bold text-metal-600 p-2">
                           ${(product.price * quantity).toFixed(2)}
                         </p>

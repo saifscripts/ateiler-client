@@ -1,6 +1,6 @@
 import { Money } from 'phosphor-react';
 import { MdDiscount } from 'react-icons/md';
-import AppInput from '../../components/form/AppInput';
+import AppInput from '../../../components/form/AppInput';
 
 const PriceInformation = () => {
   return (

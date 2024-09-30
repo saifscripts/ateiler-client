@@ -1,5 +1,3 @@
-import { CaretDown } from 'phosphor-react';
-
 import {
   Sidebar,
   SidebarBody,
@@ -10,6 +8,7 @@ import {
   SidebarItem,
   SidebarList,
 } from 'keep-react';
+import { CaretDown } from 'phosphor-react';
 import { BiBarcode, BiCategoryAlt, BiStore } from 'react-icons/bi';
 import { IoAddSharp, IoListSharp } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,7 @@ const SidebarComponent = () => {
   const navigate = useNavigate();
 
   return (
-    <Sidebar className="h-[calc(100svh-68px)] lg:h-[calc(100svh-72px)] rounded-none w-[240px] shadow-none">
+    <Sidebar className="h-[calc(100svh-64px)] mt-[64px] rounded-none w-[240px] shadow-none hidden lg:flex border-l-0 border-t-0 border-b-0 border-r border-gray-100">
       <SidebarBody>
         <SidebarList className="space-y-0.5">
           <SidebarItem dropdown>
@@ -61,7 +60,7 @@ const SidebarComponent = () => {
       </SidebarBody>
 
       <SidebarFooter>
-        <p className="text-metal-500 text-body-4">
+        <p className="text-primary-300 text-body-4">
           &copy; {new Date().getFullYear()} ATEILER
         </p>
       </SidebarFooter>
