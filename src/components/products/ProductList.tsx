@@ -55,12 +55,13 @@ export default function ProductList() {
                 products?.data?.map((item: IProduct) => (
                   <TableRow key={item?._id} className="hover:bg-gray-50">
                     <TableCell>
-                      <div
-                        style={{
-                          backgroundImage: `url("${item?.imageUrls[0]}")`,
-                        }}
-                        className="bg-cover bg-center bg-no-repeat rounded-sm size-8"
-                      ></div>
+                      <div className="rounded-sm size-8 flex items-center justify-center overflow-hidden">
+                        <img
+                          src={item?.imageUrls[0]}
+                          alt={item?.name}
+                          className="w-full"
+                        />
+                      </div>
                     </TableCell>
                     <TableCell>{item?.name}</TableCell>
                     <TableCell>{item?.brand?.name}</TableCell>
