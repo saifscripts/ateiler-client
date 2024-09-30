@@ -28,8 +28,6 @@ export default function UpdateProduct() {
   const { id } = useParams();
   const { data: product, isLoading } = useGetSingleProductQuery(id);
 
-  if (isLoading) return <UpdateProductSkeleton />;
-
   const onSubmit: SubmitHandler<FieldValues> = async (productData) => {
     // if the image is image file, upload it, otherwise return the image url as it is
     const uploadPromises = productData.imageUrls.map((item: string) => {
@@ -54,8 +52,6 @@ export default function UpdateProduct() {
         onClick: () => navigate('/manage-products/products'),
       },
     });
-
-    return result?.data?.success;
   };
 
   const defaultValues = {
@@ -68,6 +64,8 @@ export default function UpdateProduct() {
     category: product?.data?.category?._id,
     imageUrls: product?.data?.imageUrls,
   };
+
+  if (isLoading) return <UpdateProductSkeleton />;
 
   return (
     <AppForm
