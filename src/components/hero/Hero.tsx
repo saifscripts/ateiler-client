@@ -10,9 +10,9 @@ import {
   CarouselSlides,
 } from 'keep-react';
 import { useNavigate } from 'react-router-dom';
-import banner1 from '../../assets/images/buy-one-get-three.webp';
+import banner2 from '../../assets/images/best-offer.webp';
+import banner1 from '../../assets/images/big-sale.jpg';
 import banner3 from '../../assets/images/last-minute-offer.webp';
-import banner2 from '../../assets/images/mega-sale.webp';
 
 const slides = [
   {
