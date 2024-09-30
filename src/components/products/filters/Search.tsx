@@ -1,6 +1,6 @@
 import { Input, InputIcon } from 'keep-react';
 import { MagnifyingGlass } from 'phosphor-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { debounce } from '../../../utils/debounce';
 
@@ -12,6 +12,21 @@ export default function Search() {
     setSearchTerm(params.get('searchTerm') || '');
   }, [params]);
 
+  const debouncedSetParams = useCallback(
+    debounce((value: string) => {
+      setParams((params) => {
+        const currentParams = Object.fromEntries(params);
+        if (!value) {
+          delete currentParams.searchTerm;
+        } else {
+          currentParams.searchTerm = value;
+        }
+        return currentParams;
+      });
+    }, 500),
+    []
+  );
+
   return (
     <fieldset className="relative w-full max-w-sm">
       <Input
@@ -20,18 +35,6 @@ export default function Search() {
         value={searchTerm}
         onChange={(e) => {
           const searchValue = e.target.value;
-
-          const debouncedSetParams = debounce((value: string) => {
-            setParams((params) => {
-              const currentParams = Object.fromEntries(params);
-              if (!value) {
-                delete currentParams.searchTerm;
-              } else {
-                currentParams.searchTerm = value;
-              }
-              return currentParams;
-            });
-          }, 500);
 
           debouncedSetParams(searchValue);
           setSearchTerm(searchValue);
