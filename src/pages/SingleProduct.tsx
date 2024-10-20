@@ -56,7 +56,7 @@ export default function SingleProduct() {
 
         {/* Product Details */}
         <div className="flex flex-col gap-4 justify-center items-center md:items-start">
-          <h1 className="text-3xl font-bold text-gray-800 text-center md:text-left">
+          <h1 className="text-3xl font-bold text-gray-800 text-center md:text-left capitalize">
             {product.name}
           </h1>
           <div className="flex gap-4 items-center">

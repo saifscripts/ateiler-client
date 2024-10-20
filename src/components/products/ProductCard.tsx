@@ -37,7 +37,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
         ></div>
 
         {/* Title */}
-        <CardTitle className="text-lg">{product.name}</CardTitle>
+        <CardTitle className="text-lg capitalize">{product.name}</CardTitle>
 
         {/* Badges */}
         <div className="flex gap-2">
