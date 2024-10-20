@@ -52,7 +52,7 @@ const router: RouterProviderProps['router'] = createBrowserRouter([
     ],
   },
   {
-    path: '/manage-products',
+    path: '/dashboard',
     element: <DashboardLayout />,
     children: [
       {
