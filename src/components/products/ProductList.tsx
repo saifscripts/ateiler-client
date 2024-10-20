@@ -12,6 +12,7 @@ import { MdEdit } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
 import { useGetProductsQuery } from '../../redux/features/products/productApi';
+import { BDT } from '../../utils/formatCurrency';
 import DeleteModal from './DeleteModal';
 
 export default function ProductList() {
@@ -65,7 +66,7 @@ export default function ProductList() {
                     </TableCell>
                     <TableCell>{item?.name}</TableCell>
                     <TableCell>{item?.brand?.name}</TableCell>
-                    <TableCell>{Number(item?.price).toFixed(2)}</TableCell>
+                    <TableCell>{BDT(item?.price)}</TableCell>
                     <TableCell>{item?.category?.title}</TableCell>
                     <TableCell>{item?.stockQuantity}</TableCell>
                     <TableCell>

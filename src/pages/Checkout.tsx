@@ -19,6 +19,7 @@ import { displayToast } from '../lib/toast';
 import { clearCart } from '../redux/features/cart/cartSlice';
 import { useCreateOrderMutation } from '../redux/features/orders/orderApi';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { BDT } from '../utils/formatCurrency';
 
 const FormSchema = z.object({
   name: z.string({ required_error: 'Name is required' }).min(1, {
@@ -131,18 +132,16 @@ const Checkout = () => {
           <TableBody>
             <TableRow>
               <TableCell className="font-semibold">Total Price</TableCell>
-              <TableCell className="font-semibold">
-                ${totalPrice.toFixed(2)}
-              </TableCell>
+              <TableCell className="font-semibold">{BDT(totalPrice)}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Vat (15%)</TableCell>
-              <TableCell>${vat.toFixed(2)}</TableCell>
+              <TableCell>{BDT(vat)}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell className="font-semibold">Net Price</TableCell>
               <TableCell className="font-semibold">
-                ${(totalPrice + vat).toFixed(2)}
+                {BDT(totalPrice + vat)}
               </TableCell>
             </TableRow>
           </TableBody>

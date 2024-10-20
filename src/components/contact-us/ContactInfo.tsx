@@ -1,5 +1,6 @@
 import { Button, Input } from 'keep-react';
 import { Envelope, House, Phone } from 'phosphor-react';
+import { ADDRESS, EMAIL, PHONE } from '../../constants';
 
 const ContactInfo = () => {
   return (
@@ -24,9 +25,7 @@ const ContactInfo = () => {
               <h5 className="text-xl text-metal-800 font-semibold">
                 Our Location
               </h5>
-              <p className="text-sm text-metal-600">
-                Heyako, Fatikchhari, Chittagon
-              </p>
+              <p className="text-sm text-metal-600">{ADDRESS}</p>
             </div>
           </div>
           <div className="flex gap-4 items-start">
@@ -37,7 +36,7 @@ const ContactInfo = () => {
               <h5 className="text-xl text-metal-800 font-semibold">
                 Phone Number
               </h5>
-              <p className="text-sm text-metal-600">+880 1766637772</p>
+              <p className="text-sm text-metal-600">{PHONE}</p>
             </div>
           </div>
           <div className="flex gap-4 items-start">
@@ -48,9 +47,7 @@ const ContactInfo = () => {
               <h5 className="text-xl text-metal-800 font-semibold">
                 Email Address
               </h5>
-              <p className="text-sm text-metal-600">
-                mdsaifullah1302@gmail.com
-              </p>
+              <p className="text-sm text-metal-600">{EMAIL}</p>
             </div>
           </div>
         </div>

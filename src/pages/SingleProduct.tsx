@@ -9,6 +9,7 @@ import { cn } from '../lib/cn';
 import { addToCart } from '../redux/features/cart/cartSlice';
 import { useGetSingleProductQuery } from '../redux/features/products/productApi';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { BDT } from '../utils/formatCurrency';
 
 export default function SingleProduct() {
   const { id } = useParams();
@@ -59,7 +60,9 @@ export default function SingleProduct() {
             {product.name}
           </h1>
           <div className="flex gap-4 items-center">
-            <p className="text-xl font-bold text-gray-800">${product.price}</p>
+            <p className="text-xl font-bold text-gray-800">
+              {BDT(product.price)}
+            </p>
             <Rating value={product.rating} />
           </div>
           <p className="text-sm text-gray-500 text-center md:text-left">

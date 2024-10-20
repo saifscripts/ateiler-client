@@ -1,10 +1,11 @@
 import {
   FaFacebookF,
-  FaLinkedinIn,
   FaPhone,
   FaRegEnvelope,
+  FaWhatsapp,
 } from 'react-icons/fa6';
 import { HashLink } from 'react-router-hash-link';
+import { EMAIL, FACEBOOK, PHONE, WHATSAPP } from '../../constants';
 
 const Footer = () => {
   return (
@@ -20,28 +21,28 @@ const Footer = () => {
               <a
                 className="hover:bg-primary-100 hover:text-primary-900 border border-transparent hover:border-primary-100 rounded-sm p-1"
                 target="_blank"
-                href="https://facebook.com/saifelhamn"
+                href={FACEBOOK}
               >
                 <FaFacebookF />
               </a>
               <a
                 className="hover:bg-primary-100 hover:text-primary-900 border border-transparent hover:border-primary-100 rounded-sm p-1"
                 target="_blank"
-                href="https://linkedin.com/in/saifscripts"
+                href={WHATSAPP}
               >
-                <FaLinkedinIn />
+                <FaWhatsapp />
               </a>
               <a
                 className="hover:bg-primary-100 hover:text-primary-900 border border-transparent hover:border-primary-100 rounded-sm p-1"
                 target="_blank"
-                href="tel:+8801766637772"
+                href={`tel:${PHONE}`}
               >
                 <FaPhone />
               </a>
               <a
                 className="hover:bg-primary-100 hover:text-primary-900 border border-transparent hover:border-primary-100 rounded-sm p-1"
                 target="_blank"
-                href="mailto:mdsaifullah1302@gmail.com"
+                href={`mailto:${EMAIL}`}
               >
                 <FaRegEnvelope />
               </a>

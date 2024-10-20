@@ -11,7 +11,7 @@ export default function StockBadge({
       variant="base"
       className="text-[10px] py-1 h-auto rounded-md"
     >
-      {Number(stockQuantity) > 0 ? `Stock: ${stockQuantity}` : 'Out of Stock'}
+      {Number(stockQuantity) > 0 ? `In Stock` : 'Out of Stock'}
     </Badge>
   );
 }

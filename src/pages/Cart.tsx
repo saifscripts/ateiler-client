@@ -11,6 +11,7 @@ import {
   removeFromCart,
 } from '../redux/features/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { BDT } from '../utils/formatCurrency';
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -54,7 +55,7 @@ const Cart = () => {
                       {product.name}
                     </h1>
                     <p className="text-base sm:text-lg text-gray-700 font-semibold">
-                      ${product?.price}
+                      {BDT(product?.price)}
                     </p>
                     <div className="flex gap-2 mt-2 flex-wrap">
                       <CategoryBadge>{product?.category?.title}</CategoryBadge>
@@ -91,7 +92,7 @@ const Cart = () => {
                       </div>
                       <div className="flex gap-2 items-center self-end">
                         <p className="text-xl font-bold text-metal-600 p-2">
-                          ${(product.price * quantity).toFixed(2)}
+                          {BDT(product.price * quantity)}
                         </p>
                         <div className="w-[1px] h-8 bg-metal-200" />
                         <div className="cursor-pointer p-2 rounded-md hover:bg-metal-50">
@@ -130,18 +131,16 @@ const Cart = () => {
           <TableBody>
             <TableRow>
               <TableCell className="font-semibold">Total Price</TableCell>
-              <TableCell className="font-semibold">
-                ${totalPrice.toFixed(2)}
-              </TableCell>
+              <TableCell className="font-semibold">{BDT(totalPrice)}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Vat (15%)</TableCell>
-              <TableCell>${vat.toFixed(2)}</TableCell>
+              <TableCell>{BDT(vat)}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell className="font-semibold">Net Price</TableCell>
               <TableCell className="font-semibold">
-                ${(totalPrice + vat).toFixed(2)}
+                {BDT(totalPrice + vat)}
               </TableCell>
             </TableRow>
           </TableBody>

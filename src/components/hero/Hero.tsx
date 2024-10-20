@@ -39,7 +39,7 @@ export default function Hero() {
         {slides.map((slide) => (
           <CarouselItem key={slide.id} className="p-0">
             <div
-              className="flex aspect-video lg:aspect-auto lg:h-[calc(100vh-180px)] items-center justify-center bg-metal-100 dark:border-metal-900 dark:bg-metal-900 cursor-pointer"
+              className="flex aspect-video lg:aspect-[16/6] items-center justify-center bg-metal-100 dark:border-metal-900 dark:bg-metal-900 cursor-pointer"
               style={{
                 backgroundImage: `url(${slide.image})`,
                 backgroundSize: 'cover',

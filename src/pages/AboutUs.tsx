@@ -2,50 +2,51 @@ import { ArrowRight, Lightning, LightningSlash, MapPin } from 'phosphor-react';
 import { ContactUs } from '../components/contact-us';
 import SectionDescription from '../components/ui/SectionDescription';
 import SectionTitle from '../components/ui/SectionTitle';
+import { ADDRESS, EMAIL, PHONE } from '../constants';
 
 const stores = [
   {
     name: 'Retail Store',
-    address: 'Fatikchari, Chittagong',
-    phone: '01766637772',
-    email: 'contact@ateiler.com',
+    address: ADDRESS,
+    phone: PHONE,
+    email: EMAIL,
   },
   {
     name: 'Showroom',
-    address: 'Mirpur 10, Dhaka - 1216',
-    phone: '01859229595',
-    email: 'contact@ateiler.com',
+    address: ADDRESS,
+    phone: PHONE,
+    email: EMAIL,
   },
   {
     name: 'Head Office',
-    address: 'GEC, Chittagong',
-    phone: '01766637772',
-    email: 'contact@ateiler.com',
+    address: ADDRESS,
+    phone: PHONE,
+    email: EMAIL,
   },
 ];
 
-const team = [
-  {
-    name: 'Rahatul Arefin',
-    position: 'CEO, Ateiler',
-    image: 'https://randomuser.me/api/portraits/men/26.jpg',
-  },
-  {
-    name: 'Saif Elham',
-    position: 'CTO, Ateiler',
-    image: 'https://randomuser.me/api/portraits/men/28.jpg',
-  },
-  {
-    name: 'Md. Saifur Rahman',
-    position: 'COO, Ateiler',
-    image: 'https://randomuser.me/api/portraits/men/30.jpg',
-  },
-  {
-    name: 'Shafiqur Rahman',
-    position: 'CFO, Ateiler',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-  },
-];
+// const team = [
+//   {
+//     name: 'Rahatul Arefin',
+//     position: 'CEO, Ateiler',
+//     image: 'https://randomuser.me/api/portraits/men/26.jpg',
+//   },
+//   {
+//     name: 'Saif Elham',
+//     position: 'CTO, Ateiler',
+//     image: 'https://randomuser.me/api/portraits/men/28.jpg',
+//   },
+//   {
+//     name: 'Md. Saifur Rahman',
+//     position: 'COO, Ateiler',
+//     image: 'https://randomuser.me/api/portraits/men/30.jpg',
+//   },
+//   {
+//     name: 'Shafiqur Rahman',
+//     position: 'CFO, Ateiler',
+//     image: 'https://randomuser.me/api/portraits/men/32.jpg',
+//   },
+// ];
 
 const AboutUs = () => {
   return (
@@ -58,14 +59,14 @@ const AboutUs = () => {
               About Ateiler
             </h3>
             <SectionTitle className="text-metal-50 mb-6">
-              Empowering Your Performance
+              Where Fashion Meets Art
             </SectionTitle>
             <SectionDescription className="max-w-3xl mx-auto text-metal-200 text-lg leading-relaxed">
-              Ateiler is a leading sporting goods retailer, offering a wide
-              range of high-quality sports equipment, apparel, and accessories.
-              Established with the vision to inspire athletes and sports
-              enthusiasts, Ateiler is dedicated to helping you reach your peak
-              performance.
+              Ateiler is a premier clothing retailer, offering a range of
+              stylish and high-quality clothes for all occasions. We focus on
+              modern fashion and classic designs, giving you both comfort and
+              style. Whether you need everyday outfits or something special,
+              Ateiler helps you show your personal style with confidence.
             </SectionDescription>
           </div>
         </div>
@@ -86,25 +87,24 @@ const AboutUs = () => {
                 Our Mission
               </h3>
               <p className="text-lg mb-4 text-metal-100">
-                At Ateiler, our mission is to empower athletes of all levels by
-                providing:
+                At Ateiler, our mission is to empower individuals through:
               </p>
               <ul className="list-disc list-inside space-y-2 text-metal-200">
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Top-quality sporting products
+                  Premium quality fashion
                 </li>
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Exceptional customer experience
+                  Seamless online shopping experience
                 </li>
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Innovative solutions
+                  Unique and stylish collections
                 </li>
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Inclusive environments
+                  An inclusive and accessible platform
                 </li>
               </ul>
             </div>
@@ -120,19 +120,19 @@ const AboutUs = () => {
               <ul className="list-none space-y-2 text-metal-600">
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Every individual can unleash full potential
+                  Everyone can express their unique style
                 </li>
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Sports and fitness are accessible for all
+                  Fashion is accessible to all
                 </li>
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Innovation continuously pushes boundaries
+                  Creativity shapes the future of clothing
                 </li>
                 <li className="flex items-center">
                   <ArrowRight size={20} className="mr-2" />
-                  Our community inspire & supports each other
+                  Our community inspires and uplifts each other
                 </li>
               </ul>
             </div>
@@ -140,15 +140,15 @@ const AboutUs = () => {
 
           <div className="mt-8 text-center">
             <p className="text-xl font-semibold italic text-metal-700">
-              "Empowering athletes, inspiring communities, and revolutionizing
-              the world of sports - one product at a time."
+              "Empowering individuals, inspiring confidence, and redefining
+              fashion – one outfit at a time."
             </p>
           </div>
         </div>
       </section>
 
       {/* Our Team */}
-      <section className="bg-white  py-12">
+      {/* <section className="bg-white  py-12">
         <div className="container">
           <SectionTitle>Meet Our Team</SectionTitle>
           <SectionDescription className="max-w-2xl">
@@ -170,7 +170,7 @@ const AboutUs = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Store Location */}
       <section className="container py-12">

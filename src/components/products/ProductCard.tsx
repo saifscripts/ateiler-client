@@ -9,6 +9,7 @@ import {
 } from 'keep-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IProduct } from '../../interfaces';
+import { BDT } from '../../utils/formatCurrency';
 import BrandBadge from './badges/BrandBadge';
 import CategoryBadge from './badges/CategoryBadge';
 import StockBadge from './badges/StockBadge';
@@ -61,7 +62,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
       <CardFooter className="flex justify-between items-center">
         {/* Price */}
         <div className="flex gap-2 justify-between items-center text-sm">
-          <p className="font-bold text-metal-700">${product.price}</p>
+          <p className="font-bold text-metal-700">{BDT(product.price)}</p>
         </div>
 
         {/* View Details Button */}
