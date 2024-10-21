@@ -49,7 +49,7 @@ export default function UpdateProduct() {
     displayToast(result, 'Product updated successfully!', {
       action: {
         label: 'See all products',
-        onClick: () => navigate('/manage-products/products'),
+        onClick: () => navigate('/dashboard/products'),
       },
     });
   };

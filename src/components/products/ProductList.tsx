@@ -73,7 +73,7 @@ export default function ProductList() {
                       <div className="flex gap-2">
                         <Link
                           className="hover:bg-primary-50 p-1 rounded-md"
-                          to={`/manage-products/update-product/${item?._id}`}
+                          to={`/dashboard/update-product/${item?._id}`}
                         >
                           <MdEdit className="text-primary-500 cursor-pointer text-2xl" />
                         </Link>

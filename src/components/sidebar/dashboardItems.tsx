@@ -6,29 +6,29 @@ const dashboardItems: IRoute[] = [
   {
     icon: BiStore,
     name: 'Products',
-    path: '/manage-products/products',
+    path: '/dashboard/products',
     dropdown: [
       {
         icon: IoListSharp,
         name: 'Product List',
-        path: '/manage-products/products',
+        path: '/dashboard/products',
       },
       {
         icon: IoAddSharp,
         name: 'Add Product',
-        path: '/manage-products/add-product',
+        path: '/dashboard/add-product',
       },
     ],
   },
   {
     icon: BiCategoryAlt,
     name: 'Categories',
-    path: '/manage-products/categories',
+    path: '/dashboard/categories',
   },
   {
     icon: BiBarcode,
     name: 'Brands',
-    path: '/manage-products/brands',
+    path: '/dashboard/brands',
   },
 ];
 

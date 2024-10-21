@@ -5,14 +5,14 @@ import AboutUs from '../pages/AboutUs';
 import AllProducts from '../pages/AllProducts';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
-import Home from '../pages/Home';
 import {
   AddProduct,
   Brands,
   Categories,
   Products,
   UpdateProduct,
-} from '../pages/manage-products';
+} from '../pages/dashboard';
+import Home from '../pages/Home';
 import OrderSuccess from '../pages/OrderSuccess';
 import SingleProduct from '../pages/SingleProduct';
 

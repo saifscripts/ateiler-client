@@ -29,7 +29,7 @@ const ProductListHeader = () => {
 
       {/* Add Product Button */}
       <div className="flex items-center gap-5">
-        <Link to="/manage-products/add-product">
+        <Link to="/dashboard/add-product">
           <Button size="sm">
             <Plus className="mr-2" />
             Add Product

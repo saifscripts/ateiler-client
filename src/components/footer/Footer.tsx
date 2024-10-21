@@ -62,10 +62,9 @@ const Footer = () => {
               <HashLink className="hover:underline mb-1" to="/products">
                 All Products
               </HashLink>
-              <HashLink className="hover:underline mb-1" to="/manage-products">
-                Manage Products
+              <HashLink className="hover:underline mb-1" to="/about-us">
+                About Us
               </HashLink>
-
               <HashLink className="hover:underline mb-1" to="/cart">
                 Cart
               </HashLink>

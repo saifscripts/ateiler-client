@@ -45,7 +45,7 @@ const AddProduct = () => {
     displayToast(result, 'Product added successfully!', {
       action: {
         label: 'See all products',
-        onClick: () => navigate('/manage-products/products'),
+        onClick: () => navigate('/dashboard/products'),
       },
     });
 
